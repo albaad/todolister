@@ -9,6 +9,15 @@
 
     <h2>Inscription</h2>
 
+    <div class="erreur">
+      <?php
+        if (isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+        }
+      ?>
+    </div>
+
     <form name="register" method="POST" action="register.php">
       <input name='email' placeholder='E-Mail' type='text' onblur="checkFields(this);">
       </input>
