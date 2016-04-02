@@ -9,6 +9,10 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+.erreur {
+  color: red;
+}
+
 h2 {
   color: #6D7781;
   font-family: "Sofia", cursive;

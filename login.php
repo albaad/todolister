@@ -1,12 +1,13 @@
 <?php session_start();
 
 // Si SESSION pas active et POST correct
-if((empty($_SESSION['email']) || empty($_SESSION['pw'])) && (!empty($_POST['email']) && !empty($_POST['password']))){
+if(empty($_SESSION['email']) || empty($_SESSION['pw'])){
 /* LOGIN */
 
   // Vérifie que les champs ne sont pas vides
   if(empty($_POST["email"]) || empty($_POST["password"])) {
-  	echo "Vous devez compléter tous les champs du formulaire !";
+    $_SESSION['message'] = "Vous devez compléter tous les champs du formulaire !";
+    header("Location:authentification.php");
   }
   else {
   	$email = $_POST["email"];
@@ -23,9 +24,10 @@ if((empty($_SESSION['email']) || empty($_SESSION['pw'])) && (!empty($_POST['emai
       // Si res = $email et $pw, 1 resultat
        if($count == 1) {
          $_SESSION['email'] = $email;
-         header("location: accueil.php");
+         header("Location:accueil.php");
        } else {
-         echo $error = "Login ou mot de passe erroné !";
+         $_SESSION['message'] = "Login ou mot de passe erroné !";
+         header("Location:authentification.php");
        }
      }
 

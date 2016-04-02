@@ -1,14 +1,18 @@
 <?php // On démarre la session
   session_start();
 
+  $pageTitle = 'Accueil';
   include 'header.php';
+?>
+  <title>Accueil</title>
+<?php
 
   // Vérifie que l'utilisateur est authentifié
   if(empty($_SESSION['email'])){
     if(empty($_POST['email']) || empty($_POST['password'])){
       // Utilisateur pas authentifié
       session_destroy();
-      header("Location:authentification.html");
+      header("Location:authentification.php");
     } else { // Utilisateur authentifié
     // Création des variables de session user et mdp
       $_SESSION['email'] = $_POST['email'];

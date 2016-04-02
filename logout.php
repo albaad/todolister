@@ -4,5 +4,5 @@
   if(!empty($_SESSION['email'])){
     session_destroy();
   }
-  header("Location:authentification.html");
+  header("Location:authentification.php");
 ?>
