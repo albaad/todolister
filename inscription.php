@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  include 'autorisation.php';
 
   $pageTitle = 'Inscription';
   include 'header.php';
