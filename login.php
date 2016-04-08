@@ -1,6 +1,6 @@
 <?php
 
-  include 'autorisation.php';
+  include 'inc/autorisation.php';
 
   function verif($email, $pw){
     // Connexion à la base

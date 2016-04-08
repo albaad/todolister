@@ -1,6 +1,6 @@
 <?php
 
-	include 'autorisation.php';
+	include 'inc/autorisation.php';
 
 /*function createUser($email){
    $sql = "SELECT count(email) FROM members WHERE email='$email'" ;

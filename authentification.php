@@ -1,8 +1,8 @@
 <?php
-  include 'autorisation.php';
+  include 'inc/autorisation.php';
 
   $pageTitle = 'Accueil';
-  include 'header.php';
+  include 'inc/header.php';
 ?>
 
     <div class="login">
@@ -31,4 +31,4 @@
       <a class='forgot' href='inscription.php'>Vous n'avez pas encore un compte ?</a>
     </div>
 
-<?php include('footer.php'); ?>
+<?php include 'inc/footer.php'; ?>

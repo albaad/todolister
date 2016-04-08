@@ -2,7 +2,7 @@
   session_start();
 
   $pageTitle = 'Accueil';
-  include 'header.php';
+  include 'inc/header.php';
 ?>
   <title>Accueil</title>
 <?php
@@ -30,4 +30,4 @@
 
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include 'inc/footer.php'; ?>
