@@ -9,11 +9,16 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-.erreur {
-  color: red;
+.error {
+  color: #EA4335;
 }
 
-h2 {
+.success {
+  color: #1FCE6D;
+  text-align: center;
+}
+
+h2, h3 {
   color: #6D7781;
   font-family: "Sofia", cursive;
   font-size: 15px;
@@ -21,6 +26,10 @@ h2 {
   font-size: 3.6em;
   text-align: center;
   margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 3em;
 }
 
 a {
@@ -40,7 +49,7 @@ a {
   height: 20px;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], textarea {
   width: 350px;
   padding: 20px 0px;
   background: transparent;
@@ -49,6 +58,9 @@ input[type="text"], input[type="password"] {
   outline: none;
   color: #6D7781;
   font-size: 16px;
+}
+textarea {
+  resize: vertical;
 }
 input[type=checkbox] {
   display: none;
