@@ -2,18 +2,18 @@
   include 'inc/autorisation.php';
 
   $pageTitle = 'Inscription';
-  include 'inc/header.php';
+  include 'header.php';
 ?>
 
   <div class='login'>
 
     <h2>Inscription</h2>
 
-    <div class="erreur">
+    <div class="error">
       <?php
-        if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
-            unset($_SESSION['message']);
+        if (isset($_SESSION['error'])) {
+            echo $_SESSION['error'];
+            unset($_SESSION['error']);
         }
       ?>
     </div>
@@ -39,4 +39,4 @@
 
   </div>
 
-<?php include 'inc/footer.php'; ?>
+<?php include('inc/footer.php'); ?>

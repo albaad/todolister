@@ -12,6 +12,13 @@
       // Si res = $email et $pw, 1 resultat
        if($count == 1) {
          $_SESSION['email'] = $email;
+
+         // -------------- Si ADMIN :
+         if($email == 'admin') {
+           $_SESSION['level'] = 'admin';
+         }
+         // --------------
+
          return true;
        } else {
          return false;
@@ -28,7 +35,7 @@
 
     // Vérifie que les champs ne sont pas vides
     if(empty($_POST["email"]) || empty($_POST["password"])) {
-      $_SESSION['message'] = "Vous devez compléter tous les champs du formulaire !";
+      $_SESSION['error'] = "Vous devez compléter tous les champs du formulaire !";
       header("Location:authentification.php");
     }
     else {
@@ -39,7 +46,7 @@
       if ($existe)
         header("Location:accueil.php");
       else {
-        $_SESSION['message'] = "Login ou mot de passe erroné !";
+        $_SESSION['error'] = "Login ou mot de passe erroné !";
         header("Location:authentification.php");
       }
     }

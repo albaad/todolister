@@ -8,11 +8,11 @@
     <div class="login">
       <h2>Authentification</h2>
 
-      <div class="erreur">
+      <div class="error">
         <?php
-          if (isset($_SESSION['message'])) {
-              echo $_SESSION['message'];
-              unset($_SESSION['message']);
+          if (isset($_SESSION['error'])) {
+              echo $_SESSION['error'];
+              unset($_SESSION['error']);
           }
         ?>
       </div>
@@ -31,4 +31,4 @@
       <a class='forgot' href='inscription.php'>Vous n'avez pas encore un compte ?</a>
     </div>
 
-<?php include 'inc/footer.php'; ?>
+<?php include('inc/footer.php'); ?>
