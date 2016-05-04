@@ -3,6 +3,7 @@
 
   $pageTitle = 'Contact';
   include 'inc/header.php';
+  include 'lib/ContactFormulaire.php';
 ?>
 
   <div class='login'>
@@ -17,26 +18,36 @@
         }
       ?>
     </div>
-    
+
     <div class="success">
       <?php
-        if(!empty($_SESSION['emailSent'])) {
-          echo "Votre message a été envoyé";
-          unset($_SESSION['emailSent']);
+        if(!empty($_SESSION['confirmation'])) {
+          echo $_SESSION['confirmation'];
+          unset($_SESSION['confirmation']);
         }
       ?>
     </div>
 
-    <form name="contact" method="POST" action="contact-form.php">
-      <input name='name' placeholder='Nom' type='text' onblur="checkFields(this);"></input>
-      <input name='email' placeholder='E-Mail' type='text' onblur="checkFields(this);"></input>
+    <form name="contact" method="POST" action="contact.php">
+      <input name='name' placeholder='Nom' type='text'></input>
+      <input name='email' placeholder='E-Mail' type='text'></input>
 
       <input id='subject' name='subject' placeholder='Sujet' type='text'></input>
       <textarea id='msg' name="msg" placeholder="Message"></textarea>
 
-      <input class='animated' type='submit' value='Envoyer'>
+      <input class='animated' name='submit' type='submit' value='Envoyer'>
     </form>
 
   </div>
+
+<?php
+if(isset($_POST['submit'])) {
+  $contact = new ContactFormulaire();
+  if($contact->testForm()) {
+    $contact->recupForm();
+    $contact->envoiMail();
+  }
+}
+?>
 
 <?php include 'inc/footer.php'; ?>
