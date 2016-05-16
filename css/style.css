@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@ body {
 }
 
 .error {
-  color: #EA4335;
+  color: red;
 }
 
 .success {
@@ -18,7 +19,7 @@ body {
   text-align: center;
 }
 
-h2, h3 {
+h2, h3, h4, h5 {
   color: #6D7781;
   font-family: "Sofia", cursive;
   font-size: 15px;
@@ -30,6 +31,14 @@ h2, h3 {
 
 h3 {
   font-size: 3em;
+}
+
+h4 {
+  font-size: 2.5em;
+}
+
+h5 {
+  font-size: 2.35em;
 }
 
 a {
@@ -49,6 +58,64 @@ a {
   height: 20px;
 }
 
+.tab-liste {
+  width: 600px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  margin-left: -330px;
+}
+
+.non-liste {
+  width: 500px;
+}
+
+#liste {
+  display: block;
+  margin: auto 0;
+  text-align: center;
+}
+#liste th, #liste td {
+  padding: 15px;
+  text-align: center;
+  background-color: #6D7781;
+}
+#liste th {
+  background-color: #f2f2f2;
+}
+
+#modsup, #modsup a {
+  font-size: 12px;
+  min-width: 110px;
+}
+#modsup a {
+  color: #f2f2f2;
+}
+#addLink {
+  color: #6d7781;
+}
+#modsup a:hover, #addLink:hover {
+  color: #435160;
+}
+
+#params td {
+  padding: 15px;
+  text-align: center;
+  color: #6D7781;
+  background-color: #f2f2f2;
+}
+#params td span a {
+  font-size: 14px;
+  min-width: 110px;
+  color: #1FCE6D;
+}
+#params td span a:hover {
+  text-decoration: underline;
+}
+.paramstitle {
+  color: #6d7781;
+}
+
 input[type="text"], input[type="password"], textarea {
   width: 350px;
   padding: 20px 0px;
@@ -58,6 +125,7 @@ input[type="text"], input[type="password"], textarea {
   outline: none;
   color: #6D7781;
   font-size: 16px;
+  font-family: "Open Sans", sans-serif;
 }
 textarea {
   resize: vertical;
@@ -79,7 +147,6 @@ label {
   cursor: pointer;
   border: 3px solid #435160;
 }
-
 #agree:checked ~ label[for=agree] {
   background: #435160;
 }

@@ -1,23 +1,21 @@
-<?php // On démarre la session
-  session_start();
-
+<?php
+//  session_start();
   $pageTitle = 'Accueil';
   include 'inc/header.php';
-?>
-  <title>Accueil</title>
-<?php
 
-  // Vérifie que l'utilisateur est authentifié
+  // Verifies user is logged in
   if(empty($_SESSION['email'])){
     if(empty($_POST['email']) || empty($_POST['password'])){
-      // Utilisateur pas authentifié
+      // User not logged in
       session_destroy();
       header("Location:authentification.php");
-    } else { // Utilisateur authentifié
-    // Création des variables de session user et mdp
+    } else { // User logged in
+    // Session variables for email
       $_SESSION['email'] = $_POST['email'];
-      $_SESSION['password'] = $_POST['password'];
     }
+  }
+  if($_SESSION['email'] == 'admin') {
+    header("location: admin/admin.php");
   }
 ?>
 

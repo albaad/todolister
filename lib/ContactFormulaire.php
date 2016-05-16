@@ -7,38 +7,39 @@ class ContactFormulaire {
   private $subject;
   private $message;
 
-  /* Récupère tous les champs */
-  public function recupForm() {
+  /* Retrieve all form fields */
+  //public function recupForm() {
+  public function retrieveForm() {
     $this->name = stripslashes(trim($_POST['name']));
     $this->email = stripslashes(trim($_POST['email']));
     $this->subject = stripslashes(trim($_POST['subject']));
     $this->message = stripslashes(trim($_POST['msg']));
   }
 
-  /* Vérifie la validité des données saisies par l’utilisateur : tous les champs sont remplis et
-     différents de null. */
+  /* Verifies fields are valid */
   public function testForm() {
-    // Vérifie que les champs sont remplis et ne sont pas vides
+    // Verifies fiels are filled
     if(isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["subject"]) && isset($_POST["msg"])
        && (!empty($_POST["name"]) || !empty($_POST["email"]) || !empty($_POST["subject"]) || !empty($_POST["msg"]))) {
-       // Vérifie format adresse email
+       // Verifies email address format
        if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-         $emailErr = "Format email invalide";
-         $this->afficheErreur($emailErr);
+         $error = "Format email invalide";
+         $this->displayErreur($error);
          return false;
        } else {
          return true;
        }
     }
     else {
-      $champErr = "Vous devez compléter tous les champs du formulaire !";
-      $this->afficheErreur($champErr);
+      $error = "Vous devez compléter tous les champs du formulaire !";
+      $this->displayErreur($error);
       return false;
     }
   }
 
-  /* Envoi le mail dans votre boîte de messagerie */
-  public function envoiMail() {
+  /* Sends e-mail */
+  //public function envoiMail() {
+  public function sendMail() {
     $subjectPrefix = '[To Do Lister]';
     $emailTo = '<test.dev.at@gmail.com>';
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -60,23 +61,32 @@ class ContactFormulaire {
             $headers .= "Reply-To: $this->email" . PHP_EOL;
             $headers .= "X-Mailer: PHP/". phpversion() . PHP_EOL;
             $headers .= "X-Originating-IP: " . $_SERVER['SERVER_ADDR'] . PHP_EOL;
-            mail($emailTo, "=?utf-8?B?".base64_encode($this->subject)."?=", $body, $headers);
-            $confirmation = "Votre message a été envoyé";
-            $this->afficheMessage($confirmation);
+            ///////////
+            $success = mail($emailTo, "=?utf-8?B?".base64_encode($this->subject)."?=", $body, $headers);
+            if($success) {
+              $confirmation = "Votre message a été envoyé";
+            }
+            else {
+              $confirmation = "L'envoi du message a échoué";
+            }
+            ///////////
+            $this->displayMessage($confirmation);
         } else {
             $hasError = true;
         }
       }
   }
 
-  /* Affiche les messages de confirmation et d’information */
-  public function afficheMessage($message) {
+  /* Displays confirmation and information messages */
+  //public function afficheMessage($message) {
+  public function displayMessage($message) {
     $_SESSION['confirmation'] = $message;
     header('Location:contact.php');
   }
 
-  /* Affiche les messages d’erreur */
-  public function afficheErreur($message) {
+  /* Displays error messages */
+  //public function afficheErreur($message) {
+  public function displayErreur($message) {
     $_SESSION['error'] = $message;
     header('Location:contact.php');
   }

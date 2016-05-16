@@ -1,6 +1,6 @@
-// Vérification données formulaire coté client
+// Client-side form data verification
 
-/* Vérifie que le champ n'est pas vide */
+/* Verifies field is not empty */
 function checkFields(champ)
 {
    if(champ.value.length == 0)
@@ -16,7 +16,7 @@ function checkFields(champ)
    }
 }
 
-/* Change le background d'un champ si erreur = true */
+/* Changes field background if erreur = true */
 function surligne(champ, erreur)
 {
    if(erreur)
@@ -25,7 +25,7 @@ function surligne(champ, erreur)
       champ.style.backgroundColor = "";
 }
 
-/* Vérifie que les mots de passe soient identiques */ 
+/* Verifies passwords match */
 function pwdCheck(pws2){
 	if(document.register.pw2.value == document.register.pw.value){
 		surligne(pw2, false);
@@ -35,14 +35,7 @@ function pwdCheck(pws2){
 	}
 }
 
-
-
+/* Verfies email format */ 
 function checkMail(email){
-	
-}
-
-
-function checkDate(dnaiss){
-
 
 }
