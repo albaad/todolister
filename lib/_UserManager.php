@@ -27,8 +27,8 @@ class UserManager {
             header("location: admin/admin.php");
           }
           else {
-            header("Location:accueil.php");
-            //header("Location:app/index.php");
+            //header("Location:accueil.php");
+            header("Location:app/index.php");
           }
       }
       else { throw new InvalidUserException(); }
@@ -61,8 +61,8 @@ class UserManager {
       if($_SESSION['email'] == 'admin') {
         header("location: admin/admin.php");
       }
-      header('location:accueil.php');
-      //header("Location: app/index.php");
+      //header('location:accueil.php');
+      header("Location: app/index.php");
     }
     // Exceptions CATCH blocks
     catch (WrongUserLengthException $e) { $e->showMessage(); }
