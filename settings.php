@@ -45,7 +45,7 @@
     $id = $_POST['id'];
     $pseudo = $_POST['pseudo'];
     $pw = $_POST['pass'];
-    $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $bdd = $conect->dbconnect();
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:edit.php';

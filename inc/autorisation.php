@@ -8,5 +8,6 @@
       header("location: admin/admin.php");
     }
     header("location: accueil.php");
+    //header("location: app/index.php");
   }
  ?>

@@ -12,10 +12,8 @@ class UserManager {
   }
 
   public function login($email, $pw) {
-
     try {
-
-      if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
+      if (is_null($email) || strlen($email) < 3 || strlen($email) > 16) {
         throw new WrongUserLengthException();
       }
       if (is_null($pw) || strlen($pw) < 3 || strlen($pw) > 16) {
@@ -26,14 +24,14 @@ class UserManager {
       if ($this->find($email) && $this->verifyLogin($email, $pw)) {
           $_SESSION['email'] = $email;
           if($_SESSION['email'] == 'admin') {
-            header("location: admin/admin.php"); }
+            header("location: admin/admin.php");
+          }
           else {
             header("Location:accueil.php");
             //header("Location:app/index.php");
           }
       }
       else { throw new InvalidUserException(); }
-
     }
     catch(WrongUserLengthException $e) { $e->showMessage(); }
     catch(WrongPasswordLengthException $e) { $e->showMessage(); }
@@ -64,7 +62,7 @@ class UserManager {
         header("location: admin/admin.php");
       }
       header('location:accueil.php');
-      //header('location:app/index.php');
+      //header("Location: app/index.php");
     }
     // Exceptions CATCH blocks
     catch (WrongUserLengthException $e) { $e->showMessage(); }
@@ -104,6 +102,14 @@ class UserManager {
     ]);
     $rows = $req->fetch(PDO::FETCH_NUM);
     $count = $rows[0];
+    /*$req = $bdd->prepare("
+      SELECT COUNT(email) FROM users
+      WHERE email = :email
+    ");
+    $req->execute([
+      'email' => $email
+    ]);
+    $count = $req->rowCount();*/
     // IF res = $email, 1 result
      if($count == 1) {
        return true;
@@ -166,24 +172,6 @@ class UserManager {
     catch (WrongPasswordLengthException $e) { $e->showMessage(); }
     catch (WrongUserIDException $e) { $e->showMessage(); }
   }
-
-  /*public function delete($id) {
-    try {
-      $oldPseudo = $this->getUserById($id);
-      if ($this->chercher($oldPseudo)){
-        $bdd = $this->db;
-        $this->db->exec('DELETE FROM users WHERE id = '.(int) $id);
-        $_SESSION['message'] = "Utilisateur supprimé.";
-
-        // Redirect
-        header("Location:delete.php"); // settings.php
-      }
-      else {
-        throw new WrongUserIDException();
-      }
-    }
-    catch (WrongUserIDException $e) { $e->showMessage(); }
-  }*/
 
   public function is_logged_in() {
     // Verifies user is logged in

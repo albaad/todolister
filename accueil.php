@@ -16,7 +16,7 @@
   }
   if($_SESSION['email'] == 'admin') {
     header("location: admin/admin.php");
-  }
+  } 
 ?>
 
 <div class="login">

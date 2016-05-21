@@ -1,7 +1,7 @@
 <!-- Add icon library -->
 <?php
   include 'lib/UserManager.php';
-  $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+  $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
   $bdd = $conect->dbconnect();
   $usrmg = new UserManager($bdd);
   $loggedin = $usrmg->is_logged_in();

@@ -21,7 +21,7 @@ include 'inc/menu.php';
 
     <?php
       if(isset($_GET['id'])) {
-        $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+        $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
         $bdd = $conect->dbconnect();
         $obj1 = new AdminManager($bdd);
         $_SESSION['location'] = 'Location:editinline.php';
@@ -29,7 +29,7 @@ include 'inc/menu.php';
         ?>
         <form class="" action="editinline.php" method="post">
           <input type="text" name="id" placeholder="id" value="<?php echo $_GET['id'];?>"></input>
-          <input type="text" name="pseudo" placeholder="Nouveau pseudo" value="<?php echo $user1;?>"></input>
+          <input type="text" name="email" placeholder="Nouvel email" value="<?php echo $user1;?>"></input>
           <input name='pass' placeholder='Nouveau mdp' type='password'></input>
           <div class="espace"></div>
           <input type="submit" name="submit" value="Confirmer"></input>
@@ -44,9 +44,9 @@ include 'inc/menu.php';
 <?php
   if(isset($_POST['submit'])) {
     $id = $_POST['id'];
-    $pseudo = $_POST['pseudo'];
+    $pseudo = $_POST['email'];
     $pw = $_POST['pass'];
-    $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $bdd = $conect->dbconnect();
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:editinline.php';

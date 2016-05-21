@@ -13,7 +13,7 @@
   </div>
 
 <?php
-  $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+  $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
   $bdd = $conect->dbconnect();
   $obj1 = new AdminManager($bdd);
   $users = $obj1->getAll();
@@ -24,7 +24,7 @@
       <tr>
         <th>Action</th>
         <th>id</th>
-        <th>pseudo</th>
+        <th>email</th>
         <th>mdp</th>
       </tr>
       <?php while($donnees = $users->fetch()) {?>
@@ -34,7 +34,7 @@
               <a class="action" href="javascript:deluser('<?php echo $donnees['id'];?>')">Supprimer</a>
             </td>
             <td><?php echo $donnees["id"];?></td>
-            <td><?php echo $donnees["pseudo"];?></td>
+            <td><?php echo $donnees["email"];?></td>
             <td><?php echo $donnees["pw"];?></td>
           </tr>
       <?php } ?>

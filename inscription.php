@@ -38,7 +38,7 @@
       $email = $_POST['email'];
       $pw = $_POST['password'];
       $pw2 = $_POST['password2'];
-      $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+      $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
       $bdd = $conect->dbconnect();
       $obj1 = new UserManager($bdd);
       $_SESSION['location'] = 'Location:inscription.php';

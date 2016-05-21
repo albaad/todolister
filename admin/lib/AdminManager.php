@@ -22,12 +22,12 @@ class AdminManager {
         throw new WrongPasswordLengthException(); }
       // If no errors, proceed to insert user into DB
       $bdd = $this->db;
-      $req = $bdd->prepare('INSERT INTO utilisateurs(pseudo, pw) VALUES(:pseudo, :pw)');
+      $req = $bdd->prepare('INSERT INTO users(email, pw) VALUES(:email, :pw)');
       $req->execute(array(
-        'pseudo' => $pseudo,
+        'email' => $pseudo,
         'pw' => sha1($pw)
       ));
-      $_SESSION['pseudo'] = $pseudo;
+      $_SESSION['email'] = $pseudo;
       header("Location:admin.php");
     }
     // Exceptions CATCH blocks
@@ -39,13 +39,13 @@ class AdminManager {
 
   public function getAll() {
     $bdd = $this->db;
-    $req = $bdd->query("SELECT id, pseudo, pw FROM utilisateurs ORDER BY id ASC");
+    $req = $bdd->query("SELECT id, email, pw FROM users ORDER BY id ASC");
     return $req;
   }
 
   public function verifyLogin($pseudo, $pw) {
     $bdd = $this->db;
-    $req = $bdd->query("SELECT COUNT(pseudo) FROM utilisateurs WHERE pseudo='$pseudo' AND pw='$pw'");
+    $req = $bdd->query("SELECT COUNT(email) FROM users WHERE email='$pseudo' AND pw='$pw'");
     $rows = $req->fetch(PDO::FETCH_NUM);
     $count = $rows[0];
     // IF res = $email AND $pw, 1 result
@@ -55,7 +55,7 @@ class AdminManager {
 
   public function find($pseudo) {
     $bdd = $this->db;
-    $req = $bdd->query("SELECT COUNT(pseudo) FROM utilisateurs WHERE pseudo='$pseudo'");
+    $req = $bdd->query("SELECT COUNT(email) FROM users WHERE email='$pseudo'");
     $rows = $req->fetch(PDO::FETCH_NUM);
     $count = $rows[0];
     // IF res = $email, 1 result
@@ -66,13 +66,13 @@ class AdminManager {
   public function getUserById($id) {
     try {
       $bdd = $this->db;
-      $req = $bdd->query("SELECT pseudo FROM utilisateurs WHERE id='$id'");
+      $req = $bdd->query("SELECT email FROM users WHERE id='$id'");
       $donnees = $req->fetch();
-      $count = $donnees['pseudo'];
+      $count = $donnees['email'];
       // IF res = $email, 1 result
        if(!empty($count)) {
-         $_SESSION['pseudo'] = $donnees['pseudo'];
-         return $donnees['pseudo'];
+         $_SESSION['email'] = $donnees['email'];
+         return $donnees['email'];
        } else { throw new WrongUserIDException(); }
      }
      catch (WrongUserIDException $e) { $e->showMessage(); }
@@ -89,9 +89,9 @@ class AdminManager {
 
       if ($this->getUserById($id) != ''){
         $bdd = $this->db;
-        $req = $bdd->prepare('UPDATE utilisateurs SET pseudo = :pseudo, pw = :pw WHERE id = :id');
+        $req = $bdd->prepare('UPDATE users SET email = :email, pw = :pw WHERE id = :id');
         $req->execute(array(
-          'pseudo' => $pseudo,
+          'email' => $pseudo,
           'pw' => sha1($pw),
           'id' => $id
         ));
@@ -113,7 +113,7 @@ class AdminManager {
       $oldPseudo = $this->getUserById($id);
       if ($this->find($oldPseudo)){
         $bdd = $this->db;
-        $this->db->exec('DELETE FROM utilisateurs WHERE id = '.(int) $id);
+        $this->db->exec('DELETE FROM users WHERE id = '.(int) $id);
         $_SESSION['message'] = "Utilisateur supprimé.";
         // Redirect
         if(isset($_SESSION['location'])) {

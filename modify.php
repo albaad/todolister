@@ -42,7 +42,7 @@
   if(isset($_POST['submit'])) {
     $pw = $_POST['pw'];
     $pw2 = $_POST['pw2'];
-    $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $bdd = $conect->dbconnect();
     $obj1 = new UserManager($bdd);
     $_SESSION['location'] = 'Location:modify.php';

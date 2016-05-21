@@ -31,7 +31,7 @@ include 'inc/menu.php';
 <?php
   if(isset($_POST['submit'])) {
     $id = $_POST['id'];
-    $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $bdd = $conect->dbconnect();
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:delete.php';
@@ -39,7 +39,7 @@ include 'inc/menu.php';
     echo $user1;
   }
   if(isset($_GET['deleteid'])) {
-    $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $bdd = $conect->dbconnect();
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:admin.php';

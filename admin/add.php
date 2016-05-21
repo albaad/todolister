@@ -20,7 +20,7 @@ include 'inc/menu.php';
     </div>
 
     <form class="" action="add.php" method="post">
-      <input type="text" name="pseudo" placeholder="pseudo"></input>
+      <input type="text" name="email" placeholder="email"></input>
       <input type='password' name='pass' placeholder='mdp'></input>
 
       <div class="espace"></div>
@@ -31,9 +31,9 @@ include 'inc/menu.php';
 
 <?php
   if(isset($_POST['submit'])) {
-    $pseudo = $_POST['pseudo'];
+    $pseudo = $_POST['email'];
     $pw = $_POST['pass'];
-    $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
+    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $bdd = $conect->dbconnect();
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:add.php';
