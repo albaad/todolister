@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once '../admin/lib/ConnectionSingleton.php';
+//include_once '../lib/UserManager.php';
 
 class ListerManager {
 
@@ -11,20 +12,29 @@ class ListerManager {
   }
 
   public function readList($project_id) {
-    $project_id = NULL;
-    /*$itemsQuery = $this->db->prepare("
-      SELECT id, name, done FROM items
-      WHERE project_id = :project_id'
-    ");*/
-    /*$itemsQuery->execute([
-      'project_id' => $project_id
-    ]);*/
     $itemsQuery = $this->db->prepare("
       SELECT id, name, done FROM items
+      WHERE project_id = :project_id
     ");
-    $itemsQuery->execute();
+    $itemsQuery->execute([
+      'project_id' => $project_id
+    ]);
     $items = $itemsQuery->rowCount() ? $itemsQuery : [];
     return $items;
+  }
+
+  public function projectsList($email) {
+    $bdd = $this->db;
+    $query = $this->db->prepare("
+      SELECT projects.id, title, color, done FROM projects
+      INNER JOIN users ON users.id = projects.user_id
+      WHERE users.email = :email
+    ");
+    $query->execute([
+      'email' => $email
+    ]);
+    $projects = $query->rowCount() ? $query : [];
+    return $projects;
   }
 
   public function add($name, $project_id) {
@@ -36,6 +46,26 @@ class ListerManager {
       $addedQuery->execute([
         'name' => $name,
         'project_id' => $project_id
+      ]);
+    }
+    header($_SESSION['location']);
+  }
+
+  public function addProject($title, $email) {
+    if(!empty($title)) {
+      // Get user_id from $email
+      $req = $this->db->prepare("SELECT id FROM users WHERE email=:email");
+      $req->execute(['email' => $email]);
+      $donnees = $req->fetch();
+      $user_id = $donnees['id'];
+      // Insert project
+      $addQuery = $this->db->prepare("
+        INSERT INTO projects (title, color, done, created, user_id)
+        VALUES (:title, NULL, 0, NOW(), :user_id)
+      ");
+      $addQuery->execute([
+        'title' => $title,
+        'user_id' => $user_id
       ]);
     }
     header($_SESSION['location']);
@@ -67,6 +97,32 @@ class ListerManager {
       header($_SESSION['location']);
   }
 
+  public function markProject($id, $pas) {
+    switch($pas){
+      case 'done' :
+        $doneQuery = $this->db->prepare("
+          UPDATE projects
+          SET done = 1
+          WHERE id = :item
+        ");
+        $doneQuery->execute([
+          'item' => $id,
+        ]);
+      break;
+      case 'notdone' :
+        $doneQuery = $this->db->prepare("
+          UPDATE projects
+          SET done = 0
+          WHERE id = :item
+        ");
+        $doneQuery->execute([
+          'item' => $id,
+        ]);
+      break;
+    }
+      header($_SESSION['location']);
+  }
+
   public function del($id, $as) {
   	switch($as) {
   		case 'del':
@@ -79,6 +135,21 @@ class ListerManager {
   			]);
   		break;
   	}
+    header($_SESSION['location']);
+  }
+
+  public function delProject($id, $pas) {
+    switch($pas) {
+      case 'del':
+        $delQuery = $this->db->prepare("
+          DELETE FROM projects
+          WHERE id = :item
+        ");
+        $delQuery->execute([
+          'item' => $id
+        ]);
+      break;
+    }
     header($_SESSION['location']);
   }
 
