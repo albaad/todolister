@@ -77,25 +77,37 @@ class AdminManager {
      catch (WrongUserIDException $e) { $e->showMessage(); }
   }
 
-  public function update($id, $pseudo, $pw) {
+  public function update($id, $email, $pw) {
     try {
-      if ($this->find($pseudo)) { throw new UnavailableUsernameException(); }
-      if (is_null($pseudo) || strlen($pseudo) < 3 || strlen($pseudo) > 16) {
+      // Verify new email and password length
+      if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
         throw new WrongUserLengthException(); }
       if (is_null($pw) || strlen($pw) < 3 || strlen($pw) > 16) {
         throw new WrongPasswordLengthException();
       }
-
+      $id = (int)$id;
       if ($this->getUserById($id) != ''){
+        // Verify the new email does not already exist in the DB
+        $oldEmail = $this->getUserById($id);
+        if ($oldEmail != $email) {
+          if ($this->find($pseudo)) { throw new UnavailableUsernameException(); }
+        }
         $bdd = $this->db;
-        $req = $bdd->prepare('UPDATE users SET email = :email, pw = :pw WHERE id = :id');
+        $req = $bdd->prepare('
+          UPDATE users SET email = :email, pw = :pw
+          WHERE id = :id
+        ');
         $req->execute(array(
-          'email' => $pseudo,
+          'email' => $email,
           'pw' => sha1($pw),
           'id' => $id
         ));
         $_SESSION['message'] = "Utilisateur modifié.";
         header("Location:edit.php");
+        // Redirect
+        /*if(isset($_SESSION['location'])) {
+          header($_SESSION['location']);
+        }*/
       }
       else { throw new WrongUserIDException(); }
     }

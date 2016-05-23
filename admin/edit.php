@@ -10,7 +10,7 @@ include 'inc/menu.php';
   <div class="login">
     <h4>Modifier utilisateur</h4>
 
-    <div class="erreur">
+    <div class="error">
       <?php
         if (isset($_SESSION['message'])) {
             echo $_SESSION['message'];
@@ -33,13 +33,13 @@ include 'inc/menu.php';
 <?php
   if(isset($_POST['submit'])) {
     $id = $_POST['id'];
-    $pseudo = $_POST['email'];
+    $email = $_POST['email'];
     $pw = $_POST['pass'];
     $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $bdd = $conect->dbconnect();
-    $obj1 = new AdminManager($bdd);
+    $admin = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:edit.php';
-    $user1 = $obj1->update($id, $pseudo, $pw);
+    $user1 = $admin->update($id, $email, $pw);
     echo $user1;
   }
 ?>

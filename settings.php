@@ -48,7 +48,7 @@
     $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $bdd = $conect->dbconnect();
     $obj1 = new AdminManager($bdd);
-    $_SESSION['location'] = 'Location:edit.php';
+    $_SESSION['location'] = 'Location:modify.php';
     $user1 = $obj1->update($id, $pseudo, $pw);
     echo $user1;
   }
