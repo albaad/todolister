@@ -135,36 +135,72 @@ class UserManager {
      catch (WrongUserIDException $e) { $e->showMessage(); }
   }
 
-  public function update($email, $pw, $pw2) {
+  public function getIdByEmail($email) {
     try {
-      // All possible errors
+      $bdd = $this->db;
+      $req = $bdd->prepare("
+        SELECT id FROM users
+        WHERE email=:email
+      ");
+      $req->execute([
+        'email' => $email
+      ]);
+      $donnees = $req->fetch();
+      $count = $donnees['id'];
+      // IF res = $email, 1 result
+       if(!empty($count)) {
+         return $donnees['id'];
+       } else {
+         throw new WrongUserEmailException();
+       }
+     }
+     catch (WrongUserEmailException $e) { $e->showMessage(); }
+  }
+
+  public function update($newEmail, $pw, $pw2) {
+    try {
+      // Check if there are any input errors
       if (is_null($pw) || strlen($pw) < 3 || strlen($pw) > 16) {
         throw new WrongPasswordLengthException(); }
       if ($pw != $pw2) { throw new PasswordsDontMatchException(); }
 
-      if ($this->find($email)){
+      if (isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+
+        // Get user id, corresponding to current email
+        $id = $this->getIdByEmail($email);
+        // If email has changed: Check if new email is available
+        if ($email != $newEmail) {
+          if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
+            throw new WrongUserLengthException(); }
+          if($this->find($newEmail)) {
+            throw new UnavailableEmailException();
+          }
+        }
+
         $bdd = $this->db;
         $req = $bdd->prepare('
-          UPDATE users SET pw = :pw
-          WHERE email = :email
+          UPDATE users SET pw = :pw, email = :email
+          WHERE id = :id
         ');
-        $req->execute([
-          'email' => $email,
-          'pw' => sha1($pw)
-        ]);
-        $_SESSION['message'] = "Utilisateur modifié.";
+        $req->execute(array(
+          'email' => $newEmail,
+          'pw' => sha1($pw),
+          'id' =>$id
+        ));
+        $_SESSION['message'] = "Paramètres modifiés.";
+        $_SESSION['email'] = $newEmail;
         header($_SESSION['location']);
-      }
-      else {
-        throw new WrongUserIDException();
+      } else {
+        throw new UserNotLoggedInException();
       }
     }
     // Exceptions CATCH blocks
     catch (WrongUserLengthException $e) { $e->showMessage(); }
-    catch (UnavailableUsernameException $e) { $e->showMessage(); }
+    catch (UnavailableEmailException $e) { $e->showMessage(); }
     catch (PasswordsDontMatchException $e) { $e->showMessage(); }
     catch (WrongPasswordLengthException $e) { $e->showMessage(); }
-    catch (WrongUserIDException $e) { $e->showMessage(); }
+    catch (UserNotLoggedInException $e) { $e->showMessage(); }
   }
 
   /*public function delete($id) {

@@ -1,6 +1,20 @@
 <?php
 include_once '../lib/ListerManager.php';
 
+if (isset($_GET['project_id'])) {
+  $_SESSION['project_id'] = $_GET['project_id'];
+  $_SESSION['project_title'] = $_GET['title'];
+
+  $connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+  $db = $connect->dbconnect();
+  $reader = new ListerManager($db);
+  $_SESSION['location'] = "Location: index-2.php";
+  $project_id = $_SESSION['project_id'];
+  $items = $reader->readList($project_id);
+}
+
+
+
 if(isset($_GET['as'], $_GET['item'])) {
 	$as	= $_GET['as'];
 	$item	= $_GET['item'];
@@ -8,7 +22,7 @@ if(isset($_GET['as'], $_GET['item'])) {
 	$connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 	$db = $connect->dbconnect();
 	$lister = new ListerManager($db);
-	//$_SESSION['location'] = "Location: index.php";
+	$_SESSION['location'] = "Location: index.php";
 	$lister->del($item, $as);
 }
 else {
@@ -20,21 +34,11 @@ else {
 		$connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 		$db = $connect->dbconnect();
 		$lister = new ListerManager($db);
-		//$_SESSION['location'] = "Location: index-pl.php";
-
-		unset($_SESSION['project_id']);
-		unset($_SESSION['project_title']);
-
+		$_SESSION['location'] = "Location: index-pl.php";
 		$lister->delProject($item, $pas);
 	}
-
 	else {
-		//header('Location: index.php');
-		if(isset($_SESSION['location'])) {
-			header($_SESSION['location']);
-		} else {
-			header('Location:../authentification.php');
-		}
+		header('Location: index.php');
 	}
 
 }

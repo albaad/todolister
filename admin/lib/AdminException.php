@@ -78,4 +78,25 @@ class WrongUserIDException extends AdminException {
   }
 }
 
+class WrongUserEmailException extends AdminException {
+  public function showMessage(){
+    $_SESSION['message'] = 'L\'email n\'existe pas !';
+    if(isset($_SESSION['location'])) {
+      header($_SESSION['location']);
+    }
+  }
+}
+
+class UserNotLoggedInException extends AdminException {
+  public function showMessage(){
+    $_SESSION['message'] = 'Vous n\'êtes pas loggé !';
+    if(isset($_SESSION['location'])) {
+      header($_SESSION['location']);
+    }
+     header('Location:/authentification.php');
+  }
+}
+
+
+
 ?>

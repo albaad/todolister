@@ -100,6 +100,7 @@ class ListerManager {
   public function markProject($id, $pas) {
     switch($pas){
       case 'done' :
+        // Mark project as done
         $doneQuery = $this->db->prepare("
           UPDATE projects
           SET done = 1
@@ -108,8 +109,18 @@ class ListerManager {
         $doneQuery->execute([
           'item' => $id,
         ]);
+        // Cascade: mark all project items as done
+        $itemsDone = $this->db->prepare("
+          UPDATE items
+          SET done = 1
+          WHERE project_id = :project_id
+        ");
+        $itemsDone->execute([
+          'project_id' => $id,
+        ]);
       break;
       case 'notdone' :
+        // Mark project as not done
         $doneQuery = $this->db->prepare("
           UPDATE projects
           SET done = 0

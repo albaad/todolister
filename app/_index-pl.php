@@ -35,18 +35,17 @@
       <h1 class="header">Projects</h1>
 
       <?php if(!empty($projects)): ?>
-      <ul class="items">
-        <?php foreach($projects as $item): ?>
+        <ul class="items">
+          <?php foreach($projects as $item): ?>
           <li>
-
             <?php if(!$item['done']) : ?>
-              <a href="mark.php?pas=done&item=<?php echo $item['id']; ?>" class="done-button">
-                <i class="fa fa-circle-o"></i>
-              </a>
+            <a href="mark.php?pas=done&item=<?php echo $item['id']; ?>" class="done-button">
+              <i class="fa fa-circle-o"></i>
+            </a>
             <?php else :?>
-              <a href="mark.php?pas=notdone&item=<?php echo $item['id']; ?>" class="notdone-button">
-                <i class="fa fa-circle"></i>
-              </a>
+            <a href="mark.php?pas=notdone&item=<?php echo $item['id']; ?>" class="notdone-button">
+              <i class="fa fa-circle"></i>
+            </a>
             <?php endif; ?>
 
             <span class="item<?php echo $item['done'] ? ' done' : '' ?>">
@@ -55,18 +54,17 @@
               </a>
             </span>
 
-            <?php if($item['done']) : ?>
-                <a href="javascript:delproject('<?php echo $item['id'];?>', '<?php echo $item['title'];?>')"class="del-button">
+            <?php //if($item['done']) : ?>
+              <a href="javascript:delproject('<?php echo $item['id'];?>', '<?php echo $item['title'];?>')"class="del-button">
                 <i class="fa fa-remove"></i>
               </a>
-            <?php endif; ?>
-
+            <?php //endif; ?>
           </li>
-        <?php endforeach; ?>
-      </ul>
-      <?php else: ?>
+          <?php endforeach; ?>
+        </ul>
+        <?php else: ?>
         <p>You haven't added any items yet.</p>
-      <?php endif; ?>
+        <?php endif; ?>
 
       <form class="item-add" action="add.php" method="post">
         <input type="text" name="title" placeholder="Type a new item here." class="input" autocomplete="off" required>

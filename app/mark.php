@@ -9,7 +9,7 @@ if(isset($_GET['as'], $_GET['item'])) {
     $connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $db = $connect->dbconnect();
     $lister = new ListerManager($db);
-    $_SESSION['location'] = "Location: index.php";
+    //$_SESSION['location'] = "Location: index.php";
     $lister->mark($item, $as);
   }
   else {
@@ -22,8 +22,17 @@ if(isset($_GET['as'], $_GET['item'])) {
       $connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
       $db = $connect->dbconnect();
       $lister = new ListerManager($db);
-      $_SESSION['location'] = "Location: index-pl.php";
+      //$_SESSION['location'] = "Location: index-pl.php";
       $lister->markProject($item, $pas);
+    }
+
+    else { // Nothing to add
+      //header('Location: index.php');
+      if(isset($_SESSION['location'])) {
+        header($_SESSION['location']);
+      } else {
+        header('Location:../authentification.php');
+      }
     }
 
   }
