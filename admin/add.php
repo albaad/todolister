@@ -33,8 +33,10 @@ include 'inc/menu.php';
   if(isset($_POST['submit'])) {
     $pseudo = $_POST['email'];
     $pw = $_POST['pass'];
-    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    $bdd = $conect->dbconnect();
+    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+    //$bdd = $conect->dbconnect();
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:add.php';
     $user1 = $obj1->addUser($pseudo, $pw, $pw);

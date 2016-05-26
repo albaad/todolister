@@ -44,8 +44,10 @@
     $pw2 = $_POST['pw2'];
     $email = $_POST['email'];
 
-    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    $bdd = $conect->dbconnect();
+    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+    //$bdd = $conect->dbconnect();
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
     $obj1 = new UserManager($bdd);
     $_SESSION['location'] = 'Location:modify.php';
     $user1 = $obj1->update($email, $pw, $pw2);

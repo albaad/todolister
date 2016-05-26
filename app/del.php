@@ -5,8 +5,10 @@ if(isset($_GET['as'], $_GET['item'])) {
 	$as	= $_GET['as'];
 	$item	= $_GET['item'];
 
-	$connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-	$db = $connect->dbconnect();
+	//$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+	//$bdd = $conect->dbconnect();
+	$bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
 	$lister = new ListerManager($db);
 	//$_SESSION['location'] = "Location: index.php";
 	$lister->del($item, $as);
@@ -17,8 +19,10 @@ else {
 		$pas	= $_GET['pas'];
 		$item	= $_GET['item'];
 
-		$connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-		$db = $connect->dbconnect();
+		//$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+		//$bdd = $conect->dbconnect();
+		$bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+		
 		$lister = new ListerManager($db);
 		//$_SESSION['location'] = "Location: index-pl.php";
 

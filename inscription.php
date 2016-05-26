@@ -38,8 +38,10 @@
       $email = $_POST['email'];
       $pw = $_POST['password'];
       $pw2 = $_POST['password2'];
-      $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-      $bdd = $conect->dbconnect();
+      //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+      //$bdd = $conect->dbconnect();
+      $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
       $obj1 = new UserManager($bdd);
       $_SESSION['location'] = 'Location:inscription.php';
       $user1 = $obj1->register($email, $pw, $pw2);

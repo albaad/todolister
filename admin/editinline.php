@@ -21,8 +21,10 @@ include 'inc/menu.php';
 
     <?php
       if(isset($_GET['id'])) {
-        $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-        $bdd = $conect->dbconnect();
+        //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+        //$bdd = $conect->dbconnect();
+        $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
         $obj1 = new AdminManager($bdd);
         $_SESSION['location'] = 'Location:editinline.php';
         $user1 = $obj1->getUserById($_GET['id']);
@@ -46,8 +48,10 @@ include 'inc/menu.php';
     $id = $_POST['id'];
     $pseudo = $_POST['email'];
     $pw = $_POST['pass'];
-    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    $bdd = $conect->dbconnect();
+    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+    //$bdd = $conect->dbconnect();
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+    
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:editinline.php';
     $user1 = $obj1->update($id, $pseudo, $pw);

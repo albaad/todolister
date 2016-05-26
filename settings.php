@@ -45,8 +45,11 @@
     $id = $_POST['id'];
     $pseudo = $_POST['pseudo'];
     $pw = $_POST['pass'];
-    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    $bdd = $conect->dbconnect();
+    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+    //$bdd = $conect->dbconnect();
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
+
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:modify.php';
     $user1 = $obj1->update($id, $pseudo, $pw);

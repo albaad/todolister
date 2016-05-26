@@ -1,5 +1,5 @@
 <?php
-class ConnectionSingleton {
+class Connection {
 
   static private $instance = null;
 
@@ -17,9 +17,9 @@ class ConnectionSingleton {
     $this->password = $password;
   }
 
-  public static function getInstance($hote, $bd, $charset, $user, $password) {
+  /*public static function getInstance($hote, $bd, $charset, $user, $password) {
     if (is_null(self::$instance)) { // No PDO exists yet, so make one and send it back.
-      self::$instance = new ConnectionSingleton($hote, $bd, $charset, $user, $password);
+      self::$instance = new Connection($hote, $bd, $charset, $user, $password);
     }
     return self::$instance;
   }
@@ -31,13 +31,13 @@ class ConnectionSingleton {
     } catch (PDOException $e) {
       die('<h1>Sorry. The Database connection is temporarily unavailable.</h1>');
     }
-	}
+	}*/
 
-  /*public static function getInstance($hote, $bd, $charset, $user, $password) {
-    if(is_null(self::$connection)) {
-      self::$connection =  new PDO('mysql:host='.$hote.';dbname='.$bd.';charset='.$charset, $user, $password);
+  public static function getInstance($hote, $bd, $charset, $user, $password) {
+    if(is_null(self::$instance)) {
+      self::$instance =  new PDO('mysql:host='.$hote.';dbname='.$bd.';charset='.$charset, $user, $password);
     }
-    return self::$connection;
-  }*/
+    return self::$instance;
+  }
 
 }?>

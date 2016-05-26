@@ -33,8 +33,11 @@
       if(isset($_POST['submit'])) {
         $email = $_POST['email'];
         $pw = $_POST['password'];
-        $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-        $bdd = $conect->dbconnect();
+        //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+        //$bdd = $conect->dbconnect();
+        $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
+
         $obj1 = new UserManager($bdd);
         $_SESSION['location'] = 'Location:authentification.php';
         $obj1->login($email, $pw);

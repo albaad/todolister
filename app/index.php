@@ -13,8 +13,10 @@
     unset($_SESSION['project_title']);
   }
 
-  $connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-	$db = $connect->dbconnect();
+  //$connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+	//$db = $connect->dbconnect();
+  $db = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
 	$reader = new ListerManager($db);
 	$_SESSION['location'] = "Location: index.php";
   $email = $_SESSION['email'];
@@ -97,8 +99,10 @@ if (isset($_GET['project_id'])) {
   $_SESSION['project_title'] = $_GET['title'];
 }
 if (isset($_SESSION['project_id'])) {
-  $iconnect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-  $idb = $iconnect->dbconnect();
+  //$iconnect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+  //$idb = $iconnect->dbconnect();
+  $idb = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
   $ireader = new ListerManager($idb);
   $_SESSION['location'] = "Location: index.php";
   $project_id = $_SESSION['project_id'];
@@ -141,7 +145,7 @@ if (isset($_SESSION['project_id'])) {
           </form>
 
 <?php } else { ?>
-  <p>No project selected</p>
+  <p id="noproject">No project selected</p>
 <?php } ?>
 
         </div> <!-- end list -->

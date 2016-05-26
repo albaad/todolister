@@ -31,16 +31,20 @@ include 'inc/menu.php';
 <?php
   if(isset($_POST['submit'])) {
     $id = $_POST['id'];
-    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    $bdd = $conect->dbconnect();
+    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+    //$bdd = $conect->dbconnect();
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:delete.php';
     $user1 = $obj1->delete($id);
     echo $user1;
   }
   if(isset($_GET['deleteid'])) {
-    $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    $bdd = $conect->dbconnect();
+    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+    //$bdd = $conect->dbconnect();
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:admin.php';
     $user1 = $obj1->delete($_GET['deleteid']);

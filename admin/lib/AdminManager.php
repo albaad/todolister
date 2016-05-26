@@ -1,6 +1,7 @@
 <?php
 session_start();
-include_once 'ConnectionSingleton.php';
+//include_once 'ConnectionSingleton.php';
+include_once 'Connection.php';
 
 class AdminManager {
 

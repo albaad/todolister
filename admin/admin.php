@@ -13,8 +13,10 @@
   </div>
 
 <?php
-  $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-  $bdd = $conect->dbconnect();
+//$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+//$bdd = $conect->dbconnect();
+$bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
   $obj1 = new AdminManager($bdd);
   $users = $obj1->getAll();
 ?>
