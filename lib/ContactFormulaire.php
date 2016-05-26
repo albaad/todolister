@@ -65,12 +65,15 @@ class ContactFormulaire {
             $success = mail($emailTo, "=?utf-8?B?".base64_encode($this->subject)."?=", $body, $headers);
             if($success) {
               $confirmation = "Votre message a été envoyé";
+              $this->displayMessage($confirmation);
             }
             else {
               $confirmation = "L'envoi du message a échoué";
+              $this->displayErreur($confirmation);
+              $hasError = true;
             }
             ///////////
-            $this->displayMessage($confirmation);
+
         } else {
             $hasError = true;
         }
