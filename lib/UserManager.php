@@ -204,23 +204,19 @@ class UserManager {
     catch (UserNotLoggedInException $e) { $e->showMessage(); }
   }
 
-  /*public function delete($id) {
-    try {
-      $oldPseudo = $this->getUserById($id);
-      if ($this->chercher($oldPseudo)){
-        $bdd = $this->db;
-        $this->db->exec('DELETE FROM users WHERE id = '.(int) $id);
-        $_SESSION['message'] = "Utilisateur supprimé.";
-
-        // Redirect
-        header("Location:delete.php"); // settings.php
-      }
-      else {
-        throw new WrongUserIDException();
-      }
+  public function delete($email) {
+    if ($this->find($email)){
+      $bdd = $this->db;
+      $req = $this->db->prepare('DELETE FROM users WHERE email = :email');
+      $req->execute(array(
+        'email' => $email
+      ));
+      $_SESSION['message'] = "Utilisateur supprimé.";
+      // Redirect
+      header('Location: goodbye.php');
     }
-    catch (WrongUserIDException $e) { $e->showMessage(); }
-  }*/
+    else { throw new WrongUserEmailException(); }
+  }
 
   public function is_logged_in() {
     // Verifies user is logged in

@@ -159,7 +159,7 @@ input[type="submit"].submit-add-project {
   background-color: #fff;
   padding: 5px 10px;
   border: 1px solid #ddd;
-  width: 100%;
+  width: 350px;
   margin-top: 10px;
   color: #16aa56;
   transition: background 0.3s ease-in-out;

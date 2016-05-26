@@ -34,6 +34,8 @@
           </td>
         </tr>
       </table>
+      <div class="espace"></div>
+      <p><a class="action" style="color:red; font-size: 0.8em;" href="javascript:delaccount('<?php echo $_SESSION['email'];?>')">Supprimer compte</a></p>
     </div>
 
   <?php }
@@ -49,14 +51,28 @@
     //$bdd = $conect->dbconnect();
     $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
-
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:modify.php';
     $user1 = $obj1->update($id, $pseudo, $pw);
     echo $user1;
   }
+  if(isset($_GET['deletemail'])) {
+    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+    //$bdd = $conect->dbconnect();
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
+    $obj1 = new UserManager($bdd);
+    $user1 = $obj1->delete($_GET['deletemail']);
+  }
 ?>
 
   </div>
+
+  <script language="JavaScript" type="text/javascript">
+  function delaccount(id) {
+    if (confirm("Vous êtes sûr de vouloir supprimer votre compte ?"))
+        window.location.href = 'settings.php?deletemail=' + id;
+  }
+  </script>
 
 <?php include('inc/footer.php'); ?>

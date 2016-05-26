@@ -8,7 +8,7 @@ if(isset($_POST['name'], $_GET['project_id'])){
 
   //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
   //$bdd = $conect->dbconnect();
-  $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+  $db = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
   $lister = new ListerManager($db);
   //$_SESSION['location'] = "Location: index.php";
@@ -23,8 +23,8 @@ else {
 
     //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     //$bdd = $conect->dbconnect();
-    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    
+    $db = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+
     $lister = new ListerManager($db);
     //$_SESSION['location'] = "Location: index-pl.php";
     $lister->addProject($title, $email);
