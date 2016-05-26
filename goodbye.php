@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<?php
+  $pageTitle = 'Goodbye';
+  include 'inc/header.php';
+?>
 
-    <p>
-      Your account has been deleted.
-    </p>
+  <div class="login">
 
-  </body>
-</html>
+    <p style="color: #E44332; text-align: center;"> Votre compte a été supprimé.</p><br/>
+    <div class="message-box">
+      <p style="color: #f2f2f2; text-align: justify;">
+        Merci d'avoir essayé ToDoLister, nous sommes désolés de vous voir partir !
+        N'hésitez pas à partager vos commentaires avec <a href="contact.php">notre équipe.</a>
+      </p>
+    </div>
+
+
+  </div>
+
+<?php include('inc/footer.php'); ?>

@@ -212,6 +212,7 @@ class UserManager {
         'email' => $email
       ));
       $_SESSION['message'] = "Utilisateur supprimé.";
+      unset($_SESSION['email']);
       // Redirect
       header('Location: goodbye.php');
     }

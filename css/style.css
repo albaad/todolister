@@ -153,6 +153,9 @@ label {
 #agree:checked ~ label[for=agree] {
   background: #435160;
 }
+label::after, label::before{
+  box-sizing: none;
+}
 
 input[type="submit"] {
   background: #1FCE6D;
@@ -235,11 +238,15 @@ input[type="submit"]:hover {
 /* Aide */
 .aide-box {
   font-size: 0.9em;
-  text-align: left;
+  /*text-align: left;*/
+
 }
 .aide-box a {
   font-style: normal;
   color: #f2f2f2;
+}
+.aide-box a:hover {
+  text-decoration: underline;
 }
 .aide-box ul {
   list-style: none;
@@ -256,4 +263,15 @@ input[type="submit"]:hover {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+}
+
+/* Goodbye */
+.message-box {
+    font-size: 14px;
+    display: block;
+    background: #8d949a;
+    padding: 100px 50px 100px 50px;
+}
+.message-box a:hover {
+  text-decoration: underline;
 }

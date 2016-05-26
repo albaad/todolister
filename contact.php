@@ -1,18 +1,4 @@
 <?php
-// Built and tested with PHP 7 and 5.6.16
-// For localhost testing, edit php.ini:
-/*
-      [mail function]
-      ; For Win32 only.
-      ; http://php.net/smtp
-      SMTP = smtp.orange.fr
-      ; http://php.net/smtp-port
-      smtp_port = 25
-       
-      ; For Win32 only.
-      ; http://php.net/sendmail-from
-      sendmail_from = "xx.xx@orange.fr"
-*/
   $pageTitle = 'Contact';
   include 'inc/header.php';
   include 'lib/ContactFormulaire.php';
@@ -68,3 +54,19 @@ if(isset($_POST['submit'])) {
 ?>
 
 <?php include 'inc/footer.php'; ?>
+<?php
+// Built and tested with PHP 7 and 5.6.16
+// For localhost testing, edit php.ini:
+/*
+      [mail function]
+      ; For Win32 only.
+      ; http://php.net/smtp
+      SMTP = smtp.orange.fr
+      ; http://php.net/smtp-port
+      smtp_port = 25
+       
+      ; For Win32 only.
+      ; http://php.net/sendmail-from
+      sendmail_from = "xx.xx@orange.fr"
+*/
+?>

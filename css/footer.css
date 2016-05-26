@@ -12,6 +12,11 @@ html {
 *:after {
   box-sizing: inherit;
 }
+/* Make an exception for the checkbox */
+input[type=checkbox], label {
+  box-sizing: content-box;
+}
+
 
 body {
   position: relative;
@@ -53,6 +58,9 @@ body {
 }
 .footer ul {
   list-style: none;
+}
+.footer ul a:hover {
+  text-decoration: underline;
 }
 
 .footer-left {
