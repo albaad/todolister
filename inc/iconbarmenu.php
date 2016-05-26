@@ -14,7 +14,7 @@
   <div class="icon-nav">
     <a <?php if ($pageTitle == 'To Do Lister') echo 'class="disabled"'; ?> href="app/index.php"><i class="fa fa-home"></i></a>
     <a <?php if ($pageTitle == 'Contact') echo 'class="disabled"'; ?> href="contact.php"><i class="fa fa-envelope"></i></a>
-    <a <?php if ($pageTitle == 'Parametres') echo 'class="disabled"'; ?> href="settings.php"><i class="fa fa-cog"></i></a>
+    <a <?php if ($pageTitle == 'Parametres') echo 'class="disabled"'; if (!$loggedin) echo 'class="hidden"'; ?> href="settings.php"><i class="fa fa-cog"></i></a>
     <!--<a <?php //if ($pageTitle != 'Accueil') echo 'class="hidden"'; ?> href="logout.php"><i class="fa fa-sign-out"></i></a>-->
     <a <?php if (!$loggedin) echo 'class="hidden"'; ?> href="logout.php"><i class="fa fa-sign-out"></i></a>
   </div>

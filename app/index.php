@@ -33,6 +33,7 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/app-main.css">
+    <link rel="stylesheet" href="../css/footer.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
@@ -148,6 +149,7 @@ if (isset($_SESSION['project_id'])) {
       </div> <!-- end app-items -->
     </div> <!-- end app-container -->
 
+<?php   include_once '../admin/inc/footer.php';   ?>
 
     <script language="JavaScript" type="text/javascript">
     function delproject(id, title) {

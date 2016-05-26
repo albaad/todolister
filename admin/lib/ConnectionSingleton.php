@@ -33,4 +33,11 @@ class ConnectionSingleton {
     }
 	}
 
+  /*public static function getInstance($hote, $bd, $charset, $user, $password) {
+    if(is_null(self::$connection)) {
+      self::$connection =  new PDO('mysql:host='.$hote.';dbname='.$bd.';charset='.$charset, $user, $password);
+    }
+    return self::$connection;
+  }*/
+
 }?>
