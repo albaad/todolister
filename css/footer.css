@@ -48,14 +48,14 @@ body {
   color: #6D7781;
   background-color: #343434;
   background-color: #020202;
-  text-align:left;
+  text-align:center;
   font-size: 0.7em;
 }
 .footer ul {
   list-style: none;
 }
+
 .footer-left {
-  text-align:left;
   float:left;
   margin-left: 45%;
 }
@@ -74,4 +74,21 @@ body {
   padding: 0.4rem;
   text-align: right;
   padding-right: 2rem;
+}
+
+/* MEDIA QUERIES */
+/* Adapt footer text for smaller screens/windows */
+@media screen and (max-width:1200px) {
+  .footer-right{
+    margin-right: 44%;
+  }
+  .footer-left {
+    margin-left: 44%;
+  }
+}
+/* Hide menu if navigator window too small */
+@media screen and (max-width:950px) {
+  .footer {
+    display: none;
+  }
 }

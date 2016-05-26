@@ -37,3 +37,11 @@
 .hidden {
     display: none;
 }
+
+/* MEDIA QUERIES */
+/* Enlarge navigation icons for smaller screens/windows */
+@media screen and (max-width:1200px) {
+  .icon-nav {
+    width: 40%;
+  }
+}

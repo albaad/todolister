@@ -58,7 +58,7 @@ body {
   padding: 20px;
   border-radius: 2px;
   /*box-shadow: 3px 3px 0 rgba(0, 0, 0, .1);*/
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
 }
 
 .list .header {
@@ -70,6 +70,7 @@ body {
 /* Projects */
 h6 {
   color: #6D7781;
+  color: #525F6C;
   font-family: "Sofia", cursive;
   font-weight: bold;
   font-size: 1.4em;
@@ -98,8 +99,17 @@ h6 {
 
 .items li, .item-add .input {
   border: 0;
+  /*border-bottom: 1px dashed #ccc;*/
+  padding: 15px 0;
+  padding: 5px 0;
+}
+.item-add .input {
+  border: 0;
   border-bottom: 1px dashed #ccc;
   padding: 15px 0;
+}
+.item-add .input::-webkit-input-placeholder {
+  color: #8D949A;
 }
 
 .item-add .input {
@@ -152,4 +162,46 @@ input[type="submit"].submit-add-project:hover {
   color: #fff;
   background: #16aa56;
   animation-name: shake;
+}
+
+
+/* MEDIA QUERIES */
+/* Reduce margins for smaller screens/windows */
+@media screen and (max-width:1200px) {
+  .app-container {
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 5%;
+  }
+}
+/* One column */
+@media screen and (max-width:950px) {
+  .app-container {
+    min-height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    overflow: visible;
+  }
+  .app-nav {
+    flex: 0 0 100%;
+  }
+  .app-items {
+    flex: 0 0 100%;
+  }
+  .list, h1 {
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+}
+/* Adapt to height */
+@media screen and (max-height:750px) {
+  .app-container, .app-nav, .app-items, h1, h6, .list  {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .app-container {
+    padding-top: 3%;
+  }
 }
