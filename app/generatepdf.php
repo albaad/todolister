@@ -38,8 +38,7 @@
 
       for($i=0;$i<1;$i++) {
         $complete = iconv('UTF-8', 'windows-1252', 'COMPLÉTÉ'); // Standard FPDF fonts use ISO-8859-1 or Windows-1252
-        $pdf->SetAligns(array('C', 'C', 'C', 'C'));
-        //$pdf->aligns = array('C', 'C', 'C', 'C'); // set align center for all table headers
+        $pdf->SetAligns(array('C', 'C', 'C', 'C')); // set align center for all table headers
     		$pdf->Row(array('NOM', encode('COMPLÉTÉ'), 'DATE AJOUT', 'DATE FINI'));
       }
 
@@ -58,8 +57,8 @@
           // Print item as table row
           $pdf->SetAligns(array('L', 'C', 'C', 'C'));
           $done = ($item['done'] == 1) ? 'OUI' : 'NON';
-
-          $pdf->Row(array(encode($item['name']), $done, encode($item['created']), '-'));
+          $completed = ($item['done'] == 1) ? $item['completed'] : '-';
+          $pdf->Row(array(encode($item['name']), $done, $item['created'], $completed));
         }
 
       } else {

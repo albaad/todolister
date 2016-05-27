@@ -14,7 +14,7 @@ class ListerManager {
 
   public function readList($project_id) {
     $itemsQuery = $this->db->prepare("
-      SELECT id, name, done, created FROM items
+      SELECT id, name, done, created, completed FROM items
       WHERE project_id = :project_id
     ");
     $itemsQuery->execute([
@@ -77,7 +77,7 @@ class ListerManager {
       case 'done' :
         $doneQuery = $this->db->prepare("
           UPDATE items
-          SET done = 1
+          SET done = 1, completed = NOW()
           WHERE id = :item
         ");
         $doneQuery->execute([
@@ -87,11 +87,12 @@ class ListerManager {
       case 'notdone' :
         $doneQuery = $this->db->prepare("
           UPDATE items
-          SET done = 0
+          SET done = 0, completed = :completed
           WHERE id = :item
         ");
         $doneQuery->execute([
           'item' => $id,
+          'completed' => NULL
         ]);
       break;
     }
