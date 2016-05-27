@@ -5,15 +5,16 @@
   include 'inc/header.php';
 ?>
 
-    <div class="login">
+  <div class="login">
 
       <h2>Aide</h2>
 
       <div class="aide-box">
+        <div class="espace"></div>
         <ul>
-          <li><a href="guide.php">Visite guidée</a></li>
-          <li></li>
-          <li><a href="pdf.php">Imprimer votre liste en format PDF</a></li>
+          <li><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;<a href="guide.php">Visite guidée</a></li>
+          <li><div class="espace"></div>  </li>
+          <li><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;<a href="pdf.php">Imprimer votre liste en format PDF</a></li>
         </ul>
 
         <div class="espace"></div>
@@ -24,8 +25,8 @@
       <div class="espace"></div>
       <a href="contact.php" class="contact-button">Contactez-nous ! </a>
 
-      </div>
-
     </div>
+
+  </div>
 
 <?php include('inc/footer.php'); ?>

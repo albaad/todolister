@@ -237,25 +237,30 @@ input[type="submit"]:hover {
 
 /* Aide */
 .aide-box {
-  font-size: 0.9em;
+  font-family: 'Open Sans', sans-serif;
+  color: #6D7781;
+  font-size: 16px;
   /*text-align: left;*/
 
 }
-.aide-box a {
+.aide-box li a {
   font-style: normal;
-  color: #f2f2f2;
+  color: #343434;
 }
 .aide-box a:hover {
   text-decoration: underline;
+  color: #525f6c;
 }
 .aide-box ul {
   list-style: none;
+  padding: 20px;
+  background-color : #bec1c4;
 }
 
 .contact-button {
   background: #1FCE6D;
   border: 0;
-  width: 250px;
+  width: 350px;
   height: 40px;
   border-radius: 3px;
   color: #fff;
@@ -263,6 +268,57 @@ input[type="submit"]:hover {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+}
+
+/* Guide */
+.guide-box {
+  width: 50%;
+  margin-top: 50px;
+  margin-left: 25%;
+  margin-bottom: 50px;
+  font-size: 16px;
+  text-align: justify;
+}
+#sub-guide-box {
+  width: 100%;
+  background-color: #bec1c4;
+  padding: 30px;
+}
+.guide-box p {
+  color: #6d7781;
+  color: #000000;
+}
+.guide-box a {
+  color: #6D7781;
+}
+.guide-box a:hover {
+  text-decoration: underline;
+}
+
+h6 {
+  font-family: "Open Sans", sans-serif;
+  font-family: "Shadows Into Light Two", cursive;
+  font-size: 20px;
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #8d949a;
+}
+/* Guide - Font Awesome Icons */
+.red {
+  color: #e44332;
+}
+.green {
+  color: #16aa56;
+}
+.blue {
+  color: #0060BF;
+}
+.pink {
+  color: #DA2768;
+}
+.purple {
+  color: #6A4CA6;
 }
 
 /* Goodbye */

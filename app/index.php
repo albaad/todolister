@@ -86,7 +86,7 @@
             <!--<input type="text" name="title" placeholder="Type a new project here." class="input" autocomplete="off" required>
             <input type="submit" value="Add" class="submit-add-project">-->
             <input type="text" name="title" placeholder="Tapez le nom d'un nouveau projet ici." class="input" autocomplete="off" required>
-            <input type="submit" value="Ajouter" class="submit-add-project">
+            <input type="submit" value="Ajouter un projet" class="submit-add-project">
           </form>
           <form class="item-add" action="generatepdf.php" method="post">
             <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
@@ -151,7 +151,7 @@ if (isset($_SESSION['project_id'])) {
             <!-- <input type="text" name="name" placeholder="Type a new item here." class="input" autocomplete="off" required>
             <input type="submit" value="Add" class="submit-add">-->
             <input type="text" name="name" placeholder="Tapez le nom d'une nouvelle tâche ici." class="input" autocomplete="off" required>
-            <input type="submit" value="Ajouter" class="submit-add">
+            <input type="submit" value="Ajouter une tâche" class="submit-add">
           </form>
 
 <?php } else { ?>

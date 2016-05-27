@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 CREATE TABLE IF NOT EXISTS `projects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(20) NOT NULL,
+  `title` varchar(40) NOT NULL,
   `color` varchar(20) DEFAULT NULL,
   `done` tinyint(1) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
@@ -23,10 +23,11 @@ ADD CONSTRAINT fk_project_user_id FOREIGN KEY (user_id) REFERENCES `users`(id)
 
 CREATE TABLE IF NOT EXISTS `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text,
+  `name` varchar(40) NOT NULL,
   `project_id` int(11) DEFAULT NULL,
   `done` tinyint(1) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
+  `completed` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 

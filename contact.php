@@ -55,7 +55,7 @@ if(isset($_POST['submit'])) {
 
 <?php include 'inc/footer.php'; ?>
 <?php
-// Built and tested with PHP 7 and 5.6.16
+// Built and tested with/for PHP 7 and 5.6.16
 // For localhost testing, edit php.ini:
 /*
       [mail function]

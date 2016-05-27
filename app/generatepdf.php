@@ -32,7 +32,6 @@
 
     	$pdf->SetWidths(array(100, 45, 55, 50, 20));
     	$pdf->SetFont('Arial', '', 10);
-      //$pdf->SetFillColor(58, 72, 86);
       $pdf->SetFillColor(82, 95, 108);
       $pdf->SetTextColor(255);
 
@@ -51,7 +50,6 @@
         foreach($items as $item) {
           // Set font settings for item row
           $pdf->SetFont('Arial', '', 10);
-          //$pdf->SetFillColor(141,148,154);
           $pdf->SetFillColor(190, 193, 196);
           $pdf->SetTextColor(0);
           // Print item as table row
@@ -62,6 +60,8 @@
         }
 
       } else {
+        $pdf->SetFillColor(190, 193, 196);
+        $pdf->SetTextColor(0);
         $pdf->Row(array(encode('*AUCUNE TÂCHE*'), '-', '-', '-'));
       }
 
@@ -71,7 +71,6 @@
     $pdf->SetFont('Arial', '', 12);
     $line = iconv('UTF-8', 'windows-1252', '*Aucun projet ajouté*');
     $pdf->Cell(0, 6, $line, 0, 1, 'C');
-    //$pdf->Cell(0, 6, $line, 0, 1);
   }
 
   // Send PDF
