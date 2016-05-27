@@ -2,6 +2,7 @@
   $pageTitle = 'Guide rapide';
   include 'inc/header.php';
 ?>
+<link rel="stylesheet" type="text/css" href="css/clear.css">
 
     <div class="guide-box">
 
@@ -24,14 +25,22 @@
       <p>
         C'est très rapide et facile d'ajouter des projets à votre To Do Lister.
         Cliquez sur 'Ajouter un projet', ou tapez sur la touché entrée, après avoir saisi le titre de votre nouveau projet.
-
       </p>
+      <div class="guide-projects">
+        <img src="img/guide_add_project.png" alt="Ajouter un projet" />
+      </div>
 
       <h6><i class="fa fa-plus-square-o pink" aria-hidden="true"></i>&nbsp;&nbsp;Ajouter des tâches</h6>
       <p>
         Une fois votre projet créé, cliquez sur son titre pour le sélectionner et faire apparaître la liste associée.
         Sur celle-ci, cliquez sur 'Ajouter une tâche' après avoir saisi le nom de la tâche.
       </p>
+      <div class="guide-select">
+        <img src="img/guide_select_project.png" alt="Sélectionner un projet" />
+      </div>
+      <div class="guide-items">
+        <img src="img/guide_add_item.png" alt="Ajouter une tâche" />
+      </div>
 
       <h6><i class="fa fa-check-square-o green" aria-hidden="true"></i>&nbsp;&nbsp;Marquer une tâche comme complétée</h6>
       <p>
@@ -41,6 +50,9 @@
         La même opération est disponible pour les projets. Attention, si un projet est marqué comme
         fait, toutes ses tâches le seront aussi.
       </p>
+      <div class="guide-mark">
+        <img src="img/guide_mark_item.png" alt="Marquer une tâche comme complétée" />
+      </div>
 
       <h6><i class="fa fa-times red" aria-hidden="true"></i>&nbsp;&nbsp;Supprimer une tâche</h6>
       <p>
@@ -50,7 +62,9 @@
         La même opération est disponible pour les projets. Si un projet est supprimé, toutes ses tâches le seront
         aussi. Attention, cette opération est irréversible.
       </p>
-
+      <div class="guide-delete">
+        <img src="img/guide_delete_item.png" alt="Supprimer une tâche" />
+      </div>
 
     </div>
 

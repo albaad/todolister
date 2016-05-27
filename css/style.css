@@ -270,56 +270,7 @@ input[type="submit"]:hover {
   vertical-align: middle;
 }
 
-/* Guide */
-.guide-box {
-  width: 50%;
-  margin-top: 50px;
-  margin-left: 25%;
-  margin-bottom: 50px;
-  font-size: 16px;
-  text-align: justify;
-}
-#sub-guide-box {
-  width: 100%;
-  background-color: #bec1c4;
-  padding: 30px;
-}
-.guide-box p {
-  color: #6d7781;
-  color: #000000;
-}
-.guide-box a {
-  color: #6D7781;
-}
-.guide-box a:hover {
-  text-decoration: underline;
-}
 
-h6 {
-  font-family: "Open Sans", sans-serif;
-  font-family: "Shadows Into Light Two", cursive;
-  font-size: 20px;
-  text-align: left;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color: #8d949a;
-}
-/* Guide - Font Awesome Icons */
-.red {
-  color: #e44332;
-}
-.green {
-  color: #16aa56;
-}
-.blue {
-  color: #0060BF;
-}
-.pink {
-  color: #DA2768;
-}
-.purple {
-  color: #6A4CA6;
-}
 
 /* Goodbye */
 .message-box {
