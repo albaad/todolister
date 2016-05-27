@@ -14,7 +14,7 @@ class ListerManager {
 
   public function readList($project_id) {
     $itemsQuery = $this->db->prepare("
-      SELECT id, name, done FROM items
+      SELECT id, name, done, created FROM items
       WHERE project_id = :project_id
     ");
     $itemsQuery->execute([
@@ -27,7 +27,7 @@ class ListerManager {
   public function projectsList($email) {
     $bdd = $this->db;
     $query = $this->db->prepare("
-      SELECT projects.id, title, color, done FROM projects
+      SELECT projects.id, title, color, done, created FROM projects
       INNER JOIN users ON users.id = projects.user_id
       WHERE users.email = :email
     ");

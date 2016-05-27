@@ -45,7 +45,7 @@
 
       <div class="app-nav">
         <div class="list">
-          <h6 class="header">Projects</h6>
+          <h6 class="header">Projets</h6> <!-- Projects -->
 
           <?php if(!empty($projects)): ?>
           <ul class="items">
@@ -78,12 +78,19 @@
             <?php endforeach; ?>
           </ul>
           <?php else: ?>
-            <p>You haven't added any items yet.</p>
+            <p>Vous n'avez ajouté aucun projet.</p>
+            <!-- <p>You haven't added any items yet.</p>-->
           <?php endif; ?>
 
           <form class="item-add" action="add.php" method="post">
-            <input type="text" name="title" placeholder="Type a new project here." class="input" autocomplete="off" required>
-            <input type="submit" value="Add" class="submit-add-project">
+            <!--<input type="text" name="title" placeholder="Type a new project here." class="input" autocomplete="off" required>
+            <input type="submit" value="Add" class="submit-add-project">-->
+            <input type="text" name="title" placeholder="Tapez le nom d'un nouveau projet ici." class="input" autocomplete="off" required>
+            <input type="submit" value="Ajouter" class="submit-add-project">
+          </form>
+          <form class="item-add" action="generatepdf.php" method="post">
+            <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
+            <input type="submit" value="Exporter en PDF" class="export-pdf">
           </form>
 
         </div>
@@ -136,16 +143,20 @@ if (isset($_SESSION['project_id'])) {
             <?php endforeach; ?>
           </ul>
           <?php else: ?>
-            <p>You haven't added any items yet.</p>
+            <p>Vous n'avez ajouté aucune tâche.</p>
+            <!-- <p>You haven't added any items yet.</p>-->
           <?php endif; ?>
 
           <form class="item-add" action="add.php?project_id=<?php echo $_SESSION['project_id']; ?>" method="post">
-            <input type="text" name="name" placeholder="Type a new item here." class="input" autocomplete="off" required>
-            <input type="submit" value="Add" class="submit-add">
+            <!-- <input type="text" name="name" placeholder="Type a new item here." class="input" autocomplete="off" required>
+            <input type="submit" value="Add" class="submit-add">-->
+            <input type="text" name="name" placeholder="Tapez le nom d'une nouvelle tâche ici." class="input" autocomplete="off" required>
+            <input type="submit" value="Ajouter" class="submit-add">
           </form>
 
 <?php } else { ?>
-  <p id="noproject">No project selected</p>
+  <p id="noproject">Aucun projet n'a été sélectionné</p>
+  <!-- <p id="noproject">No project selected</p> -->
 <?php } ?>
 
         </div> <!-- end list -->

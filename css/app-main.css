@@ -170,6 +170,20 @@ input[type="submit"].submit-add-project:hover {
   animation-name: shake;
 }
 
+input[type="submit"].export-pdf {
+  background-color: #8d949a;
+  padding: 5px 10px;
+  border: 1px solid #8d949a;
+  width: 350px;
+  margin-top: 10px;
+  color: #3a4856;
+  transition: background 0.3s ease-in-out;
+}
+input[type="submit"].export-pdf:hover {
+  color: #8d949a;
+  background: #3a4856;
+  animation-name: shake;
+}
 
 /* MEDIA QUERIES */
 /* Reduce margins for smaller screens/windows */
