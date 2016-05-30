@@ -1,11 +1,12 @@
 <?php
-  //include_once 'inc/adminrights.php';
   include 'lib/AdminManager.php';
 
   $pageTitle = 'ADMIN - Liste utilisateurs';
   include 'inc/header.php';
   $pageId = 1;
   include 'inc/menu.php';
+
+  include 'inc/adminrights.php';
 ?>
 
   <div class="login">
@@ -13,9 +14,7 @@
   </div>
 
 <?php
-//$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-//$bdd = $conect->dbconnect();
-$bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+  $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
   $obj1 = new AdminManager($bdd);
   $users = $obj1->getAll();

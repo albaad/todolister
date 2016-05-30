@@ -29,7 +29,6 @@ class UserManager {
           if($_SESSION['email'] == 'admin') {
             header("location: admin/admin.php"); }
           else {
-            //header("Location:accueil.php");
             header("Location:app/index.php");
           }
       }

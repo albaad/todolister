@@ -5,6 +5,8 @@ $pageTitle = 'Modifier utilisateur';
 include 'inc/header.php';
 $pageId = 4;
 include 'inc/menu.php';
+
+include 'inc/adminrights.php';
 ?>
 
   <div class="login">

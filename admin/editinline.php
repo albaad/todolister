@@ -5,6 +5,8 @@ $pageTitle = 'Modifier utilisateur';
 include 'inc/header.php';
 $pageId = 4;
 include 'inc/menu.php';
+
+include 'inc/adminrights.php';
 ?>
 
   <div class="login">
@@ -51,7 +53,7 @@ include 'inc/menu.php';
     //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     //$bdd = $conect->dbconnect();
     $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    
+
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:editinline.php';
     $user1 = $obj1->update($id, $pseudo, $pw);

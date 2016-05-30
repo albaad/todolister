@@ -1,10 +1,12 @@
 <?php
-include 'lib/AdminManager.php';
+  include 'lib/AdminManager.php';
 
-$pageTitle = 'Supprimer utilisateur';
-include 'inc/header.php';
-$pageId = 2;
-include 'inc/menu.php';
+  $pageTitle = 'Supprimer utilisateur';
+  include 'inc/header.php';
+  $pageId = 2;
+  include 'inc/menu.php';
+
+  include 'inc/adminrights.php';
 ?>
 
   <div class="login">

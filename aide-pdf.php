@@ -8,7 +8,7 @@
 
       <h2>Imprimez votre liste en PDF</h2>
 
-      <h6><i class="fa fa-plus-square-o pink" aria-hidden="true"></i>&nbsp;&nbsp;Imprimer votre liste de projets et tâches en PDF</h6>
+      <h6><i class="fa fa-file-pdf-o red" aria-hidden="true"></i>&nbsp;&nbsp;Imprimer votre liste de projets et tâches en PDF</h6>
       <p>
         Une fois authentifié et sur la page de l'application To Do Lister, cliquez sur 'Exporter en PDF'.
       </p>
