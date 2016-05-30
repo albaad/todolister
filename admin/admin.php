@@ -1,7 +1,7 @@
 <?php
   include 'lib/AdminManager.php';
 
-  $pageTitle = 'ADMIN - Liste utilisateurs';
+  $pageTitle = 'ADMIN - To Do Lister';
   include 'inc/header.php';
   $pageId = 1;
   include 'inc/menu.php';

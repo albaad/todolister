@@ -3,6 +3,8 @@
 
   $pageTitle = 'Inscription';
   include 'inc/header.php';
+
+  include_once 'lib/ContactFormulaire.php'; //////
 ?>
 
   <div class='login'>
@@ -48,6 +50,34 @@
         $_SESSION['message'] = 'Veuillez accepter les conditions d\'utilisation';
         header("Location:inscription.php");
       }
+    }
+
+    if(isset($_SESSION['key']) && isset($_POST['signup'])) {
+      $code = $_SESSION['key'];
+      $email = $_SESSION['signup'];
+      unset($_SESSION['signup']);
+      //let's send the email
+      $confirm = new ContactFormulaire();
+      $confirm->setName('L\'équipe To Do Lister');
+      $confirm->setEmail('noreply@todolister.com');
+      $confirm->createSignature();
+      $confirm->setSubject('Vérifiez votre adresse email');
+      $confirm->setMessage("
+        Bonjour $email,
+        <br /><br />
+        Bienvenue à To Do Lister!<br/><br/>
+        Pour compléter votre inscription, cliquez sur le lien suivant :
+        <br /><br />
+        <a href='http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code'>Cliquez ICI pour activer votre compte :)</a>
+        <br /><br />
+        Merci,
+      "); /////////////////////////// FIX LOCALHOST
+      $subjectPrefix = '[To Do Lister]';
+      $emailTo = $email;
+      $confirmationMsg = "Veuillez confirmer votre adresse e-mail via le lien que vous a été envoyé.";
+      $errorMsg = "L'inscription a échoué";
+      $_SESSION['location'] = 'Location:inscription.php';
+      $confirm->sendMail($subjectPrefix, $emailTo, $confirmationMsg, $errorMsg);
     }
   ?>
 

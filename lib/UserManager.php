@@ -58,11 +58,39 @@ class UserManager {
         'email' => $email,
         'pw' => sha1($pw)
       ]);
-      $_SESSION['email'] = $email;
-      if($_SESSION['email'] == 'admin') {
+
+      /*if($_SESSION['email'] == 'admin') {
         header("location: admin/admin.php");
+      }*/ // USELESS
+      $bdd = $this->db; //////////////////////
+      $req = $bdd->prepare("
+        SELECT id FROM users
+        WHERE email=:email
+      ");
+      $req->execute([
+        'email' => $email
+      ]);
+      $donnees = $req->fetch();
+      $user_id = $donnees['id']; ///////////////////////////
+      //create a random key
+      //$key = $pw . $email . date('mY');
+      $key = $pw . $email . date('mY');
+      $key = md5($key);
+      //add confirm row
+      $confirm = $this->db->query("
+        INSERT INTO `confirm`
+        VALUES(NULL,'$user_id','$key','$email')
+      ");
+      if($confirm){
+        $_SESSION['signup'] = $email;
+        $_SESSION['message'] = "Veuillez confirmer votre adresse mail via le lien que vous a été envoyé.";
+        $_SESSION['key'] = $key;
+        header('location:inscription.php');
+      } else {
+          $action['result'] = 'error';
+          unset($_SESSION['signup']);
       }
-      header('location:app/index.php');
+      //header('location:app/index.php');
     }
     // Exceptions CATCH blocks
     catch (WrongUserLengthException $e) { $e->showMessage(); }

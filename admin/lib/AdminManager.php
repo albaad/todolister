@@ -22,11 +22,26 @@ class AdminManager {
         throw new WrongPasswordLengthException(); }
       // If no errors, proceed to insert user into DB
       $bdd = $this->db;
-      $req = $bdd->prepare('INSERT INTO users(email, pw) VALUES(:email, :pw)');
+      $req = $bdd->prepare('INSERT INTO users(email, pw, active) VALUES(:email, :pw, :active)');
       $req->execute(array(
         'email' => $pseudo,
-        'pw' => sha1($pw)
+        'pw' => sha1($pw),
+        'active' => 1 /////////////////
       ));
+      $bdd = $this->db; //////////////////////
+      $req = $bdd->prepare("
+        SELECT id FROM users
+        WHERE email=:email
+      ");
+      $req->execute([
+        'email' => $pseudo
+      ]);
+      $donnees = $req->fetch();
+      $id = $donnees['id'];
+      $confirm = $this->db->query("
+        INSERT INTO `confirm`
+        VALUES(NULL,'$id','Added_by_admin','$pseudo')
+      "); ////////////////
       header("Location:admin.php");
     }
     // Exceptions CATCH blocks

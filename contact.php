@@ -48,7 +48,13 @@ if(isset($_POST['submit'])) {
   $contact = new ContactFormulaire();
   if($contact->testForm()) {
     $contact->retrieveForm();
-    $contact->sendMail();
+    $contact->createSignature();
+    $subjectPrefix = '[To Do Lister]';
+    $emailTo = '<test.dev.at@gmail.com>';
+    $confirmationMsg = "Votre message a été envoyé";
+    $errorMsg = "L'envoi du message a échoué";
+    $_SESSION['location'] = 'Location: contact.php';
+    $contact->sendMail($subjectPrefix, $emailTo, $confirmationMsg, $errorMsg);
   }
 }
 ?>

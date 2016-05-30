@@ -6,6 +6,7 @@ class ContactFormulaire {
   private $email;
   private $subject;
   private $message;
+  private $signature;
 
   /* Retrieve all form fields */
   public function retrieveForm() {
@@ -36,10 +37,29 @@ class ContactFormulaire {
     }
   }
 
+  /* Setters */
+  public function setName($name){
+    $this->name = $name;
+  }
+  public function setEmail($email){
+    $this->email = $email;
+  }
+  public function setSubject($subject){
+    $this->subject = $subject;
+  }
+  public function setMessage($message){
+    $this->message = $message;
+  }
+
+  /* Generates email signature */
+  public function createSignature() {
+    $this->signature = "<br/> $this->name <br /> $this->email <br />";
+  }
+
   /* Sends e-mail */
-  public function sendMail() {
-    $subjectPrefix = '[To Do Lister]';
-    $emailTo = '<test.dev.at@gmail.com>';
+  public function sendMail($subjectPrefix, $emailTo, $confirmationMsg, $errorMsg) {
+    //$subjectPrefix = '[To Do Lister]';
+    //$emailTo = '<test.dev.at@gmail.com>';
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pattern = '/[\r\n]|Content-Type:|Bcc:|Cc:/i';
         if (preg_match($pattern, $this->name) || preg_match($pattern, $this->email) || preg_match($pattern, $this->subject)) {
@@ -48,7 +68,7 @@ class ContactFormulaire {
         $emailIsValid = filter_var($this->email, FILTER_VALIDATE_EMAIL);
         if($this->name && $this->email && $emailIsValid && $this->subject && $this->message){
             $this->subject = "$subjectPrefix $this->subject";
-            $body = "Nom : $this->name <br /> Email : $this->email <br /> Message : $this->message";
+            $body = "$this->message <br/> $this->signature";
             $headers  = "MIME-Version: 1.1" . PHP_EOL;
             $headers .= "Content-type: text/html; charset=utf-8" . PHP_EOL;
             $headers .= "Content-Transfer-Encoding: 8bit" . PHP_EOL;
@@ -62,11 +82,11 @@ class ContactFormulaire {
 
             $success = mail($emailTo, "=?utf-8?B?".base64_encode($this->subject)."?=", $body, $headers);
             if($success) {
-              $confirmation = "Votre message a été envoyé";
+              $confirmation = $confirmationMsg;
               $this->displayMessage($confirmation);
             }
             else {
-              $confirmation = "L'envoi du message a échoué";
+              $confirmation = $errorMsg;
               $this->displayErreur($confirmation);
               $hasError = true;
             }
@@ -80,7 +100,7 @@ class ContactFormulaire {
   /* Displays confirmation and information messages */
   public function displayMessage($message) {
     $_SESSION['confirmation'] = $message;
-    header('Location:contact.php');
+    header($_SESSION['location']);
   }
 
   /* Displays error messages */
@@ -88,7 +108,7 @@ class ContactFormulaire {
     $_SESSION['error'] = $message;
     header('Location:contact.php');
   }
-  
+
 }
 
 ?>
