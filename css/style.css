@@ -13,7 +13,8 @@ body {
 }
 
 .error {
-  color: red;
+  color: #E44332;
+  text-align: center;
 }
 
 .success {

@@ -23,7 +23,7 @@
     background-color: #2e3740;
 }
 
-.icon-nar a.active {
+.icon-bar a.active {
     background-color: #16aa56;
 }
 
@@ -37,6 +37,17 @@
 .hidden {
     display: none;
 }
+
+#tdl-icon {
+  float: left;
+  text-indent: -1000px;
+}
+#tdl-icon:hover {
+  background-color: #6d7781;
+  text-indent: -1000px;
+      cursor: default;
+}
+
 
 
 /* MEDIA QUERIES */

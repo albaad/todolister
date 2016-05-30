@@ -47,22 +47,18 @@
     $id = $_POST['id'];
     $pseudo = $_POST['pseudo'];
     $pw = $_POST['pass'];
-    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    //$bdd = $conect->dbconnect();
-    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:modify.php';
     $user1 = $obj1->update($id, $pseudo, $pw);
     echo $user1;
   }
   if(isset($_GET['deletemail'])) {
-    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    //$bdd = $conect->dbconnect();
     $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-
     $obj1 = new UserManager($bdd);
     $user1 = $obj1->delete($_GET['deletemail']);
+    $_SESSION['error'] = "Votre compte a été supprimé.";
   }
 ?>
 

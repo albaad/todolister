@@ -4,18 +4,18 @@
       <div class="footerFloat footer-left">
         <ul>
           <li><a href="./index.php">Accueil</a></li>
-          <li><a href="./contact.php">Contact</a></li>
+          <li><a href="./inscription.php">Inscription</a></li>
         </ul>
       </div>
       <div class="footerFloat footer-right">
         <ul>
-          <li><a href="./inscription.php">Inscription</a></li>
           <li><a href="./aide.php">Aide</a></li>
+          <li><a href="./contact.php">Contact</a></li>
         </ul>
       </div>
       <div class="footerFloat footer-far-right"></div>
       <div class="footer-bottom">
-        © Copyright 2016 Alba Artal Domenech
+        © Copyright 2016 To Do Lister
       </div>
     </div>
 

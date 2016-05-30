@@ -33,7 +33,7 @@ body {
     display: flex;
     background-color: #fff;
     min-height: 80%;
-    margin-left: 20%;
+    margin-left: 25%;
     margin-right: 20%;
     margin-top: 5%;
 }
@@ -41,6 +41,7 @@ body {
     background-color: #fff;
     -webkit-flex: 2;
     flex: 2;
+
 }
 .app-items {
     background-color: #fff;
@@ -201,6 +202,7 @@ input[type="submit"].export-pdf:hover {
     display: -webkit-flex;
     display: flex;
     flex-wrap: wrap-reverse;
+      flex-wrap: wrap;
     overflow: visible;
   }
   .app-nav {
@@ -223,5 +225,49 @@ input[type="submit"].export-pdf:hover {
   }
   .app-container {
     padding-top: 3%;
+  }
+}
+
+/* MEDIA QUERIES for MOBILE */
+@media all and (max-width: 480px){
+  body {
+    width: auto;
+    margin: 0 auto;
+  }
+  .app-container {
+    min-height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    /*flex-wrap: wrap-reverse;*/
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+  .app-nav {
+    flex: 0 0 100%;
+  }
+  .app-items {
+    flex: 0 0 100%;
+  }
+  .list, h1 {
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+}
+@media all and (max-width: 960px) {
+  body {
+    width: auto;
+    margin: 0 auto;
+  }
+  .app-container, .app-nav, .app-items {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .app-container {
+      margin-top: 5%;
+  }
+  input[type="submit"], input[type="submit"].submit-add-project, input[type="submit"].export-pdf {
+    width: 460px;
   }
 }

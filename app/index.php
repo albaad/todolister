@@ -5,7 +5,7 @@
   include_once '../lib/ListerManager.php';
 
   if(!isset($_SESSION['email'])) {
-    header('Location:../authentification.php');
+    header('Location:../index.php');
   }
 
   if(isset($_GET['project_id'])) {

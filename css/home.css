@@ -1,0 +1,56 @@
+.index {
+    width: 650px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    margin-left: -350px;
+}
+
+.index h2 {
+    color: #1FCE6D;
+    color: #16aa56;
+}
+
+.index h6 {
+  margin-top: 5%;
+  font-family: "Shadows Into Light Two", cursive;
+  font-family: "Open Sans", cursive;
+  text-align: center;
+  font-size: 34px;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+#subtitle {
+  margin-top: 5%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.register {
+    margin-top: 15%;
+ text-align: center;
+}
+
+.register-button {
+  width: 350px;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: inherit;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 13px 17px;
+  color: white;
+  background-color:  #1FCE6D;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: background-color .2s ease-in;
+  vertical-align: middle;
+  text-align: center;
+}
+.register-button:hover {
+  background-color: #16aa56;
+}

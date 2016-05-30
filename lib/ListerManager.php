@@ -114,7 +114,7 @@ class ListerManager {
         // Cascade: mark all project items as done
         $itemsDone = $this->db->prepare("
           UPDATE items
-          SET done = 1
+          SET done = 1, completed = NOW()
           WHERE project_id = :project_id
         ");
         $itemsDone->execute([
