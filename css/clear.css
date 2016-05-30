@@ -40,7 +40,7 @@ h6 {
   color: #525f6c;
 }
 
-.guide-projects img, .guide-items img, .guide-mark img, .guide-delete img {
+.guide-projects img, .guide-items img, .guide-mark img, .guide-delete img, .guide-print img, .guide-pdf img {
   margin: 20px;
   display: block;
   width: 350px;
@@ -48,6 +48,11 @@ h6 {
   text-align: left;
   padding: 1px;
   border: 1px solid #8d949a;
+}
+
+.guide-print img, .guide-pdf img {
+  width: 850px;
+  height: auto;
 }
 
 .guide-projects {

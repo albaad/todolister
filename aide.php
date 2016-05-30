@@ -14,7 +14,7 @@
         <ul>
           <li><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;<a href="guide.php">Visite guidée</a></li>
           <li><div class="espace"></div>  </li>
-          <li><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;<a href="pdf.php">Imprimer votre liste en format PDF</a></li>
+          <li><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;<a href="aide-pdf.php">Imprimez votre liste en format PDF</a></li>
         </ul>
 
         <div class="espace"></div>

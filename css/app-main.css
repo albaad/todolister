@@ -41,7 +41,7 @@ body {
     background-color: #fff;
     -webkit-flex: 2;
     flex: 2;
-
+    margin-right: 60px;
 }
 .app-items {
     background-color: #fff;
