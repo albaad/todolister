@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'lib/ADminManager.php';
+include_once 'lib/AdminManager.php';
 
 $email = 'admin';
 $pw = "cnam";

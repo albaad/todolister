@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once 'Connection.php';
+include_once 'AdminException.php';
 
 class AdminManager {
 
@@ -26,7 +27,6 @@ class AdminManager {
         'email' => $pseudo,
         'pw' => sha1($pw)
       ));
-      $_SESSION['email'] = $pseudo;
       header("Location:admin.php");
     }
     // Exceptions CATCH blocks
@@ -70,7 +70,6 @@ class AdminManager {
       $count = $donnees['email'];
       // IF res = $email, 1 result
        if(!empty($count)) {
-         $_SESSION['email'] = $donnees['email'];
          return $donnees['email'];
        } else { throw new WrongUserIDException(); }
      }
@@ -123,9 +122,7 @@ class AdminManager {
         $this->db->exec('DELETE FROM users WHERE id = '.(int) $id);
         $_SESSION['message'] = "Utilisateur supprimé.";
         // Redirect
-        if(isset($_SESSION['location'])) {
-          header($_SESSION['location']);
-        }
+        header("Location:admin.php");
       }
       else { throw new WrongUserIDException(); }
     }

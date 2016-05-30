@@ -40,10 +40,11 @@
     echo $user1;
   }
   if(isset($_GET['deleteid'])) {
+    $id = $_GET['deleteid'];
     $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:admin.php';
-    $user1 = $obj1->delete($_GET['deleteid']);
+    $user1 = $obj1->delete($id);
   }
 ?>
 
