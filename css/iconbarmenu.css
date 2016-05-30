@@ -1,8 +1,8 @@
 .icon-bar {
-    width: 100%;
-    text-align: center;
-    background-color: #6d7781;
-    overflow: auto;
+  width: 100%;
+  text-align: center;
+  background-color: #6d7781;
+  overflow: auto;
 }
 
 .icon-nav {
@@ -11,31 +11,30 @@
 }
 
 .icon-bar a {
-    width: 25%;
-    padding: 12px 0;
-    float: left;
-    transition: all 0.3s ease;
-    color: #f2f2f2;
-    font-size: 16px;
+  width: 25%;
+  padding: 12px 0;
+  float: left;
+  transition: all 0.3s ease;
+  color: #f2f2f2;
+  font-size: 16px;
 }
 
 .icon-bar a:hover {
-    background-color: #2e3740;
+  background-color: #2e3740;
 }
 
 .icon-bar a.active {
-    background-color: #16aa56;
+  background-color: #16aa56;
 }
 
 .disabled {
-    color: #f6f6f6;
-    background-color: #2e3740;
-    pointer-events: none;
-    cursor: default;
+  color: #f6f6f6;
+  background-color: #2e3740;
+  cursor: default;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 #tdl-icon {
@@ -45,9 +44,8 @@
 #tdl-icon:hover {
   background-color: #6d7781;
   text-indent: -1000px;
-      cursor: default;
+  cursor: default;
 }
-
 
 
 /* MEDIA QUERIES */

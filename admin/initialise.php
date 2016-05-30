@@ -5,8 +5,6 @@ include_once 'lib/ADminManager.php';
 $email = 'admin';
 $pw = "cnam";
 
-//$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-//$bdd = $conect->dbconnect();
 $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
 $obj1 = new AdminManager($bdd);

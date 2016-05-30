@@ -7,7 +7,6 @@
 }
 
 .index h2 {
-    color: #1FCE6D;
     color: #16aa56;
 }
 
@@ -28,8 +27,8 @@
 }
 
 .register {
-    margin-top: 15%;
- text-align: center;
+  margin-top: 15%;
+  text-align: center;
 }
 
 .register-button {

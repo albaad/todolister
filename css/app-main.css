@@ -1,5 +1,4 @@
 body {
-  background-color: #eceff0;
   background-color: #fff;
 }
 
@@ -10,7 +9,6 @@ body, input {
 
 a {
   text-decoration: none;
-  /*border-bottom: 1px dashed #363639;*/
 }
 a:hover {
   text-decoration: underline;
@@ -58,19 +56,15 @@ body {
   max-width: 500px;
   padding: 20px;
   border-radius: 2px;
-  /*box-shadow: 3px 3px 0 rgba(0, 0, 0, .1);*/
-  /*box-sizing: border-box;*/
 }
 
 .list .header {
   font-family: "Shadows Into Light Two", cursive;
-  /*font-family: "Sofia", cursive;*/
   margin: 0 0 10px 0;
 }
 
 /* Projects */
 h6 {
-  color: #6D7781;
   color: #525F6C;
   font-family: "Sofia", cursive;
   font-weight: bold;
@@ -100,7 +94,6 @@ h6 {
 
 .items li, .item-add .input {
   border: 0;
-  /*border-bottom: 1px dashed #ccc;*/
   padding: 15px 0;
   padding: 5px 0;
 }
@@ -188,10 +181,17 @@ input[type="submit"].export-pdf:hover {
 
 /* MEDIA QUERIES */
 /* Reduce margins for smaller screens/windows */
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1500px) {
   .app-container {
     margin-top: 5%;
     margin-left: 15%;
+    margin-right: 5%;
+  }
+}
+@media screen and (max-width:1100px) {
+  .app-container {
+    margin-top: 5%;
+    margin-left: 5%;
     margin-right: 5%;
   }
 }
@@ -229,31 +229,6 @@ input[type="submit"].export-pdf:hover {
 }
 
 /* MEDIA QUERIES for MOBILE */
-@media all and (max-width: 480px){
-  body {
-    width: auto;
-    margin: 0 auto;
-  }
-  .app-container {
-    min-height: 100%;
-    display: -webkit-flex;
-    display: flex;
-    /*flex-wrap: wrap-reverse;*/
-    flex-wrap: wrap;
-    overflow: visible;
-  }
-  .app-nav {
-    flex: 0 0 100%;
-  }
-  .app-items {
-    flex: 0 0 100%;
-  }
-  .list, h1 {
-    padding-top: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-  }
-}
 @media all and (max-width: 960px) {
   body {
     width: auto;
@@ -269,5 +244,32 @@ input[type="submit"].export-pdf:hover {
   }
   input[type="submit"], input[type="submit"].submit-add-project, input[type="submit"].export-pdf {
     width: 460px;
+  }
+}
+@media all and (max-width: 490px){
+  body {
+    width: auto;
+    margin: 0 auto;
+  }
+  .app-container {
+    min-height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+  .app-nav {
+    flex: 0 0 100%;
+  }
+  .app-items {
+    flex: 0 0 100%;
+  }
+  .list, h1 {
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+  input[type="submit"], input[type="submit"].submit-add-project, input[type="submit"].export-pdf {
+    width: 400px;
   }
 }

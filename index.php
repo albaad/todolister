@@ -1,4 +1,4 @@
-  <?php
+<?php
   include 'inc/autorisation.php';
 
   $pageTitle = 'To Do Lister';

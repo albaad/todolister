@@ -1,4 +1,4 @@
-
+/* Main style theme */
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +6,7 @@
 
 body {
   background: #2E3740;
-  /*background: #6D7781;*/
   color: #435160;
-  /*color: #6D7781;*/
   font-family: "Open Sans", sans-serif;
 }
 
@@ -24,7 +22,6 @@ body {
 
 h2, h3, h4, h5 {
   color: #6D7781;
-  /*color: #2E3740;*/
   font-family: "Sofia", cursive;
   font-size: 15px;
   font-weight: bold;
@@ -154,9 +151,6 @@ label {
 #agree:checked ~ label[for=agree] {
   background: #435160;
 }
-label::after, label::before{
-  box-sizing: none;
-}
 
 input[type="submit"] {
   background: #1FCE6D;
@@ -236,13 +230,12 @@ input[type="submit"]:hover {
   }
 }
 
-/* Aide */
+
+/* Aide page */
 .aide-box {
   font-family: 'Open Sans', sans-serif;
   color: #6D7781;
   font-size: 16px;
-  /*text-align: left;*/
-
 }
 .aide-box li a {
   font-style: normal;
@@ -272,13 +265,12 @@ input[type="submit"]:hover {
 }
 
 
-
-/* Goodbye */
+/* Goodbye page */
 .message-box {
-    font-size: 14px;
-    display: block;
-    background: #8d949a;
-    padding: 100px 50px 100px 50px;
+  font-size: 14px;
+  display: block;
+  background: #8d949a;
+  padding: 100px 50px 100px 50px;
 }
 .message-box a:hover {
   text-decoration: underline;

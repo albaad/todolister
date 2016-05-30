@@ -1,7 +1,5 @@
 <?php
-  //session_start();
   include 'inc/autorisation.php';
-  //session_destroy();
   $pageTitle = 'Parametres';
   include 'inc/header.php';
 ?>

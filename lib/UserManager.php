@@ -1,6 +1,5 @@
 <?php
 session_start();
-//include_once 'admin/lib/ConnectionSingleton.php';
 include_once 'admin/lib/Connection.php';
 include_once 'admin/lib/AdminException.php';
 
@@ -63,7 +62,6 @@ class UserManager {
       if($_SESSION['email'] == 'admin') {
         header("location: admin/admin.php");
       }
-      //header('location:accueil.php');
       header('location:app/index.php');
     }
     // Exceptions CATCH blocks

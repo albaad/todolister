@@ -97,6 +97,4 @@ class UserNotLoggedInException extends AdminException {
   }
 }
 
-
-
 ?>

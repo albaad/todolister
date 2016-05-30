@@ -1,6 +1,5 @@
 <?php
 session_start();
-//include_once 'ConnectionSingleton.php';
 include_once 'Connection.php';
 
 class AdminManager {
@@ -105,10 +104,6 @@ class AdminManager {
         ));
         $_SESSION['message'] = "Utilisateur modifié.";
         header("Location:edit.php");
-        // Redirect
-        /*if(isset($_SESSION['location'])) {
-          header($_SESSION['location']);
-        }*/
       }
       else { throw new WrongUserIDException(); }
     }

@@ -1,20 +1,8 @@
 <?php
-	//session_start();
-	//include 'inc/autorisation.php';
-  //session_destroy();
   $pageTitle = 'Modifier mot de passe';
   include 'inc/header.php';
 
   include_once 'lib/UserManager.php';
-
-  /*if(isset($_GET['email'])) {
-    $conect = ConnectionSingleton::getInstance('localhost', 'nfa021', 'utf8', 'root', '');
-    $bdd = $conect->dbconnect();
-    $obj1 = new UserManager($bdd);
-    $_SESSION['location'] = 'Location:admin.php';
-  }*/
-
-  //header("Location:modify.php");
 ?>
 
   <div class="login">
@@ -44,10 +32,7 @@
     $pw2 = $_POST['pw2'];
     $email = $_POST['email'];
 
-    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    //$bdd = $conect->dbconnect();
     $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-
     $obj1 = new UserManager($bdd);
     $_SESSION['location'] = 'Location:modify.php';
     $user1 = $obj1->update($email, $pw, $pw2);

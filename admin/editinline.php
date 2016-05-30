@@ -23,14 +23,12 @@ include 'inc/adminrights.php';
 
     <?php
       if(isset($_GET['id'])) {
-        //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-        //$bdd = $conect->dbconnect();
         $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-
         $obj1 = new AdminManager($bdd);
         $_SESSION['location'] = 'Location:editinline.php';
         $user1 = $obj1->getUserById($_GET['id']);
-        ?>
+    ?>
+
         <form class="" action="editinline.php" method="post">
           <input type="text" name="id" placeholder="id" value="<?php echo $_GET['id'];?>"></input>
           <input type="text" name="email" placeholder="Nouvel email" value="<?php echo $user1;?>"></input>
@@ -38,7 +36,8 @@ include 'inc/adminrights.php';
           <div class="espace"></div>
           <input type="submit" name="submit" value="Confirmer"></input>
         </form>
-        <?php
+
+    <?php
       } else {
         header('location:edit.php');
       }
@@ -50,10 +49,8 @@ include 'inc/adminrights.php';
     $id = $_POST['id'];
     $pseudo = $_POST['email'];
     $pw = $_POST['pass'];
-    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    //$bdd = $conect->dbconnect();
-    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $obj1 = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:editinline.php';
     $user1 = $obj1->update($id, $pseudo, $pw);

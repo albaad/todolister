@@ -1,4 +1,4 @@
-// Client-side form data verification
+/* Client-side form data verification */
 
 /* Verifies field is not empty */
 function checkFields(champ)
@@ -35,7 +35,7 @@ function pwdCheck(pws2){
 	}
 }
 
-/* Verfies email format */ 
+/* Verfies email format */
 function checkMail(email){
 
 }

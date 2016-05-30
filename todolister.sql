@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
 
 ALTER TABLE `projects`
 ADD CONSTRAINT fk_project_user_id FOREIGN KEY (user_id) REFERENCES `users`(id)
-	ON DELETE CASCADE; -- Si l'utilisateur est effacé, ses projets aussi
+	ON DELETE CASCADE; -- If user is deleted, so are their projets
 
 CREATE TABLE IF NOT EXISTS `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `items` (
 
 ALTER TABLE `items`
 ADD CONSTRAINT fk_items_project_id FOREIGN KEY (project_id) REFERENCES `projects`(id)
-	ON DELETE CASCADE; -- Si le projet est effacé, ses tâches aussi
+	ON DELETE CASCADE; -- If project is delted, so are its items
 
 INSERT INTO `users` (`id`, `pseudo`, `pw`) VALUES
 (1, `admin`, `401c9a033e60f1eefda1ddcba53e317d292ac352`);

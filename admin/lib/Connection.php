@@ -17,22 +17,6 @@ class Connection {
     $this->password = $password;
   }
 
-  /*public static function getInstance($hote, $bd, $charset, $user, $password) {
-    if (is_null(self::$instance)) { // No PDO exists yet, so make one and send it back.
-      self::$instance = new Connection($hote, $bd, $charset, $user, $password);
-    }
-    return self::$instance;
-  }
-
-  public function dbconnect(){
-    try {
-      $pdo = new PDO('mysql:host='.$this->hote.';dbname='.$this->bd.';charset='.$this->charset, $this->user, $this->password);
-      return $pdo;
-    } catch (PDOException $e) {
-      die('<h1>Sorry. The Database connection is temporarily unavailable.</h1>');
-    }
-	}*/
-
   public static function getInstance($hote, $bd, $charset, $user, $password) {
     if(is_null(self::$instance)) {
       self::$instance =  new PDO('mysql:host='.$hote.';dbname='.$bd.';charset='.$charset, $user, $password);
@@ -40,4 +24,6 @@ class Connection {
     return self::$instance;
   }
 
-}?>
+}
+
+?>

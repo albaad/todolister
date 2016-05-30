@@ -37,10 +37,8 @@ include 'inc/adminrights.php';
     $id = $_POST['id'];
     $email = $_POST['email'];
     $pw = $_POST['pass'];
-    //$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    //$bdd = $conect->dbconnect();
-    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
+    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $admin = new AdminManager($bdd);
     $_SESSION['location'] = 'Location:edit.php';
     $user1 = $admin->update($id, $email, $pw);

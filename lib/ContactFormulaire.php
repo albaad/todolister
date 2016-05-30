@@ -8,7 +8,6 @@ class ContactFormulaire {
   private $message;
 
   /* Retrieve all form fields */
-  //public function recupForm() {
   public function retrieveForm() {
     $this->name = stripslashes(trim($_POST['name']));
     $this->email = stripslashes(trim($_POST['email']));
@@ -38,7 +37,6 @@ class ContactFormulaire {
   }
 
   /* Sends e-mail */
-  //public function envoiMail() {
   public function sendMail() {
     $subjectPrefix = '[To Do Lister]';
     $emailTo = '<test.dev.at@gmail.com>';
@@ -61,7 +59,7 @@ class ContactFormulaire {
             $headers .= "Reply-To: $this->email" . PHP_EOL;
             $headers .= "X-Mailer: PHP/". phpversion() . PHP_EOL;
             $headers .= "X-Originating-IP: " . $_SERVER['SERVER_ADDR'] . PHP_EOL;
-            ///////////
+
             $success = mail($emailTo, "=?utf-8?B?".base64_encode($this->subject)."?=", $body, $headers);
             if($success) {
               $confirmation = "Votre message a été envoyé";
@@ -72,7 +70,6 @@ class ContactFormulaire {
               $this->displayErreur($confirmation);
               $hasError = true;
             }
-            ///////////
 
         } else {
             $hasError = true;
@@ -81,18 +78,17 @@ class ContactFormulaire {
   }
 
   /* Displays confirmation and information messages */
-  //public function afficheMessage($message) {
   public function displayMessage($message) {
     $_SESSION['confirmation'] = $message;
     header('Location:contact.php');
   }
 
   /* Displays error messages */
-  //public function afficheErreur($message) {
   public function displayErreur($message) {
     $_SESSION['error'] = $message;
     header('Location:contact.php');
   }
+  
 }
 
 ?>

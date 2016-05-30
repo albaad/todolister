@@ -1,8 +1,6 @@
 <?php
 session_start();
-//include_once '../admin/lib/ConnectionSingleton.php';
 include_once '../admin/lib/Connection.php';
-//include_once '../lib/UserManager.php';
 
 class ListerManager {
 
