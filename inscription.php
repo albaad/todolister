@@ -63,7 +63,7 @@
       $email = $_SESSION['signup'];
       unset($_SESSION['signup']);
       unset($_SESSION['key']);
-      //let's send the email
+      // Send the email
       $confirm = new ContactFormulaire();
       $confirm->setName('L\'équipe To Do Lister');
       $confirm->setEmail('noreply@todolister.com');

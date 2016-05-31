@@ -7,5 +7,5 @@
     } else {
       header("location: app/index.php");
     }
-  }
+  } 
  ?>

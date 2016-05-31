@@ -83,7 +83,7 @@ class UserManager {
       if($confirm) {
         $_SESSION['signup'] = $email;
         $_SESSION['key'] = $key;
-        $_SESSION['confirmation'] = "Veuillez confirmer votre adresse mail via le lien que vous a été envoyé.";
+        //$_SESSION['confirmation'] = "Veuillez confirmer votre adresse mail via le lien que vous a été envoyé.";
         header('location:inscription.php');
       } else {
           unset($_SESSION['signup']);
@@ -94,6 +94,46 @@ class UserManager {
     catch (UnavailableEmailException $e) { $e->showMessage(); }
     catch (PasswordsDontMatchException $e) { $e->showMessage(); }
     catch (WrongPasswordLengthException $e) { $e->showMessage(); }
+  }
+
+  public function forgottenPassword($email) {
+    try {
+      // Check if an account exists for the given email
+      if (!($this->find($email))) { throw new WrongUserEmailException(); }
+      // Get hashed password and user id
+      $bdd = $this->db;
+      $req = $bdd->prepare("
+        SELECT * FROM users
+        WHERE email=:email
+      ");
+      $req->execute([
+        'email' => $email
+      ]);
+      $data = $req->fetch();
+      $pw = $data['password'];
+      $user_id = $data['id'];
+      $_SESSION['confirmation'] = $user_id;
+      // Create a random key
+      $key = $pw . $email . date('mY');
+      $key = md5($key);
+      // Add confirm row
+      $confirm = $this->db->query("
+        INSERT INTO `confirm`
+        VALUES(NULL,'$user_id','$key','$email')
+      ");
+
+      if($confirm) {
+        $_SESSION['forgot'] = 1;
+        $_SESSION['key'] = $key;
+        $_SESSION['confirmation'] = "user-Veuillez changer votre mot de passe via le lien que vous a été envoyé.";
+        header('location:forgotpassword.php');
+      } else {
+        $_SESSION['error'] = "user-Une erreur s'est produite";
+        header('location:forgotpassword.php');
+      }
+    }
+    // Exceptions CATCH block
+    catch (WrongUserEmailException $e) { $e->showMessage(); }
   }
 
   public function verifyLogin($email, $pw) {
@@ -208,8 +248,8 @@ class UserManager {
       if ($pw != $pw2) { throw new PasswordsDontMatchException(); }
 
       if (isset($_SESSION['email'])) {
-        $email = $_SESSION['email'];
-
+        if (isset($_SESSION['email']))
+          $email = $_SESSION['email'];
         // Get user id, corresponding to current email
         $id = $this->getIdByEmail($email);
         // If email has changed: Check if new email is available
@@ -220,7 +260,7 @@ class UserManager {
             throw new UnavailableEmailException();
           }
         }
-
+        // Update table
         $bdd = $this->db;
         $req = $bdd->prepare('
           UPDATE users SET pw = :pw, email = :email
@@ -245,6 +285,45 @@ class UserManager {
     catch (WrongPasswordLengthException $e) { $e->showMessage(); }
     catch (UserNotLoggedInException $e) { $e->showMessage(); }
   }
+
+  public function resetPassword($email, $pw, $pw2, $key) {
+    try {
+      // Check if there are any input errors
+      if (is_null($pw) || strlen($pw) < 3 || strlen($pw) > 16) {
+        throw new WrongPasswordLengthException(); }
+      if ($pw != $pw2) { throw new PasswordsDontMatchException(); }
+
+      // Get user id, corresponding to current email
+      $id = $this->getIdByEmail($email);
+      // Update users table
+      $bdd = $this->db;
+      $req = $bdd->prepare('
+        UPDATE users SET pw = :pw, email = :email
+        WHERE id = :id
+      ');
+      $req->execute(array(
+        'email' => $email,
+        'pw' => sha1($pw),
+        'id' =>$id
+      ));
+      // Delete the confirm row
+      $req = $bdd->query("
+        SELECT `id` FROM `confirm`
+        WHERE `user_id` = '$id' AND `key` = '$key'
+      ");
+      $check_key = $req->fetch();
+      $confirm_id = $check_key['id'];
+
+      $delete = $bdd->query("DELETE FROM `confirm` WHERE `id` = '$confirm_id'");
+
+      $_SESSION['confirmation'] = "Paramètres modifiés.";
+      header($_SESSION['location']);
+    }
+    // Exceptions CATCH blocks
+    catch (PasswordsDontMatchException $e) { $e->showMessage(); }
+    catch (WrongPasswordLengthException $e) { $e->showMessage(); }
+  }
+
 
   public function delete($email) {
     if ($this->find($email)){

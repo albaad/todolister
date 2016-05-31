@@ -169,20 +169,23 @@ input[type="submit"]:hover {
   animation-name: shake;
 }
 
-.forgot {
+.forgot, .forgot-pw {
   margin-top: 30px;
   display: block;
   font-size: 11px;
   text-align: center;
   font-weight: bold;
 }
-.forgot:hover {
-  margin-top: 30px;
-  display: block;
-  font-size: 11px;
-  text-align: center;
-  font-weight: bold;
+.forgot:hover, .forgot-pw:hover {
+  color: #8d949a;
+}
+.forgot-pw {
+  margin-top: 10px;
+  font-size: 10px;
   color: #6D7781;
+}
+.forgot-pw:hover {
+  color: #bec1c4;
 }
 
 .logout {

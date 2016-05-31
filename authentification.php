@@ -36,6 +36,8 @@
 
       <a class='forgot' href='inscription.php'>Vous n'avez pas encore un compte ?</a>
 
+      <a class='forgot-pw' href='forgotpassword.php'>Vous avez oublié votre mot de passe ?</a>
+
     </div>
 
     <?php

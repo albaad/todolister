@@ -3,6 +3,10 @@
   include 'inc/header.php';
 
   include_once 'lib/UserManager.php';
+
+  if(!isset($_SESSION['email'])) {
+    header("Location: authentification.php");
+  }
 ?>
 
   <div class="login">
