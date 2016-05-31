@@ -1,24 +1,13 @@
 <?php
   include 'inc/autorisation.php';
-
   $pageTitle = 'Inscription';
   include 'inc/header.php';
-
-  include_once 'lib/ContactFormulaire.php'; //////
+  include_once 'lib/ContactFormulaire.php';
 ?>
 
   <div class='login'>
 
     <h2>Inscription</h2>
-
-    <!--<div class="error">
-      <?php
-        /*if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
-            unset($_SESSION['message']);
-        }*/
-      ?>
-    </div>-->
 
     <div class="error">
       <?php
@@ -28,7 +17,6 @@
         }
       ?>
     </div>
-
     <div class="success">
       <?php
         if(isset($_SESSION['confirmation'])) {
@@ -98,7 +86,7 @@
       $_SESSION['location'] = 'Location:inscription.php';
       $confirm->sendMail($subjectPrefix, $emailTo, $confirmationMsg, $errorMsg);
     }
-      //include 'inc/autorisation.php';
+
   ?>
 
 <?php include('inc/footer.php'); ?>

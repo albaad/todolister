@@ -253,14 +253,11 @@ class UserManager {
 
   public function is_logged_in() {
     // Verifies user is logged in
-    if(empty($_SESSION['email'])) {
+    if(!isset($_SESSION['email'])) {
       if(empty($_POST['email']) || empty($_POST['password'])) {
         // User not logged in
         return false;
-      } else { // User logged in
-      // Session variables for email
-        $_SESSION['email'] = $_POST['email'];
-      }
+      } 
     }
     return true;
   }
