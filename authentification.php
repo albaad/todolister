@@ -18,6 +18,15 @@
         ?>
       </div>
 
+      <div class="success">
+        <?php
+          if(isset($_SESSION['confirmation'])) {
+            echo $_SESSION['confirmation'];
+            unset($_SESSION['confirmation']);
+          }
+        ?>
+      </div>
+
       <form name="register" method="POST" action="authentification.php">
         <input name='email' placeholder='E-Mail' type='text'></input>
         <input name='password' placeholder='Password' type='password'></input>

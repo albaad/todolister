@@ -5,6 +5,7 @@
   $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
   $usrmg = new UserManager($bdd);
   $loggedin = $usrmg->is_logged_in();
+  $usrmg = null;
 ?>
 
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">

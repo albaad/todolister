@@ -41,6 +41,11 @@ class UserManager {
 
   public function register($email, $pw, $pw2) {
     try {
+
+        if(!empty($_SESSION['email'])) {
+          echo $_SESSION['email'];
+        }
+
       // All possible errors
       if ($this->find($email)) { throw new UnavailableEmailException(); }
       if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
@@ -83,11 +88,13 @@ class UserManager {
       ");
       if($confirm){
         $_SESSION['signup'] = $email;
-        $_SESSION['message'] = "Veuillez confirmer votre adresse mail via le lien que vous a été envoyé.";
         $_SESSION['key'] = $key;
+        //$_SESSION['message'] = "Veuillez confirmer votre adresse mail via le lien que vous a été envoyé.";
+        $_SESSION['confirmation'] = "Veuillez confirmer votre adresse mail via le lien que vous a été envoyé.";
+
         header('location:inscription.php');
       } else {
-          $action['result'] = 'error';
+          //$action['result'] = 'error';
           unset($_SESSION['signup']);
       }
       //header('location:app/index.php');

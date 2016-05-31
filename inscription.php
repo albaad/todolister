@@ -11,11 +11,29 @@
 
     <h2>Inscription</h2>
 
-    <div class="error">
+    <!--<div class="error">
       <?php
-        if (isset($_SESSION['message'])) {
+        /*if (isset($_SESSION['message'])) {
             echo $_SESSION['message'];
             unset($_SESSION['message']);
+        }*/
+      ?>
+    </div>-->
+
+    <div class="error">
+      <?php
+        if (isset($_SESSION['error'])) {
+            echo $_SESSION['error'];
+            unset($_SESSION['error']);
+        }
+      ?>
+    </div>
+
+    <div class="success">
+      <?php
+        if(isset($_SESSION['confirmation'])) {
+          echo $_SESSION['confirmation'];
+          unset($_SESSION['confirmation']);
         }
       ?>
     </div>
@@ -47,7 +65,7 @@
         $_SESSION['location'] = 'Location:inscription.php';
         $user1 = $obj1->register($email, $pw, $pw2);
       } else {
-        $_SESSION['message'] = 'Veuillez accepter les conditions d\'utilisation';
+        $_SESSION['error'] = 'Veuillez accepter les conditions d\'utilisation';
         header("Location:inscription.php");
       }
     }
@@ -56,6 +74,7 @@
       $code = $_SESSION['key'];
       $email = $_SESSION['signup'];
       unset($_SESSION['signup']);
+      unset($_SESSION['key']);
       //let's send the email
       $confirm = new ContactFormulaire();
       $confirm->setName('L\'équipe To Do Lister');
@@ -79,6 +98,7 @@
       $_SESSION['location'] = 'Location:inscription.php';
       $confirm->sendMail($subjectPrefix, $emailTo, $confirmationMsg, $errorMsg);
     }
+      //include 'inc/autorisation.php';
   ?>
 
 <?php include('inc/footer.php'); ?>

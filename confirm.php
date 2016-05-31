@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'admin/lib/Connection.php';
 
 //setup some variables
@@ -23,10 +24,6 @@ if($action['result'] != 'error') {
       SELECT COUNT(*) FROM `confirm`
       WHERE `email` = '$email' AND `key` = '$key'
     ");
-    /*$req->execute([
-      'email' => $email,
-      'key' => $key
-    ]);*/
     $rows = $req->fetch(PDO::FETCH_NUM);
     $count = $rows[0];
 
@@ -59,12 +56,15 @@ if($action['result'] != 'error') {
             /*$action['result'] = 'success';
             $action['text'] = 'User has been confirmed. Thank-You!';*/
 
-            $_SESSION['message'] = 'Votre compte a été confirmé. Vous pouvez vous authentifier.';
-            header('location:inscription.php');
+            //$_SESSION['message'] = 'Votre compte a été confirmé. Vous pouvez vous authentifier.';
+            $_SESSION['confirmation'] = 'Votre compte a été confirmé. Vous pouvez vous authentifier.';
+            //$_SESSION['error'] = $_SESSION['email']; //////// TEST
+            header('location:authentification.php');
 
         } else{
 
-            $_SESSION['message'] = 'Une erreur a eu lieu pendant la confirmation de votre e-mail';
+            //$_SESSION['message'] = 'Une erreur a eu lieu pendant la confirmation de votre e-mail';
+            $_SESSION['error'] = 'Une erreur a eu lieu pendant la confirmation de votre e-mail';
             //$action['result'] = 'error';
 
         }
@@ -73,7 +73,8 @@ if($action['result'] != 'error') {
 
         //$action['result'] = 'error';
         //$action['text'] = 'The key and email is not in our database.';
-        $_SESSION['message'] = 'Une erreur a eu lieu pendant la confirmation de votre e-mail';
+        //$_SESSION['message'] = 'Une erreur a eu lieu pendant la confirmation de votre e-mail';
+        $_SESSION['error'] = 'Une erreur a eu lieu pendant la confirmation de votre e-mail';
 
     }
 
