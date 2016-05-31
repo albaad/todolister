@@ -5,6 +5,13 @@
     return iconv('UTF-8', 'windows-1252', $utf8);
   }
 
+if (!isset($_SESSION['email'])) {
+  if(isset($_SESSION['location'])) {
+    header($_SESSION['location']);
+  } else {
+    header('Location:../authentification.php');
+  }
+}
 
   // Connect to DB and get project list
 	$email= $_POST['email'];

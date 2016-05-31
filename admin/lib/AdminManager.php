@@ -26,22 +26,9 @@ class AdminManager {
       $req->execute(array(
         'email' => $pseudo,
         'pw' => sha1($pw),
-        'active' => 1 /////////////////
+        'active' => 1
       ));
-      $bdd = $this->db; //////////////////////
-      $req = $bdd->prepare("
-        SELECT id FROM users
-        WHERE email=:email
-      ");
-      $req->execute([
-        'email' => $pseudo
-      ]);
-      $donnees = $req->fetch();
-      $id = $donnees['id'];
-      $confirm = $this->db->query("
-        INSERT INTO `confirm`
-        VALUES(NULL,'$id','Added_by_admin','$pseudo')
-      "); ////////////////
+      // No account confirmation needed: An ADMIN added & activated it directly
       header("Location:admin.php");
     }
     // Exceptions CATCH blocks
@@ -116,7 +103,7 @@ class AdminManager {
           'pw' => sha1($pw),
           'id' => $id
         ));
-        $_SESSION['message'] = "Utilisateur modifié.";
+        $_SESSION['confirmation'] = "Utilisateur modifié."; // message
         header("Location:edit.php");
       }
       else { throw new WrongUserIDException(); }
@@ -135,7 +122,7 @@ class AdminManager {
       if ($this->find($oldPseudo)){
         $bdd = $this->db;
         $this->db->exec('DELETE FROM users WHERE id = '.(int) $id);
-        $_SESSION['message'] = "Utilisateur supprimé.";
+        $_SESSION['error'] = "Utilisateur supprimé."; // message
         // Redirect
         header("Location:admin.php");
       }

@@ -12,9 +12,7 @@ class UserManager {
   }
 
   public function login($email, $pw) {
-
     try {
-
       if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
         throw new WrongUserLengthException();
       }
@@ -22,7 +20,11 @@ class UserManager {
         throw new WrongPasswordLengthException();
       }
       $pw = sha1($pw);
-
+      // Verify if user account has been activated
+      if (!($this->activeAccount($email))) {
+        throw new InvalidAccountException();
+      }
+      // Verify login credentials
       if ($this->find($email) && $this->verifyLogin($email, $pw)) {
           $_SESSION['email'] = $email;
           if($_SESSION['email'] == 'admin') {
@@ -32,20 +34,15 @@ class UserManager {
           }
       }
       else { throw new InvalidUserException(); }
-
     }
     catch(WrongUserLengthException $e) { $e->showMessage(); }
     catch(WrongPasswordLengthException $e) { $e->showMessage(); }
+    catch(InvalidAccountException $e) { $e->showMessage(); }
     catch(InvalidUserException $e) { $e->showMessage(); }
   }
 
   public function register($email, $pw, $pw2) {
     try {
-
-        if(!empty($_SESSION['email'])) {
-          echo $_SESSION['email'];
-        }
-
       // All possible errors
       if ($this->find($email)) { throw new UnavailableEmailException(); }
       if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
@@ -63,11 +60,9 @@ class UserManager {
         'email' => $email,
         'pw' => sha1($pw)
       ]);
-
-      /*if($_SESSION['email'] == 'admin') {
-        header("location: admin/admin.php");
-      }*/ // USELESS
-      $bdd = $this->db; //////////////////////
+      /* Add row to confirm awaiting account validation */
+      // Get assigned user id
+      $bdd = $this->db;
       $req = $bdd->prepare("
         SELECT id FROM users
         WHERE email=:email
@@ -76,28 +71,23 @@ class UserManager {
         'email' => $email
       ]);
       $donnees = $req->fetch();
-      $user_id = $donnees['id']; ///////////////////////////
-      //create a random key
-      //$key = $pw . $email . date('mY');
+      $user_id = $donnees['id'];
+      // Create a random key
       $key = $pw . $email . date('mY');
       $key = md5($key);
-      //add confirm row
+      // Add confirm row
       $confirm = $this->db->query("
         INSERT INTO `confirm`
         VALUES(NULL,'$user_id','$key','$email')
       ");
-      if($confirm){
+      if($confirm) {
         $_SESSION['signup'] = $email;
         $_SESSION['key'] = $key;
-        //$_SESSION['message'] = "Veuillez confirmer votre adresse mail via le lien que vous a été envoyé.";
         $_SESSION['confirmation'] = "Veuillez confirmer votre adresse mail via le lien que vous a été envoyé.";
-
         header('location:inscription.php');
       } else {
-          //$action['result'] = 'error';
           unset($_SESSION['signup']);
       }
-      //header('location:app/index.php');
     }
     // Exceptions CATCH blocks
     catch (WrongUserLengthException $e) { $e->showMessage(); }
@@ -115,6 +105,26 @@ class UserManager {
     $req->execute([
       'email' => $email,
       'pw' => $pw
+    ]);
+    $rows = $req->fetch(PDO::FETCH_NUM);
+    $count = $rows[0];
+    // IF res = $email AND $pw, 1 result
+     if($count == 1) {
+       return true;
+     } else {
+       return false;
+     }
+  }
+
+  public function activeAccount($email) {
+    $bdd = $this->db;
+    $req = $bdd->prepare("
+      SELECT COUNT(*) FROM users
+      WHERE email=:email AND active = :active
+    "); // 1
+    $req->execute([
+      'email' => $email,
+      'active' => 1
     ]);
     $rows = $req->fetch(PDO::FETCH_NUM);
     $count = $rows[0];
@@ -221,7 +231,7 @@ class UserManager {
           'pw' => sha1($pw),
           'id' =>$id
         ));
-        $_SESSION['message'] = "Paramètres modifiés.";
+        $_SESSION['confirmation'] = "Paramètres modifiés.";
         $_SESSION['email'] = $newEmail;
         header($_SESSION['location']);
       } else {
@@ -243,7 +253,7 @@ class UserManager {
       $req->execute(array(
         'email' => $email
       ));
-      $_SESSION['message'] = "Utilisateur supprimé.";
+      $_SESSION['error'] = "Utilisateur supprimé.";
       unset($_SESSION['email']);
       // Redirect
       header('Location: goodbye.php');
@@ -257,7 +267,7 @@ class UserManager {
       if(empty($_POST['email']) || empty($_POST['password'])) {
         // User not logged in
         return false;
-      } 
+      }
     }
     return true;
   }

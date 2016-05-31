@@ -87,7 +87,7 @@ class ContactFormulaire {
             }
             else {
               $confirmation = $errorMsg;
-              $this->displayErreur($confirmation);
+              $this->displayError($confirmation);
               $hasError = true;
             }
 
@@ -104,9 +104,10 @@ class ContactFormulaire {
   }
 
   /* Displays error messages */
-  public function displayErreur($message) {
+  public function displayError($message) {
     $_SESSION['error'] = $message;
-    header('Location:contact.php');
+    header($_SESSION['location']);
+    //header('Location:contact.php');
   }
 
 }

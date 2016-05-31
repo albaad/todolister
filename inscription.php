@@ -75,10 +75,23 @@
         Bienvenue à To Do Lister!<br/><br/>
         Pour compléter votre inscription, cliquez sur le lien suivant :
         <br /><br />
-        <a href='http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code'>Cliquez ICI pour activer votre compte :)</a>
+        <a href='http://127.0.0.1/proyectos/nfa021-tp/confirm.php?email=$email&key=$code'>Cliquez ICI pour activer votre compte :)</a>
         <br /><br />
         Merci,
       "); /////////////////////////// FIX LOCALHOST
+
+      /*
+        $confirm->setMessage("
+          Bonjour $email,
+          <br /><br />
+          Bienvenue à To Do Lister!<br/><br/>
+          Pour compléter votre inscription, cliquez sur le lien suivant :
+          <br /><br />
+          <a href='http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code'>Cliquez ICI pour activer votre compte :)</a>
+          <br /><br />
+          Merci,
+        "); /////////////////////////// FIX LOCALHOST
+      */
       $subjectPrefix = '[To Do Lister]';
       $emailTo = $email;
       $confirmationMsg = "Veuillez confirmer votre adresse e-mail via le lien que vous a été envoyé.";

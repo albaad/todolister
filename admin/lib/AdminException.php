@@ -8,7 +8,7 @@ class AdminException extends Exception {
 
 class InvalidLoginException extends AdminException {
   public function showMessage(){
-    $_SESSION['message']  = "Mot de passe erroné !";
+    $_SESSION['error']  = "Mot de passe erroné !";
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
@@ -17,7 +17,7 @@ class InvalidLoginException extends AdminException {
 
 class InvalidUserException extends AdminException {
   public function showMessage(){
-    $_SESSION['message']  = "Login erroné !";
+    $_SESSION['error']  = "Login erroné !";
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
@@ -26,7 +26,7 @@ class InvalidUserException extends AdminException {
 
 class WrongUserLengthException extends AdminException {
   public function showMessage(){
-    $_SESSION['message']  = "Veuillez choisir un pseudo entre 4 et 15 caractères !";
+    $_SESSION['error']  = "Veuillez choisir un pseudo entre 4 et 15 caractères !";
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
@@ -35,7 +35,7 @@ class WrongUserLengthException extends AdminException {
 
 class UnavailableUsernameException extends AdminException {
   public function showMessage(){
-    $_SESSION['message']  = "Le pseudo n'est pas disponible.";
+    $_SESSION['error']  = "Le pseudo n'est pas disponible.";
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
@@ -44,7 +44,7 @@ class UnavailableUsernameException extends AdminException {
 
 class UnavailableEmailException extends AdminException {
   public function showMessage(){
-    $_SESSION['message']  = "Un compte lié à cet e-mail existe déjà.";
+    $_SESSION['error']  = "Un compte lié à cet e-mail existe déjà.";
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
@@ -53,7 +53,7 @@ class UnavailableEmailException extends AdminException {
 
 class PasswordsDontMatchException extends AdminException {
   public function showMessage(){
-    $_SESSION['message']  = "Les mots de passe ne correspondent pas !";
+    $_SESSION['error']  = "Les mots de passe ne correspondent pas !";
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
@@ -62,7 +62,7 @@ class PasswordsDontMatchException extends AdminException {
 
 class WrongPasswordLengthException extends AdminException {
   public function showMessage(){
-    $_SESSION['message']  = "Veuillez saisir un mot de passe entre 4 et 15 caractères !";
+    $_SESSION['error']  = "Veuillez saisir un mot de passe entre 4 et 15 caractères !";
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
@@ -71,7 +71,7 @@ class WrongPasswordLengthException extends AdminException {
 
 class WrongUserIDException extends AdminException {
   public function showMessage(){
-    $_SESSION['message'] = 'ID n\'existe pas !';
+    $_SESSION['error'] = 'ID n\'existe pas !';
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
@@ -80,7 +80,7 @@ class WrongUserIDException extends AdminException {
 
 class WrongUserEmailException extends AdminException {
   public function showMessage(){
-    $_SESSION['message'] = 'L\'email n\'existe pas !';
+    $_SESSION['error'] = 'L\'email n\'existe pas !';
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
@@ -89,12 +89,23 @@ class WrongUserEmailException extends AdminException {
 
 class UserNotLoggedInException extends AdminException {
   public function showMessage(){
-    $_SESSION['message'] = 'Vous n\'êtes pas loggé !';
+    $_SESSION['error'] = 'Vous n\'êtes pas loggé !';
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
-     header('Location:/authentification.php');
+     header('Location:authentification.php');
   }
 }
+
+class InvalidAccountException extends AdminException {
+  public function showMessage(){
+    $_SESSION['error'] = "Votre compte n'a pas encore été activé.\nVeuillez vérifier votre boîte mail et confirmer votre inscription.";
+    if(isset($_SESSION['location'])) {
+      header($_SESSION['location']);
+    }
+     header('Location:authentification.php');
+  }
+}
+
 
 ?>

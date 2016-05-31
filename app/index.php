@@ -13,8 +13,6 @@
     unset($_SESSION['project_title']);
   }
 
-  //$connect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-	//$db = $connect->dbconnect();
   $db = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
 	$reader = new ListerManager($db);

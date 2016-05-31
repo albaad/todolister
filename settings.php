@@ -56,6 +56,7 @@
     $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
     $obj1 = new UserManager($bdd);
     $user1 = $obj1->delete($_GET['deletemail']);
+    unset($_GET['deletemail']); ///
     $_SESSION['error'] = "Votre compte a été supprimé.";
   }
 ?>
