@@ -52,7 +52,7 @@
       }
     }
 
-    if(isset($_SESSION['key']) && isset($_POST['signup'])) {
+    if(isset($_SESSION['key']) && isset($_SESSION['signup'])) {
       $code = $_SESSION['key'];
       $email = $_SESSION['signup'];
       unset($_SESSION['signup']);
