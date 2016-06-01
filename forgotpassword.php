@@ -2,7 +2,7 @@
 include 'inc/autorisation.php';
 $pageTitle = 'Récupérer mot de passe';
 include 'inc/header.php';
-include_once 'lib/ContactFormulaire.php';
+include_once 'lib/Mail.php';
 ?>
 
   <div class='login'>
@@ -33,12 +33,19 @@ include_once 'lib/ContactFormulaire.php';
     unset($_SESSION['key']);
     unset($_SESSION['forgot']);
     // Send the email
-    $confirm = new ContactFormulaire();
+    $confirm = new Mail();
     $confirm->setName('L\'équipe To Do Lister');
     $confirm->setEmail('noreply@todolister.com');
     $confirm->createSignature();
     $confirm->setSubject('Récupérez votre mot de passe');
-    $confirm->setMessage("
+
+    $subtitle = "Récupérez votre mot de passe To Do Lister";
+    $message = "Bonjour $email,";
+    $text = "Pour changer votre mot de passe, cliquez sur le lien suivant : ";
+    $link = "http://localhost/proyectos/nfa021-tp/changepassword.php?email=$email&key=$key";
+    $linkText = "Cliquez ici pour créer un nouveau mot de passe";
+    $confirm->setMessage($subtitle, $message, $text, $link, $linkText);
+    /*$confirm->setMessage("
       Bonjour $email,
       <br /><br />
       Vous avez oublié votre mot de passe ?<br/><br/>
@@ -47,7 +54,7 @@ include_once 'lib/ContactFormulaire.php';
       <a href='http://localhost/proyectos/nfa021-tp/changepassword.php?email=$email&key=$key'>
       Cliquez ICI pour créer un nouveau mot de passe</a>
       <br /><br />
-    ");///////////////////////////////////////////////////////////////
+    "); */ ///////////////////////////////////////////////////////////////
     $subjectPrefix = '[To Do Lister]';
     $emailTo = $email;
     $confirmationMsg = "Changez votre mot de passe via le lien que vous a été envoyé.";

@@ -43,7 +43,7 @@
 
       <div class="app-nav">
         <div class="list">
-          <h6 class="header">Projets</h6> <!-- Projects -->
+          <h6 class="header">Projets</h6>
 
           <?php if(!empty($projects)): ?>
           <ul class="items">
@@ -77,12 +77,9 @@
           </ul>
           <?php else: ?>
             <p>Vous n'avez ajouté aucun projet.</p>
-            <!-- <p>You haven't added any items yet.</p>-->
           <?php endif; ?>
 
           <form class="item-add" action="add.php" method="post">
-            <!--<input type="text" name="title" placeholder="Type a new project here." class="input" autocomplete="off" required>
-            <input type="submit" value="Add" class="submit-add-project">-->
             <input type="text" name="title" placeholder="Tapez le nom d'un nouveau projet ici." class="input" autocomplete="off" required>
             <input type="submit" value="Ajouter un projet" class="submit-add-project">
           </form>
@@ -104,8 +101,6 @@ if (isset($_GET['project_id'])) {
   $_SESSION['project_title'] = $_GET['title'];
 }
 if (isset($_SESSION['project_id'])) {
-  //$iconnect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-  //$idb = $iconnect->dbconnect();
   $idb = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
   $ireader = new ListerManager($idb);
@@ -142,19 +137,15 @@ if (isset($_SESSION['project_id'])) {
           </ul>
           <?php else: ?>
             <p>Vous n'avez ajouté aucune tâche.</p>
-            <!-- <p>You haven't added any items yet.</p>-->
           <?php endif; ?>
 
           <form class="item-add" action="add.php?project_id=<?php echo $_SESSION['project_id']; ?>" method="post">
-            <!-- <input type="text" name="name" placeholder="Type a new item here." class="input" autocomplete="off" required>
-            <input type="submit" value="Add" class="submit-add">-->
             <input type="text" name="name" placeholder="Tapez le nom d'une nouvelle tâche ici." class="input" autocomplete="off" required>
             <input type="submit" value="Ajouter une tâche" class="submit-add">
           </form>
 
 <?php } else { ?>
   <p id="noproject">Aucun projet n'a été sélectionné</p>
-  <!-- <p id="noproject">No project selected</p> -->
 <?php } ?>
 
         </div> <!-- end list -->

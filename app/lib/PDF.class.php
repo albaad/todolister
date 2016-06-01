@@ -75,9 +75,10 @@ class PDF extends FPDF {
   }
 
   function Header() {
-    $this->SetFont('Helvetica', 'B', 14);
+    $this->Image("../img/logo.png", 10, 10, 47, 9, "PNG");
+    $this->SetFont('Helvetica', 'B', 12);
     $this->SetTextColor(22, 170, 86);
-    $this->Text(20, 14, 'To Do Lister - '.$_SESSION['email'], 0, 'C', 0);
+    $this->Text(70, 17, $_SESSION['email'], 0, 'C', 0);
     $this->Ln(30);
   }
 

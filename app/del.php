@@ -5,12 +5,9 @@ if(isset($_GET['as'], $_GET['item'])) {
 	$as	= $_GET['as'];
 	$item	= $_GET['item'];
 
-	//$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-	//$bdd = $conect->dbconnect();
 	$db = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
 	$lister = new ListerManager($db);
-	//$_SESSION['location'] = "Location: index.php";
 	$lister->del($item, $as);
 }
 else {
@@ -19,12 +16,9 @@ else {
 		$pas	= $_GET['pas'];
 		$item	= $_GET['item'];
 
-		//$conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-		//$bdd = $conect->dbconnect();
 		$db = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
 		$lister = new ListerManager($db);
-		//$_SESSION['location'] = "Location: index-pl.php";
 
 		unset($_SESSION['project_id']);
 		unset($_SESSION['project_title']);
@@ -33,7 +27,6 @@ else {
 	}
 
 	else {
-		//header('Location: index.php');
 		if(isset($_SESSION['location'])) {
 			header($_SESSION['location']);
 		} else {

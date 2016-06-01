@@ -2,7 +2,7 @@
   include 'inc/autorisation.php';
   $pageTitle = 'Inscription';
   include 'inc/header.php';
-  include_once 'lib/ContactFormulaire.php';
+  include_once 'lib/Mail.php';
 ?>
 
   <div class='login'>
@@ -64,12 +64,19 @@
       unset($_SESSION['signup']);
       unset($_SESSION['key']);
       // Send the email
-      $confirm = new ContactFormulaire();
+      $confirm = new Mail();
       $confirm->setName('L\'équipe To Do Lister');
       $confirm->setEmail('noreply@todolister.com');
       $confirm->createSignature();
       $confirm->setSubject('Vérifiez votre adresse email');
-      $confirm->setMessage("
+
+      $subtitle = "Validez votre compte To Do Lister";
+      $message = "Bienvenue à To Do Lister !";
+      $text = "Pour compléter votre inscription, cliquez sur le lien suivant : ";
+      $link = "http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code";
+      $linkText = "Cliquez ici pour activer votre compte :)";
+      $confirm->setMessage($subtitle, $message, $text, $link, $linkText);
+      /*$confirm->setMessage("
         Bonjour $email,
         <br /><br />
         Bienvenue à To Do Lister!<br/><br/>
@@ -78,20 +85,7 @@
         <a href='http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code'>Cliquez ICI pour activer votre compte :)</a>
         <br /><br />
         Merci,
-      "); /////////////////////////// FIX LOCALHOST
-
-      /*
-        $confirm->setMessage("
-          Bonjour $email,
-          <br /><br />
-          Bienvenue à To Do Lister!<br/><br/>
-          Pour compléter votre inscription, cliquez sur le lien suivant :
-          <br /><br />
-          <a href='http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code'>Cliquez ICI pour activer votre compte :)</a>
-          <br /><br />
-          Merci,
-        "); /////////////////////////// FIX LOCALHOST
-      */
+      ");*/ /////////////////////////// FIX LOCALHOST
       $subjectPrefix = '[To Do Lister]';
       $emailTo = $email;
       $confirmationMsg = "Veuillez confirmer votre adresse e-mail via le lien que vous a été envoyé.";

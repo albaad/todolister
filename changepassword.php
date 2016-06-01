@@ -2,10 +2,6 @@
 include 'inc/autorisation.php';
 $pageTitle = 'Récupérer mot de passe';
 include 'inc/header.php';
-include_once 'lib/ContactFormulaire.php';
-/*<?php
-session_start();
-include_once 'admin/lib/Connection.php';*/
 
 //quick/simple validation
 if(empty($_GET['email']) || empty($_GET['key'])){
@@ -90,12 +86,6 @@ if(isset($_POST['submit']) && !empty($_POST['pw']) && !empty($_POST['pw2'])) {
           $_SESSION['error'] = 'Une erreur a eu lieu pendant la confirmation de votre e-mail';
       }
 
-/*
-      $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-      $usr = new UserManager($bdd);
-      $_SESSION['location'] = 'Location:forgotpassword.php';
-      $user1 = $usr->resetPassword($email, $pw, $pw2, $key);
-*/
   }
 
   // ... maybe send e-mail to confirm password change

@@ -1,7 +1,7 @@
 <?php
   $pageTitle = 'Contact';
   include 'inc/header.php';
-  include 'lib/ContactFormulaire.php';
+  include 'lib/Mail.php';
   include_once 'lib/UserManager.php';
 
   $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
@@ -45,7 +45,7 @@
 
 <?php
 if(isset($_POST['submit'])) {
-  $contact = new ContactFormulaire();
+  $contact = new Mail();
   if($contact->testForm()) {
     $contact->retrieveForm();
     $contact->createSignature();

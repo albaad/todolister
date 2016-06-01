@@ -1,11 +1,3 @@
-<!-- Add icon library -->
-<?php
-/*  include '../lib/UserManager.php';
-  $conect = ConnectionSingleton::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-  $bdd = $conect->dbconnect();
-  $usrmg = new UserManager($bdd);
-  $loggedin = $usrmg->is_logged_in();*/
-?>
 
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/iconbarmenu.css" media="screen" title="no title" charset="utf-8">

@@ -83,7 +83,6 @@ class UserManager {
       if($confirm) {
         $_SESSION['signup'] = $email;
         $_SESSION['key'] = $key;
-        //$_SESSION['confirmation'] = "Veuillez confirmer votre adresse mail via le lien que vous a été envoyé.";
         header('location:inscription.php');
       } else {
           unset($_SESSION['signup']);
