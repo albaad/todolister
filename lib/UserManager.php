@@ -13,6 +13,9 @@ class UserManager {
 
   public function login($email, $pw) {
     try {
+      if (! $this->find($email)) {
+        throw new WrongUserEmailException();
+      }
       if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
         throw new WrongUserLengthException();
       }
@@ -35,6 +38,7 @@ class UserManager {
       }
       else { throw new InvalidUserException(); }
     }
+    catch(WrongUserEmailException $e) { $e->showMessage(); }
     catch(WrongUserLengthException $e) { $e->showMessage(); }
     catch(WrongPasswordLengthException $e) { $e->showMessage(); }
     catch(InvalidAccountException $e) { $e->showMessage(); }

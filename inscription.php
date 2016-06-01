@@ -65,9 +65,9 @@
       unset($_SESSION['key']);
       // Send the email
       $confirm = new Mail();
-      $confirm->setName('L\'équipe To Do Lister');
+      $confirm->setName('To Do Lister');
       $confirm->setEmail('noreply@todolister.com');
-      $confirm->createSignature();
+      $confirm->createSignature(false);
       $confirm->setSubject('Vérifiez votre adresse email');
 
       $subtitle = "Validez votre compte To Do Lister";

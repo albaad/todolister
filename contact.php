@@ -48,7 +48,7 @@ if(isset($_POST['submit'])) {
   $contact = new Mail();
   if($contact->testForm()) {
     $contact->retrieveForm();
-    $contact->createSignature();
+    $contact->createSignature(true);
     $subjectPrefix = '[To Do Lister]';
     $emailTo = '<test.dev.at@gmail.com>';
     $confirmationMsg = "Votre message a été envoyé";

@@ -36,7 +36,7 @@ include_once 'lib/Mail.php';
     $confirm = new Mail();
     $confirm->setName('L\'équipe To Do Lister');
     $confirm->setEmail('noreply@todolister.com');
-    $confirm->createSignature();
+    $confirm->createSignature(false);
     $confirm->setSubject('Récupérez votre mot de passe');
 
     $subtitle = "Récupérez votre mot de passe To Do Lister";

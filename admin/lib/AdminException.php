@@ -80,7 +80,7 @@ class WrongUserIDException extends AdminException {
 
 class WrongUserEmailException extends AdminException {
   public function showMessage(){
-    $_SESSION['error'] = 'L\'email n\'existe pas !';
+    $_SESSION['error'] = 'Il n\'existe aucun compte lié à cet e-mail.';
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }

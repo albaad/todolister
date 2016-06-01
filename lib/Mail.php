@@ -49,35 +49,24 @@ class Mail {
   }
   public function setMessage($subtitle, $message, $text, $link, $linkText){
     //$this->message = $message;
-    $this->message = "<!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset='utf-8' content='text/html'>
-            <title></title>
-            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-            <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet'>
-            <link href='http://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' type='text/css'>
-            <link href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet'>
-          </head>
-          <body>
-            <div class='container'>
-              <div class='logo'>
-                <a href='http://localhost/proyectos/nfa021-tp/index.php'>
-                  <i class='fa fa-list'></i>
-                  <span>&nbsp;To Do Lister</span>
+    $this->message = "<body>
+            <div class='container' style='min-width: 650; max-width: 700; padding: 2% 20%; text-align: center; font-family: Arial,helvetica,sans-serif; font-size: 15px;'>
+              <div class='logo' style='display: block; margin-bottom: 10px;'>
+                <a href='http://localhost/proyectos/nfa021-tp/index.php' style='text-decoration: none;'>
+                  <img src='http://i1228.photobucket.com/albums/ee460/reinovacio/ToDoLister/logo-sm_zpshfz57b6b.png' border='0'/>
                 </a>
               </div>
-              <div class='space-bar'></div>
-              <span class='sub-title'>$subtitle</span>
-              <hr>
-              <div class='content'>
-                <p>$message</p>
-                <p>$text</p>
-                <p id='button'>
-                  <a href='$link'>
+              <div class='space-bar' style='display: block; min-width: 100%; height: 10px; background-color: #8d949a;'></div>
+              <span class='sub-title' style='display: block; margin: 12px 0; color: #8d949a; font-size: 20px;'>$subtitle</span>
+                <hr style='display: block; height: 2px; border: 0; border-top: 2px solid #EAEAEA; margin: 1em 0; padding: 0;'>
+              <div class='content' style='text-align: left;'>
+                <p style='margin-bottom: 12px;'>$message</p>
+                <p style='margin-bottom: 12px;'>$text</p>
+                <p style='margin-bottom: 12px; text-align: center;'>
+                  <a href='$link' style='text-decoration: none; background-color: #2ec966; color: #f3f3f3; display: inline-block; text-align: center; height: 25px; width: auto; padding: 10px 20px 5px 20px;'>
                   $linkText</a>
                 </p>
-                <p id='signature'>
+                <p style='text-align: left; margin: 20px 0 30px 0;'>
                   L'équipe To Do Lister
                 </p>
               </div>
@@ -102,13 +91,15 @@ class Mail {
           #button a:hover { background-color: #16aa56;}
           #signature { text-align: left; margin: 20px 0 30px 0;}
         </style>
-     </body>
-    </html>";
+     </body>";
   }
 
   /* Generates email signature */
-  public function createSignature() {
-    $this->signature = "<br/> $this->name <br /> $this->email <br />";
+  public function createSignature($bool) {
+    if ($bool)
+      $this->signature = "<br/> $this->name <br /> $this->email <br />";
+    else
+      $this->signature = "";
   }
 
   /* Sends e-mail */
