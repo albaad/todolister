@@ -12,23 +12,7 @@ include 'inc/adminrights.php';
   <div class="login">
     <h4>Modifier utilisateur</h4>
 
-    <div class="error">
-      <?php
-      if (isset($_SESSION['error'])) {
-          echo $_SESSION['error'];
-          unset($_SESSION['error']);
-      }
-      ?>
-    </div>
-
-    <div class="success">
-      <?php
-        if(isset($_SESSION['confirmation'])) {
-          echo $_SESSION['confirmation'];
-          unset($_SESSION['confirmation']);
-        }
-      ?>
-    </div>
+    <?php include '../inc/messages.php'; ?>
 
     <form class="" action="edit.php" method="post">
       <input type="text" name="id" placeholder="id"></input>

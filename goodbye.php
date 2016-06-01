@@ -5,13 +5,7 @@
 
   <div class="login">
 
-    <div class="error">
-      <?php
-      if (isset($_SESSION['error'])) {
-          echo $_SESSION['error'];
-          unset($_SESSION['error']);
-      } ?>
-    </div>
+    <?php include 'inc/messages.php'; ?>
 
     <div class="message-box">
       <p style="color: #f2f2f2; text-align: justify;">

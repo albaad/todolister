@@ -7,14 +7,7 @@
   <div class="login">
     <h2>Paramètres</h2>
 
-    <div class="error">
-      <?php
-        if (isset($_SESSION['error'])) {
-            echo $_SESSION['error'];
-            unset($_SESSION['error']);
-        }
-      ?>
-    </div>
+    <?php include 'inc/messages.php'; ?>
 
     <?php if (isset($_SESSION['email'])){ ?>
     <div class="non-liste">

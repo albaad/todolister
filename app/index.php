@@ -1,6 +1,5 @@
 <?php
   $pageTitle = 'To Do Lister';
-
   include_once 'appmenu.php';
   include_once '../lib/ListerManager.php';
 
@@ -66,11 +65,9 @@
                   </a>
                 </span>
 
-                <?php //if($item['done']) : ?>
-                    <a href="javascript:delproject('<?php echo $item['id'];?>', '<?php echo $item['title'];?>')"class="del-button">
-                    <i class="fa fa-remove"></i>
-                  </a>
-                <?php //endif; ?>
+                <a href="javascript:delproject('<?php echo $item['id'];?>', '<?php echo $item['title'];?>')"class="del-button">
+                  <i class="fa fa-remove"></i>
+                </a>
 
               </li>
             <?php endforeach; ?>

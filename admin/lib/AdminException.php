@@ -26,21 +26,21 @@ class InvalidUserException extends AdminException {
 
 class WrongUserLengthException extends AdminException {
   public function showMessage(){
-    $_SESSION['error']  = "Veuillez choisir un pseudo entre 4 et 15 caractères !";
+    $_SESSION['error']  = "Veuillez choisir une adresse e-mail entre 4 et 50 caractères !";
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
   }
 }
 
-class UnavailableUsernameException extends AdminException {
+/*class UnavailableUsernameException extends AdminException {
   public function showMessage(){
     $_SESSION['error']  = "Le pseudo n'est pas disponible.";
     if(isset($_SESSION['location'])) {
       header($_SESSION['location']);
     }
   }
-}
+}*/
 
 class UnavailableEmailException extends AdminException {
   public function showMessage(){

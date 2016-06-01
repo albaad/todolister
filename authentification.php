@@ -9,23 +9,7 @@
 
       <h2>Authentification</h2>
 
-      <div class="error">
-        <?php
-        if (isset($_SESSION['error'])) {
-            echo $_SESSION['error'];
-            unset($_SESSION['error']);
-        }
-        ?>
-      </div>
-
-      <div class="success">
-        <?php
-          if(isset($_SESSION['confirmation'])) {
-            echo $_SESSION['confirmation'];
-            unset($_SESSION['confirmation']);
-          }
-        ?>
-      </div>
+      <?php include 'inc/messages.php'; ?>
 
       <form name="register" method="POST" action="authentification.php">
         <input name='email' placeholder='E-Mail' type='text'></input>

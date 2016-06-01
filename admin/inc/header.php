@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title><?php echo $pageTitle ?></title>
 
+		<link rel="shortcut icon" type="image/x-icon" href="../img/list-16.ico">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/menu.css">

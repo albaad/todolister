@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(20) NOT NULL,
+  `email` varchar(250) NOT NULL,
   `pw` varchar(50) NOT NULL,
   `active` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id`),
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `confirm` (
   `id` int(11) NOT NULL auto_increment,
   `user_id` int(11) NOT NULL,
   `key` varchar(128) NOT NULL default '',
-  `email` varchar(250) default NULL,
+  `email` varchar(250) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 

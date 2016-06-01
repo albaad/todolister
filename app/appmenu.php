@@ -1,4 +1,5 @@
 
+		<link rel="shortcut icon" type="image/x-icon" href="../img/list-16.ico">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/iconbarmenu.css" media="screen" title="no title" charset="utf-8">
 

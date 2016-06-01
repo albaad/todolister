@@ -16,7 +16,7 @@ class UserManager {
       if (! $this->find($email)) {
         throw new WrongUserEmailException();
       }
-      if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
+      if (is_null($email) || strlen($email) < 3 || strlen($email) > 50) {
         throw new WrongUserLengthException();
       }
       if (is_null($pw) || strlen($pw) < 3 || strlen($pw) > 16) {
@@ -49,7 +49,7 @@ class UserManager {
     try {
       // All possible errors
       if ($this->find($email)) { throw new UnavailableEmailException(); }
-      if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
+      if (is_null($email) || strlen($email) < 3 || strlen($email) > 50) {
         throw new WrongUserLengthException(); }
       if ($pw != $pw2) { throw new PasswordsDontMatchException(); }
       if (is_null($pw) || strlen($pw) < 3 || strlen($pw) > 16) {
@@ -257,7 +257,7 @@ class UserManager {
         $id = $this->getIdByEmail($email);
         // If email has changed: Check if new email is available
         if ($email != $newEmail) {
-          if (is_null($email) || strlen($email) < 3 || strlen($email) > 20) {
+          if (is_null($email) || strlen($email) < 3 || strlen($email) > 50) {
             throw new WrongUserLengthException(); }
           if($this->find($newEmail)) {
             throw new UnavailableEmailException();
