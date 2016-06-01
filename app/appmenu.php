@@ -11,11 +11,13 @@
 <link rel="stylesheet" href="../css/iconbarmenu.css" media="screen" title="no title" charset="utf-8">
 
 <div class="icon-bar">
+  <div class="logo-nav">
+    <a href="index.php"><i class="fa fa-list"></i> <span>&nbsp;To Do Lister</span></a>
+  </div>
   <div class="icon-nav">
     <a class="disabled" href="index.php"><i class="fa fa-home"></i></a>
     <a href="../contact.php"><i class="fa fa-envelope"></i></a>
     <a href="../settings.php"><i class="fa fa-cog"></i></a>
-    <!--<a <?php //if ($pageTitle != 'Accueil') echo 'class="hidden"'; ?> href="logout.php"><i class="fa fa-sign-out"></i></a>-->
     <a href="../logout.php"><i class="fa fa-sign-out"></i></a>
   </div>
 </div>

@@ -44,7 +44,7 @@ include_once 'lib/ContactFormulaire.php';
       Vous avez oublié votre mot de passe ?<br/><br/>
       Pour le changer, cliquez sur le lien suivant :
       <br /><br />
-      <a href='http://127.0.0.1/proyectos/nfa021-tp/changepassword.php?email=$email&key=$key'>
+      <a href='http://localhost/proyectos/nfa021-tp/changepassword.php?email=$email&key=$key'>
       Cliquez ICI pour créer un nouveau mot de passe</a>
       <br /><br />
     ");///////////////////////////////////////////////////////////////

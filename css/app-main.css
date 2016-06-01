@@ -15,7 +15,10 @@ a:hover {
 }
 
 .icon-nav a {
-  border: none;
+  padding: 15px 0;
+}
+.icon-bar a {
+  text-decoration: none;
 }
 
 /* Projects/Items flexbox styling */

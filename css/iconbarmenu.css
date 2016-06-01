@@ -5,12 +5,31 @@
   overflow: auto;
 }
 
+.logo-nav {
+  min-width: 140px;
+  float:left;
+  margin-left: 10%;
+}
+.logo-nav a {
+  color: #f2f2f2;
+  float: left;
+  min-width: 140px;
+  padding: 10px 12px;
+  font-size: 16px;
+}
+.logo-nav i {
+  font-size: 20px;
+}
+.logo-nav span {
+  font-family: "Sofia", cursive;
+}
+
 .icon-nav {
   width: 20%;
   float: right;
 }
-
-.icon-bar a {
+.icon-nav a {
+  min-height: 39px;
   width: 25%;
   padding: 12px 0;
   float: left;
@@ -26,6 +45,7 @@
 .icon-bar a.active {
   background-color: #16aa56;
 }
+
 
 .disabled {
   color: #f6f6f6;
