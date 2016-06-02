@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once 'Connection.php';
-include_once 'AdminException.php';
+include_once '../lib/Connection.php';
+include_once '../lib/ListerException.php';
 
 class AdminManager {
 
@@ -14,6 +14,8 @@ class AdminManager {
   public function addUser($email, $pw, $pw2) {
     try {
       // All possible errors
+      if (is_null($email) || is_null($pw) || is_null($pw2)) {
+        throw new NotFilledUpFormException(); }
       if ($this->find($email)) { throw new UnavailableEmailException(); }
       if (is_null($email) || strlen($email) < 3 || strlen($email) > 50) {
         throw new WrongUserLengthException(); }
@@ -32,6 +34,7 @@ class AdminManager {
       header("Location:admin.php");
     }
     // Exceptions CATCH blocks
+    catch (NotFilledUpFormException $e) { $e->showMessage(); }
     catch (WrongUserLengthException $e) { $e->showMessage(); }
     catch (UnavailableEmailException $e) { $e->showMessage(); }
     catch (PasswordsDontMatchException $e) { $e->showMessage(); }
@@ -44,7 +47,7 @@ class AdminManager {
     return $req;
   }
 
-  public function verifyLogin($email, $pw) {
+  /*public function verifyLogin($email, $pw) {
     $bdd = $this->db;
     $req = $bdd->query("SELECT COUNT(email) FROM users WHERE email='$email' AND pw='$pw'");
     $rows = $req->fetch(PDO::FETCH_NUM);
@@ -52,7 +55,7 @@ class AdminManager {
     // IF res = $email AND $pw, 1 result
      if($count == 1) { return true; }
      else { return false; }
-  }
+  }*/
 
   public function find($email) {
     $bdd = $this->db;
@@ -91,7 +94,7 @@ class AdminManager {
         // Verify the new email does not already exist in the DB
         $oldEmail = $this->getUserById($id);
         if ($oldEmail != $email) {
-          if ($this->find($pseudo)) { throw new UnavailableEmailException(); }
+          if ($this->find($email)) { throw new UnavailableEmailException(); }
         }
         $bdd = $this->db;
         $req = $bdd->prepare('
@@ -118,8 +121,10 @@ class AdminManager {
 
   public function delete($id) {
     try {
-      $oldPseudo = $this->getUserById($id);
-      if ($this->find($oldPseudo)){
+      if (is_null($id)) {
+        throw new NotFilledUpIDException(); }
+      $email = $this->getUserById($id);
+      if ($this->find($email)){
         $bdd = $this->db;
         $this->db->exec('DELETE FROM users WHERE id = '.(int) $id);
         $_SESSION['error'] = "Utilisateur supprimé."; // message
@@ -132,6 +137,7 @@ class AdminManager {
       }
       else { throw new WrongUserIDException(); }
     }
+    catch (NotFilledUpIDException $e) { $e->showMessage(); }
     catch (WrongUserIDException $e) { $e->showMessage(); }
   }
 

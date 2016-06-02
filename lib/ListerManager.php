@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once '../admin/lib/Connection.php';
+include_once 'Connection.php';
 
 class ListerManager {
 

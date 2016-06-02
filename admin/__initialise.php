@@ -7,8 +7,8 @@ $pw = "cnam";
 
 $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
-$obj1 = new AdminManager($bdd);
-$admin_exists = $obj1->find($email);
+$admn = new AdminManager($bdd);
+$admin_exists = $admn->find($email);
 
 if(!$admin_exists) {
   $bdd = $this->db;

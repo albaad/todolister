@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once 'admin/lib/Connection.php';
-include_once 'admin/lib/AdminException.php';
+include_once 'Connection.php';
+include_once 'lib/ListerException.php';
 
 class UserManager {
 
@@ -13,6 +13,8 @@ class UserManager {
 
   public function login($email, $pw) {
     try {
+      if (is_null($email) || is_null($pw)) {
+        throw new NotFilledUpFormException(); }
       if (! $this->find($email)) {
         throw new WrongUserEmailException();
       }
@@ -38,6 +40,7 @@ class UserManager {
       }
       else { throw new InvalidUserException(); }
     }
+    catch (NotFilledUpFormException $e) { $e->showMessage(); }
     catch(WrongUserEmailException $e) { $e->showMessage(); }
     catch(WrongUserLengthException $e) { $e->showMessage(); }
     catch(WrongPasswordLengthException $e) { $e->showMessage(); }
@@ -48,6 +51,8 @@ class UserManager {
   public function register($email, $pw, $pw2) {
     try {
       // All possible errors
+      if (is_null($email) || is_null($pw) || is_null($pw2)) {
+        throw new NotFilledUpFormException(); }
       if ($this->find($email)) { throw new UnavailableEmailException(); }
       if (is_null($email) || strlen($email) < 3 || strlen($email) > 50) {
         throw new WrongUserLengthException(); }
@@ -93,6 +98,7 @@ class UserManager {
       }
     }
     // Exceptions CATCH blocks
+    catch (NotFilledUpFormException $e) { $e->showMessage(); }
     catch (WrongUserLengthException $e) { $e->showMessage(); }
     catch (UnavailableEmailException $e) { $e->showMessage(); }
     catch (PasswordsDontMatchException $e) { $e->showMessage(); }
@@ -101,6 +107,8 @@ class UserManager {
 
   public function forgottenPassword($email) {
     try {
+      if (is_null($email)) {
+        throw new ExmptyEmailException(); }
       // Check if an account exists for the given email
       if (!($this->find($email))) { throw new WrongUserEmailException(); }
       // Get hashed password and user id
@@ -128,14 +136,15 @@ class UserManager {
       if($confirm) {
         $_SESSION['forgot'] = 1;
         $_SESSION['key'] = $key;
-        $_SESSION['confirmation'] = "user-Veuillez changer votre mot de passe via le lien que vous a été envoyé.";
+        $_SESSION['confirmation'] = "Veuillez changer votre mot de passe via le lien que vous a été envoyé.";
         header('location:forgotpassword.php');
       } else {
-        $_SESSION['error'] = "user-Une erreur s'est produite";
+        $_SESSION['error'] = "Une erreur s'est produite";
         header('location:forgotpassword.php');
       }
     }
     // Exceptions CATCH block
+    catch (ExmptyEmailException $e) { $e->showMessage(); }
     catch (WrongUserEmailException $e) { $e->showMessage(); }
   }
 

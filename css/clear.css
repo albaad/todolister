@@ -81,17 +81,10 @@ h6 {
   display: block;
   text-align: center;
 }
-#arrow{
-   display:inline-block;
-	 width: 55px;
-	 height: 55px;
-   float: inherit;
-   text-align: center;
+#arrow-up{
+  font-size: 42px;
+	transition: background-image 0.4s ease-in-out;
 }
-#arrow{
-	 background: transparent url('../img/arrow-grey.png') top no-repeat;
-	 transition: background-image 0.4s ease-in-out;
-}
-#arrow:hover {
-	background-image: url('../img/arrow-black.png');
+#arrow-up:hover {
+	color: #000000;;
 }

@@ -7,6 +7,11 @@
   include 'inc/menu.php';
 
   include 'inc/adminrights.php';
+
+  if (isset($_SESSION['inline']) || isset($_SESSION['error'])) {
+    unset($_SESSION['error']);
+    unset($_SESSION['inline']);
+  }
 ?>
 
   <div class="login">

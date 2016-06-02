@@ -40,6 +40,8 @@ if(isset($_POST['submit'])) {
     $_SESSION['location'] = 'Location: contact.php';
     $contact->sendMail($subjectPrefix, $emailTo, $confirmationMsg, $errorMsg);
   }
+} else {
+      $_SESSION['location'] = 'Location: contact.php';
 }
 ?>
 

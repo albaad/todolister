@@ -20,7 +20,7 @@
       </div>
 
       <div class="center-arrow">
-        <a href="#header" class="smoothScroll" id="arrow" title=""></a>
+        <a href="#header" class="smoothScroll" id="arrow-up"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
       </div>
 
     </div>

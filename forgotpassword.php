@@ -19,13 +19,18 @@ include_once 'lib/Mail.php';
   </div>
 
   <?php
-  if(isset($_POST['submit']) && !empty($_POST['email'])) {
-    // Generate key if given email correspond to existing account
-  	$email = $_POST['email'];
-    $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-    $usr = new UserManager($bdd);
-    $_SESSION['location'] = 'Location:forgotpassword.php';
-    $user1 = $usr->forgottenPassword($email);
+  if(isset($_POST['submit'])) {
+     if(!isset($_POST['email']) || empty($_POST['email'])) {
+       $_SESSION['error'] = "Veuillez indiquer votre adresse e-mail";
+       header('Location:forgotpassword.php');
+     } else {
+      // Generate key if given email correspond to existing account
+    	$email = $_POST['email'];
+      $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+      $usr = new UserManager($bdd);
+      $_SESSION['location'] = 'Location:forgotpassword.php';
+      $user1 = $usr->forgottenPassword($email);
+    }
 	}
   if(isset($_SESSION['forgot']) && isset($_SESSION['key'])) {
     $key = $_SESSION['key'];

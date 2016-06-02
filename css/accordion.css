@@ -12,7 +12,7 @@
 }
 /* Add a background color to the button if it is clicked on, and on hover */
 .accordion.active, .accordion:hover {
-    background-color: #FFFFFF;
+    background-color: #fff;
 }
 div.panel {
 		width: auto;
