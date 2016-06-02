@@ -38,9 +38,9 @@
       } else {
         if(isset($_POST['agree'])) {
           $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-          $obj1 = new UserManager($bdd);
+          $usr = new UserManager($bdd);
           $_SESSION['location'] = 'Location:inscription.php';
-          $user1 = $obj1->register($email, $pw, $pw2);
+          $user1 = $usr->register($email, $pw, $pw2);
         } else {
           $_SESSION['error'] = 'Veuillez accepter les conditions d\'utilisation';
           header("Location:inscription.php");

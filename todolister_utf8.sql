@@ -11,7 +11,7 @@
 --
 -- Database:  `todolister`
 --
-CREATE DATABASE IF NOT EXISTS `todolister` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `todolister` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `todolister`;
 -- --------------------------------------------------------
 --
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `active` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -40,13 +40,13 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `created` datetime DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 --
 -- Constraints for table `projects`
 --
 ALTER TABLE `projects`
 ADD CONSTRAINT fk_project_user_id FOREIGN KEY (user_id) REFERENCES `users`(id)
-	ON DELETE CASCADE; -- If user is deleted, so are their projets
+	ON DELETE CASCADE; -- If user is deleted, so are its projets
 
 -- --------------------------------------------------------
 
@@ -61,13 +61,13 @@ CREATE TABLE IF NOT EXISTS `items` (
   `created` datetime DEFAULT NULL,
   `completed` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 --
 -- Constraints for table `items`
 --
 ALTER TABLE `items`
 ADD CONSTRAINT fk_items_project_id FOREIGN KEY (project_id) REFERENCES `projects`(id)
-	ON DELETE CASCADE; -- If project is delted, so are its items
+	ON DELETE CASCADE; -- If project is deleted, so are its items
 
 -- --------------------------------------------------------
 
@@ -80,13 +80,13 @@ CREATE TABLE IF NOT EXISTS `confirm` (
   `key` varchar(128) NOT NULL default '',
   `email` varchar(250) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 --
 -- Constraints for table `confirm`
 --
 ALTER TABLE `confirm`
 ADD CONSTRAINT fk_confirm_user_id FOREIGN KEY (user_id) REFERENCES `users`(id)
-	ON DELETE CASCADE; -- If user is deleted, corresponding confirm row
+	ON DELETE CASCADE; -- If user is deleted, so is its corresponding confirm row
 
 
 -- --------------------------------------------------------

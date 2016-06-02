@@ -53,6 +53,8 @@ class UserManager {
       // All possible errors
       if (is_null($email) || is_null($pw) || is_null($pw2)) {
         throw new NotFilledUpFormException(); }
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        throw new InvalidEmailFormatException();  }
       if ($this->find($email)) { throw new UnavailableEmailException(); }
       if (is_null($email) || strlen($email) < 3 || strlen($email) > 50) {
         throw new WrongUserLengthException(); }
@@ -99,6 +101,7 @@ class UserManager {
     }
     // Exceptions CATCH blocks
     catch (NotFilledUpFormException $e) { $e->showMessage(); }
+    catch (InvalidEmailFormatException $e) { $e->showMessage(); }
     catch (WrongUserLengthException $e) { $e->showMessage(); }
     catch (UnavailableEmailException $e) { $e->showMessage(); }
     catch (PasswordsDontMatchException $e) { $e->showMessage(); }

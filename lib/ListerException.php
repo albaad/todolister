@@ -118,4 +118,14 @@ class NotFilledUpIDException extends ListerException {
   }
 }
 
+class InvalidEmailFormatException extends ListerException {
+  public function showMessage(){
+    $_SESSION['error'] = "Adresse e-mail incorrecte";
+    if(isset($_SESSION['location'])) {
+      header($_SESSION['location']);
+    } else {
+     header('Location:inscription.php');
+   }
+  }
+}
 ?>
