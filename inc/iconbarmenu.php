@@ -13,13 +13,14 @@
 
 <div class="icon-bar">
   <div class="logo-nav">
-    <a href="index.php"><i class="fa fa-list"></i> <span>&nbsp;To Do Lister</span></a>
+    <a href="app/index.php" alt="Accueil"><i class="fa fa-list"></i> <span>&nbsp;To Do Lister</span></a>
   </div>
   <div class="icon-nav">
-    <a <?php if ($pageTitle == 'To Do Lister') echo 'class="disabled"'; ?> href="app/index.php"><i class="fa fa-home"></i></a>
-    <a <?php if ($pageTitle == 'Authentification' || $pageTitle == 'Inscription') echo 'class="disabled"'; if ($loggedin) echo 'class="hidden"'; ?> href="inscription.php"><i class="fa fa-user"></i></a>
-    <a <?php if ($pageTitle == 'Contact') echo 'class="disabled"'; ?> href="contact.php"><i class="fa fa-envelope"></i></a>
-    <a <?php if ($pageTitle == 'Parametres') echo 'class="disabled"'; if (!$loggedin) echo 'class="hidden"'; ?> href="settings.php"><i class="fa fa-cog"></i></a>
-    <a <?php if (!$loggedin) echo 'class="hidden"'; ?> href="logout.php"><i class="fa fa-sign-out"></i></a>
+    <a <?php if ($pageTitle == 'To Do Lister') echo 'class="disabled"'; ?> href="app/index.php" title="Accueil"><i class="fa fa-home"></i></a>
+    <a <?php if ($pageTitle == 'Authentification' || $pageTitle == 'Inscription') echo 'class="disabled"'; if ($loggedin) echo 'class="hidden"'; ?> href="inscription.php" title="Inscription"><i class="fa fa-user"></i></a>
+    <a <?php if ($pageTitle == 'Contact') echo 'class="disabled"'; ?> href="contact.php" title="Contact"><i class="fa fa-envelope"></i></a>
+    <a <?php if ($pageTitle == 'Parametres') echo 'class="disabled"'; if (!$loggedin) echo 'class="hidden"'; ?> href="settings.php" title="Paramètres"><i class="fa fa-cog"></i></a>
+    <a <?php if ($pageTitle == 'Aide') echo 'class="disabled"'; ?> href="aide.php" title="Aide"><i class="fa fa-info"></i></a>
+    <a <?php if (!$loggedin) echo 'class="hidden"'; ?> href="logout.php" title="Logout"><i class="fa fa-sign-out"></i></a>
   </div>
 </div>

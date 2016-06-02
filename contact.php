@@ -47,6 +47,7 @@ if(isset($_POST['submit'])) {
 <?php
 // Built and tested with/for PHP 7 and 5.6.16
 // For localhost testing, edit php.ini:
+// (example for French ISP "Orange")
 /*
       [mail function]
       ; For Win32 only.

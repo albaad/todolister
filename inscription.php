@@ -14,7 +14,7 @@
     <form name="register" method="POST" action="inscription.php">
       <input name='email' placeholder='E-Mail' type='text'></input>
       <input name='password' placeholder='Password' type='password'></input>
-      <input name='password2' placeholder='Repeat password' type='password'></input>
+      <input name='password2' placeholder='Répéter password' type='password'></input>
       <div class='agree'>
         <input id='agree' name='agree' type='checkbox'>
         <label for='agree'></label>J'ai lu et accepté les conditions d'utilisation
@@ -44,10 +44,12 @@
     }
 
     if(isset($_SESSION['key']) && isset($_SESSION['signup'])) {
+      // Get variables
       $code = $_SESSION['key'];
       $email = $_SESSION['signup'];
       unset($_SESSION['signup']);
       unset($_SESSION['key']);
+
       // Send the email
       $confirm = new Mail();
       $confirm->setName('To Do Lister');
@@ -58,19 +60,10 @@
       $subtitle = "Validez votre compte To Do Lister";
       $message = "Bienvenue à To Do Lister !";
       $text = "Pour compléter votre inscription, cliquez sur le lien suivant : ";
-      $link = "http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code";
+      $link = "http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code"; /////////////////////////// FIX LOCALHOST
       $linkText = "Cliquez ici pour activer votre compte :)";
       $confirm->setMessage($subtitle, $message, $text, $link, $linkText);
-      /*$confirm->setMessage("
-        Bonjour $email,
-        <br /><br />
-        Bienvenue à To Do Lister!<br/><br/>
-        Pour compléter votre inscription, cliquez sur le lien suivant :
-        <br /><br />
-        <a href='http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code'>Cliquez ICI pour activer votre compte :)</a>
-        <br /><br />
-        Merci,
-      ");*/ /////////////////////////// FIX LOCALHOST
+
       $subjectPrefix = '[To Do Lister]';
       $emailTo = $email;
       $confirmationMsg = "Veuillez confirmer votre adresse e-mail via le lien que vous a été envoyé.";

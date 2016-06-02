@@ -15,23 +15,23 @@
         Êtes-vous prêt(e) à devenir plus organisé(é) et productif(ve) ? Let's go !
       </p>
 
-      <h6><i class="fa fa-user purple" aria-hidden="true"></i>&nbsp;&nbsp;Inscrivez-vous</h6>
-      <p>
+      <h6 class="accordion"><i class="fa fa-user purple" aria-hidden="true"></i>&nbsp;&nbsp;Inscrivez-vous</h6>
+      <div class="panel"><p>
         Commençons pour le commencement ! Vous devez vous <a href="inscription.php">inscrire</a> à To Do Lister.
         Allez à la page d'inscription pour créez votre compte gratuit... C'est fait ? On continue !
-      </p>
+      </p></div>
 
-      <h6><i class="fa fa-plus-square blue" aria-hidden="true"></i>&nbsp;&nbsp;Ajouter des projets</h6>
-      <p>
+      <h6 class="accordion"><i class="fa fa-plus-square blue" aria-hidden="true"></i>&nbsp;&nbsp;Ajouter des projets</h6>
+      <div class="panel"><p>
         C'est très rapide et facile d'ajouter des projets à votre To Do Lister.
         Cliquez sur 'Ajouter un projet', ou tapez sur la touché entrée, après avoir saisi le titre de votre nouveau projet.
       </p>
       <div class="guide-projects">
         <img src="img/guide_add_project.png" alt="Ajouter un projet" />
-      </div>
+      </div></div>
 
-      <h6><i class="fa fa-plus-square-o pink" aria-hidden="true"></i>&nbsp;&nbsp;Ajouter des tâches</h6>
-      <p>
+      <h6 class="accordion"><i class="fa fa-plus-square-o pink" aria-hidden="true"></i>&nbsp;&nbsp;Ajouter des tâches</h6>
+      <div class="panel"><p>
         Une fois votre projet créé, cliquez sur son titre pour le sélectionner et faire apparaître la liste associée.
         Sur celle-ci, cliquez sur 'Ajouter une tâche' après avoir saisi le nom de la tâche.
       </p>
@@ -40,10 +40,10 @@
       </div>
       <div class="guide-items">
         <img src="img/guide_add_item.png" alt="Ajouter une tâche" />
-      </div>
+      </div></div>
 
-      <h6><i class="fa fa-check-square-o green" aria-hidden="true"></i>&nbsp;&nbsp;Marquer une tâche comme complétée</h6>
-      <p>
+      <h6 class="accordion"><i class="fa fa-check-square-o green" aria-hidden="true"></i>&nbsp;&nbsp;Marquer une tâche comme complétée</h6>
+      <div class="panel"><p>
         Cochez tout simplement la case à côté de la tâche et elle sera marquée comme complétée.
       </p><br/>
       <p>
@@ -52,10 +52,10 @@
       </p>
       <div class="guide-mark">
         <img src="img/guide_mark_item.png" alt="Marquer une tâche comme complétée" />
-      </div>
+      </div></div>
 
-      <h6><i class="fa fa-times red" aria-hidden="true"></i>&nbsp;&nbsp;Supprimer une tâche</h6>
-      <p>
+      <h6 class="accordion"><i class="fa fa-times red" aria-hidden="true"></i>&nbsp;&nbsp;Supprimer une tâche</h6>
+      <div class="panel"><p>
         Cliquez sur la croix rouge à droite du nom de la tâche. Attention, cette opération est irréversible.
       </p><br/>
       <p>
@@ -64,6 +64,10 @@
       </p>
       <div class="guide-delete">
         <img src="img/guide_delete_item.png" alt="Supprimer une tâche" />
+      </div></div>
+
+      <div class="center-arrow">
+        <a href="#header" class="smoothScroll" id="arrow" title=""></a>
       </div>
 
     </div>

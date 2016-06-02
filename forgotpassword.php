@@ -28,10 +28,10 @@ include_once 'lib/Mail.php';
     $user1 = $usr->forgottenPassword($email);
 	}
   if(isset($_SESSION['forgot']) && isset($_SESSION['key'])) {
-        echo 'inside 2nd if';
     $key = $_SESSION['key'];
     unset($_SESSION['key']);
     unset($_SESSION['forgot']);
+
     // Send the email
     $confirm = new Mail();
     $confirm->setName('L\'équipe To Do Lister');
@@ -39,22 +39,13 @@ include_once 'lib/Mail.php';
     $confirm->createSignature(false);
     $confirm->setSubject('Récupérez votre mot de passe');
 
-    $subtitle = "Récupérez votre mot de passe To Do Lister";
+    $subtitle = "Réinitialisez votre mot de passe To Do Lister";
     $message = "Bonjour $email,";
-    $text = "Pour changer votre mot de passe, cliquez sur le lien suivant : ";
-    $link = "http://localhost/proyectos/nfa021-tp/changepassword.php?email=$email&key=$key";
+    $text = "Pour réinitialiser votre mot de passe, cliquez sur le lien suivant : ";
+    $link = "http://localhost/proyectos/nfa021-tp/changepassword.php?email=$email&key=$key"; ///////////////////////////////////////////////////////////////
     $linkText = "Cliquez ici pour créer un nouveau mot de passe";
     $confirm->setMessage($subtitle, $message, $text, $link, $linkText);
-    /*$confirm->setMessage("
-      Bonjour $email,
-      <br /><br />
-      Vous avez oublié votre mot de passe ?<br/><br/>
-      Pour le changer, cliquez sur le lien suivant :
-      <br /><br />
-      <a href='http://localhost/proyectos/nfa021-tp/changepassword.php?email=$email&key=$key'>
-      Cliquez ICI pour créer un nouveau mot de passe</a>
-      <br /><br />
-    "); */ ///////////////////////////////////////////////////////////////
+
     $subjectPrefix = '[To Do Lister]';
     $emailTo = $email;
     $confirmationMsg = "Changez votre mot de passe via le lien que vous a été envoyé.";

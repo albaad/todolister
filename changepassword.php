@@ -72,7 +72,6 @@ if(isset($_POST['submit']) && !empty($_POST['pw']) && !empty($_POST['pw2'])) {
 
   }
 
-  // ... maybe send e-mail to confirm password change
 }
 
 ?>

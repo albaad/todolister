@@ -19,6 +19,10 @@
         <img src="img/guide_pdf.png" alt="Fichier PDF" />
       </div>
 
+      <div class="center-arrow">
+        <a href="#header" class="smoothScroll" id="arrow" title=""></a>
+      </div>
+
     </div>
 
 <?php include('inc/footer.php'); ?>

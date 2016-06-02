@@ -75,3 +75,23 @@ h6 {
 .purple {
   color: #6A4CA6;
 }
+
+/* Smooth Up Scroll arrow*/
+.center-arrow {
+  display: block;
+  text-align: center;
+}
+#arrow{
+   display:inline-block;
+	 width: 55px;
+	 height: 55px;
+   float: inherit;
+   text-align: center;
+}
+#arrow{
+	 background: transparent url('../img/arrow-grey.png') top no-repeat;
+	 transition: background-image 0.4s ease-in-out;
+}
+#arrow:hover {
+	background-image: url('../img/arrow-black.png');
+}

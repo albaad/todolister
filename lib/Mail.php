@@ -24,7 +24,7 @@ class Mail {
        // Verifies email address format
        if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
          $error = "Format email invalide";
-         $this->displayErreur($error);
+         $this->displayError($error);
          return false;
        } else {
          return true;
@@ -32,7 +32,7 @@ class Mail {
     }
     else {
       $error = "Vous devez compléter tous les champs du formulaire !";
-      $this->displayErreur($error);
+      $this->displayError($error);
       return false;
     }
   }

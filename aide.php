@@ -1,7 +1,7 @@
 <?php
   include 'inc/autorisation.php';
 
-  $pageTitle = 'Index';
+  $pageTitle = 'Aide';
   include 'inc/header.php';
 ?>
 

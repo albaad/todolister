@@ -12,7 +12,7 @@
       <h2><i class="fa fa-list"></i> To Do Lister</h2>
 
       <h6>Accomplisez-en plus chaque jour</h6>
-      <p id="subtitle">Gérez vos tâches et vos projets partout avec To Do List. Chez vous,
+      <p id="subtitle">Gérez vos tâches et vos projets partout avec To Do Lister.<br> Chez vous,
         à l'école, au bureau, en ligne ou sur une copie hors ligne.</p>
 
       <div class="register">
