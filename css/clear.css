@@ -88,3 +88,37 @@ h6 {
 #arrow-up:hover {
 	color: #000000;;
 }
+
+
+/* MEDIA QUERIES for clear theme */
+/* Reduce margins for smaller screens/windows */
+
+@media screen and (max-width:950px) {
+  .index {
+    position: relative;
+    margin-left:15%;
+    margin-top: 5%;
+    width:80%;
+  }
+  .guide-box {
+    width: 90%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    text-align: justify;
+  }
+  .guide-select img {
+    width: 100% !important;
+    height: auto;
+    padding: 1px;
+    border: 1px solid #8d949a;
+  }
+  .guide-box h2 {
+    font-size: 2.7em;
+  }
+}
+/* Adapt to height */
+@media screen and (max-height:750px) {
+
+}
