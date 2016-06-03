@@ -1,8 +1,9 @@
 <?php
-  include 'inc/autorisation.php';
   $pageTitle = 'Inscription';
   include 'inc/header.php';
   include_once 'lib/Mail.php';
+
+  include 'inc/redirect.php';
 ?>
 
   <div class='login'>
@@ -65,7 +66,7 @@
       $subtitle = "Validez votre compte To Do Lister";
       $message = "Bienvenue à To Do Lister !";
       $text = "Pour compléter votre inscription, cliquez sur le lien suivant : ";
-      $link = "http://localhost/proyectos/nfa021-tp/confirm.php?email=$email&key=$code"; /////////////////////////// FIX LOCALHOST
+      $link = "http://localhost/todolister/confirm.php?email=$email&key=$code"; /////////////////////////// FIX LOCALHOST
       $linkText = "Cliquez ici pour activer votre compte :)";
       $confirm->setMessage($subtitle, $message, $text, $link, $linkText);
 

@@ -1,8 +1,8 @@
 <?php
-  include 'inc/autorisation.php';
-
   $pageTitle = 'To Do Lister';
   include 'inc/header.php';
+
+  include 'inc/redirect.php';
 ?>
   <link rel="stylesheet" type="text/css" href="css/clear.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">

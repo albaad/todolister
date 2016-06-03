@@ -47,7 +47,7 @@ include_once 'lib/Mail.php';
     $subtitle = "Réinitialisez votre mot de passe To Do Lister";
     $message = "Bonjour $email,";
     $text = "Pour réinitialiser votre mot de passe, cliquez sur le lien suivant : ";
-    $link = "http://localhost/proyectos/nfa021-tp/changepassword.php?email=$email&key=$key"; ///////////////////////////////////////////////////////////////
+    $link = "http://localhost/todolister/changepassword.php?email=$email&key=$key"; ///////////////////////////////////////////////////////////////
     $linkText = "Cliquez ici pour créer un nouveau mot de passe";
     $confirm->setMessage($subtitle, $message, $text, $link, $linkText);
 

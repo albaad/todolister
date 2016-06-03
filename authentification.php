@@ -1,8 +1,8 @@
 <?php
-  include 'inc/autorisation.php';
-
   $pageTitle = 'Authentification';
   include 'inc/header.php';
+
+  include 'inc/redirect.php';
 ?>
 
     <div class="login">
