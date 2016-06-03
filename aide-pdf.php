@@ -23,6 +23,13 @@
         <a href="#header" class="smoothScroll" id="arrow-up"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
       </div>
 
+      <noscript> <!-- If JavaScript disabled:-->
+        <style>
+            #arrow-up {display:none;} /* Hide Smooth Scroll arrow */
+        </style>
+        <div class="espace"></div>
+      </noscript>
+
     </div>
 
 <?php include('inc/footer.php'); ?>
