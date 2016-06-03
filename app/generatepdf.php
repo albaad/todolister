@@ -80,7 +80,11 @@ if (!isset($_SESSION['email'])) {
     $pdf->Cell(0, 6, $line, 0, 1, 'C');
   }
 
+  // PDF file name: 'ToDoLister_DD/MM/YYYY.pdf'
+  $today = date('d-m-Y');
+  $filename = 'ToDoLister_'.$today.'.pdf';
+
   // Send PDF
-  $pdf->Output();
+  $pdf->Output('I', $filename);
 
 ?>
