@@ -2,8 +2,7 @@
   $pageTitle = 'Inscription';
   include 'inc/header.php';
   include_once 'lib/Mail.php';
-
-  include 'inc/redirect.php';
+  include 'inc/redirect.php'; // Redirect to app if user logged in
 ?>
 
   <div class='login'>
@@ -13,8 +12,8 @@
     <?php include 'inc/messages.php'; ?>
 
     <form name="register" method="POST" action="inscription.php">
-      <input name='email' placeholder='E-Mail' type='text'></input>
-      <input name='password' placeholder='Password' type='password'></input>
+      <input name='email' placeholder='E-Mail' type='text' value='<?php echo @$_SESSION['email_register']; ?>'></input>
+      <input name='password' placeholder='Password' type='password' value='<?php echo @$_SESSION['pw_register']; ?>'></input>
       <input name='password2' placeholder='Répéter password' type='password'></input>
       <div class='agree'>
         <input id='agree' name='agree' type='checkbox'>
@@ -28,9 +27,13 @@
   </div>
 
   <?php
+    // Destroy SESSION variables keeping form data in case of validation error
+    unset($_SESSION['email_register']);
+    unset($_SESSION['pw_register']);
+
     if(isset($_POST['submit'])) {
-      $email = $_POST['email'];
-      $pw = $_POST['password'];
+      $email = $_POST['email']; $_SESSION['email_register'] = $email;
+      $pw = $_POST['password']; $_SESSION['pw_register'] = $pw;
       $pw2 = $_POST['password2'];
 
       if(empty($_POST['email']) || empty($_POST['password']) || empty($_POST['password2'])) {

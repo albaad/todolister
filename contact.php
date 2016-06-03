@@ -16,34 +16,43 @@
     <?php include 'inc/messages.php'; ?>
 
     <form name="contact" method="POST" action="contact.php">
-      <input name='name' placeholder='Nom' type='text'></input>
+      <input name='name' placeholder='Nom' type='text' value='<?php echo @$_SESSION['name_contact']; ?>'></input>
       <input name='email' placeholder='E-Mail' type='text' value='<?php if ($loggedin) echo $_SESSION['email'];?>'></input>
 
-      <input id='subject' name='subject' placeholder='Sujet' type='text'></input>
-      <textarea id='msg' name="msg" placeholder="Message"></textarea>
+      <input id='subject' name='subject' placeholder='Sujet' type='text' value='<?php echo @$_SESSION['subject_contact']; ?>'></input>
+      <textarea id='msg' name="msg" placeholder="Message" value='<?php echo @$_SESSION['msg_contact']; ?>'></textarea>
 
       <input class='animated' name='submit' type='submit' value='Envoyer'>
     </form>
 
   </div>
 
-<?php
-if(isset($_POST['submit'])) {
-  $contact = new Mail();
-  if($contact->testForm()) {
-    $contact->retrieveForm();
-    $contact->createSignature(true);
-    $subjectPrefix = '[To Do Lister]';
-    $emailTo = '<test.dev.at@gmail.com>';
-    $confirmationMsg = "Votre message a été envoyé";
-    $errorMsg = "L'envoi du message a échoué";
-    $_SESSION['location'] = 'Location: contact.php';
-    $contact->sendMail($subjectPrefix, $emailTo, $confirmationMsg, $errorMsg);
-  }
-} else {
-      $_SESSION['location'] = 'Location: contact.php';
-}
-?>
+  <?php
+    // Destroy SESSION variables keeping form data in case of validation error
+    unset($_SESSION['name_contact']);
+    unset($_SESSION['subject_contact']);
+    unset($_SESSION['msg_contact']);
+
+    if(isset($_POST['submit'])) {
+      $_SESSION['name_contact'] = @$_POST['name'];
+      $_SESSION['subject_contact'] = @$_POST['subject'];
+      $_SESSION['msg_contact'] = @$_POST['msg'];
+
+      $contact = new Mail();
+      if($contact->testForm()) {
+        $contact->retrieveForm();
+        $contact->createSignature(true);
+        $subjectPrefix = '[To Do Lister]';
+        $emailTo = '<test.dev.at@gmail.com>';
+        $confirmationMsg = "Votre message a été envoyé";
+        $errorMsg = "L'envoi du message a échoué";
+        $_SESSION['location'] = 'Location: contact.php';
+        $contact->sendMail($subjectPrefix, $emailTo, $confirmationMsg, $errorMsg);
+      }
+    } else {
+          $_SESSION['location'] = 'Location: contact.php';
+    }
+  ?>
 
 <?php include 'inc/footer.php'; ?>
 <?php

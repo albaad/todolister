@@ -1,8 +1,7 @@
 <?php
   $pageTitle = 'To Do Lister';
   include 'inc/header.php';
-
-  include 'inc/redirect.php';
+  include 'inc/redirect.php'; // Redirect to app if user logged in
 ?>
   <link rel="stylesheet" type="text/css" href="css/clear.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">
