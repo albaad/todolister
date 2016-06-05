@@ -36,13 +36,11 @@ class UserManager {
           // Check if user accepted cookies
           if(isset($_POST['cookies-session'])) {
             // Create cookie
-            //$salt = substr ($pw, 0, 2);
-            //$cookie = base64_encode ("$email:" . sha1 ($pw, $salt));
-            $cookie = $email; //
+            $salt = substr ($pw, 0, 2);
+            $cookie = base64_encode ($email . ":" . sha1 ($pw, $salt));
             // cookie will expire in 1 hour
-            setcookie ('todolister-session', $cookie, time() + 3600);
+            setcookie ('todolister', $cookie, time() + 3600);
           }
-
 
           if($_SESSION['email'] == 'admin') {
             header("location: admin/admin.php"); }

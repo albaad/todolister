@@ -2,7 +2,7 @@
   session_start();
 
   // Unset the cookie by setting it to a past time
-  setcookie ('todolister-session', "", time() - 3600);
+  setcookie ('todolister', "", time() - 3600);
 
   // Verify user is logged in
   if(!empty($_SESSION['email'])){

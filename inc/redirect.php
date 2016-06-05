@@ -22,4 +22,3 @@
       header("location: app/index.php");
     }
   }
-?>
