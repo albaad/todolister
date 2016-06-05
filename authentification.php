@@ -14,6 +14,10 @@
         <input name='email' placeholder='E-Mail' type='text' value='<?php echo @$_SESSION['email_login']; ?>'></input>
         <input name='password' placeholder='Password' type='password'></input>
         <div class="espace"></div>
+        <div class='agree'>
+          <input id='agree' name='cookies-session' type='checkbox'>
+          <label for='agree'></label>Garder ma session active (vous autorisez l'utilisation des cookies)
+        </div>
         <input class='animated' type='submit' name='submit' value='Login'>
       </form>
 

@@ -1,4 +1,9 @@
 <?php
+
+  // login if login cookie
+  include_once 'inc/autologin.php';
+
+  // Check if active user session exists
   if(!isset($_SESSION['email'])) {
     if(empty($_POST['email']) || empty($_POST['password'])) {
       // User not logged in
