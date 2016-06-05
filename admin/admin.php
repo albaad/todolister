@@ -1,5 +1,5 @@
 <?php
-  include 'lib/AdminManager.php';
+  include 'lib/AdminManager.class.php';
 
   $pageTitle = 'ADMIN - To Do Lister';
   include 'inc/header.php';

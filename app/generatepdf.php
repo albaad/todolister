@@ -1,5 +1,5 @@
 <?php
-  require 'lib/PDF.php';
+  require 'lib/PDF.class.php';
 
   function encode($utf8) {
     return iconv('UTF-8', 'windows-1252', $utf8);

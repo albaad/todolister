@@ -1,7 +1,9 @@
 <?php
-session_start();
-include_once '../lib/Connection.php';
-include_once '../lib/ListerException.php';
+  session_start();
+
+  include_once '../lib/Connection.class.php';
+  include_once '../lib/ListerException.class.php';
+
 
 class AdminManager {
 
@@ -49,16 +51,6 @@ class AdminManager {
     $req = $bdd->query("SELECT id, email, pw FROM users ORDER BY id ASC");
     return $req;
   }
-
-  /*public function verifyLogin($email, $pw) {
-    $bdd = $this->db;
-    $req = $bdd->query("SELECT COUNT(email) FROM users WHERE email='$email' AND pw='$pw'");
-    $rows = $req->fetch(PDO::FETCH_NUM);
-    $count = $rows[0];
-    // IF res = $email AND $pw, 1 result
-     if($count == 1) { return true; }
-     else { return false; }
-  }*/
 
   public function find($email) {
     $bdd = $this->db;

@@ -1,7 +1,7 @@
 <?php
   $pageTitle = 'Inscription';
   include 'inc/header.php';
-  include_once 'lib/Mail.php';
+  include_once 'lib/Mail.class.php';
   include 'inc/redirect.php'; // Redirect to app if user logged in
 ?>
 

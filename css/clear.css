@@ -1,3 +1,5 @@
+/* Clear style theme */
+
 /* Guide */
 body {
   background-color: white;
@@ -92,7 +94,6 @@ h6 {
 
 /* MEDIA QUERIES for clear theme */
 /* Reduce margins for smaller screens/windows */
-
 @media screen and (max-width:950px) {
   .index {
     position: relative;
@@ -117,8 +118,4 @@ h6 {
   .guide-box h2 {
     font-size: 2.7em;
   }
-}
-/* Adapt to height */
-@media screen and (max-height:750px) {
-
 }

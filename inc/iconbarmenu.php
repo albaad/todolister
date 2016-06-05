@@ -1,6 +1,5 @@
-
 <?php
-  include 'lib/UserManager.php';
+  include 'lib/UserManager.class.php';
 
   $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
   $usrmg = new UserManager($bdd);

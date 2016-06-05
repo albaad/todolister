@@ -2,7 +2,7 @@
 include 'inc/autorisation.php';
 $pageTitle = 'Récupérer mot de passe';
 include 'inc/header.php';
-include_once 'lib/Mail.php';
+include_once 'lib/Mail.class.php';
 ?>
 
   <div class='login'>

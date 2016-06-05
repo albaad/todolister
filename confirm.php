@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'lib/Connection.php';
+include_once 'lib/Connection.class.php';
 
 //setup some variables
 $action = array();

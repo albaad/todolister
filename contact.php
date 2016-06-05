@@ -1,8 +1,8 @@
 <?php
   $pageTitle = 'Contact';
   include 'inc/header.php';
-  include 'lib/Mail.php';
-  include_once 'lib/UserManager.php';
+  include 'lib/Mail.class.php';
+  include_once 'lib/UserManager.class.php';
 
   $bdd = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
   $usrmg = new UserManager($bdd);

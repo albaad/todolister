@@ -1,5 +1,5 @@
 <?php
-include_once '../lib/ListerManager.php';
+include_once '../lib/ListerManager.class.php';
 
 if(isset($_GET['as'], $_GET['item'])) {
 	$as	= $_GET['as'];

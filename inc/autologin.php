@@ -1,5 +1,5 @@
 <?php
-  include_once 'lib/Connection.php';
+  include_once 'lib/Connection.class.php';
 
   // To re-login user if cookie has been created:
   if (isset($_COOKIE['todolister'])) {
@@ -23,7 +23,7 @@
 
     // $password is already hashed (sha1)
     if (sha1($password, substr($password, 0, 2)) == $hashed_password) {
-        // you can consider use as logged in
+        // Consider user as logged in
         $_SESSION['email'] = $email;
         header('Location: app/index.php');
     }

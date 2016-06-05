@@ -2,7 +2,7 @@
   $pageTitle = 'Modifier mot de passe';
   include 'inc/header.php';
 
-  include_once 'lib/UserManager.php';
+  include_once 'lib/UserManager.class.php';
 
   if(!isset($_SESSION['email'])) {
     header("Location: authentification.php");

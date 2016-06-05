@@ -1,12 +1,12 @@
 <?php
-include 'lib/AdminManager.php';
+  include 'lib/AdminManager.class.php';
 
-$pageTitle = 'Modifier utilisateur';
-include 'inc/header.php';
-$pageId = 4;
-include 'inc/menu.php';
+  $pageTitle = 'Modifier utilisateur';
+  include 'inc/header.php';
+  $pageId = 4;
+  include 'inc/menu.php';
 
-include 'inc/adminrights.php';
+  include 'inc/adminrights.php';
 ?>
 
   <div class="login">

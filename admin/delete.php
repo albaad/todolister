@@ -1,5 +1,5 @@
 <?php
-  include 'lib/AdminManager.php';
+  include 'lib/AdminManager.class.php';
 
   $pageTitle = 'Supprimer utilisateur';
   include 'inc/header.php';

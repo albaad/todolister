@@ -1,19 +1,18 @@
 <?php
   $pageTitle = 'To Do Lister';
   include_once 'appmenu.php';
-  include_once '../lib/ListerManager.php';
+  include_once '../lib/ListerManager.class.php';
 
   if(!isset($_SESSION['email'])) {
     header('Location:../index.php');
   }
 
+  // PROJECTS LIST
   if(isset($_GET['project_id'])) {
     unset($_SESSION['project_id']);
     unset($_SESSION['project_title']);
   }
-
   $db = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
-
 	$reader = new ListerManager($db);
 	$_SESSION['location'] = "Location: index.php";
   $email = $_SESSION['email'];
@@ -40,7 +39,7 @@
 
     <div class="app-container">
 
-      <div class="app-nav">
+      <div class="app-nav"> <!-- PROJECTS LIST -->
         <div class="list">
           <h6 class="header">Projets</h6>
 
@@ -89,21 +88,22 @@
       </div>
 
 
-      <div class="app-items">
+      <div class="app-items">  <!-- ITEMS LIST -->
         <div class="list">
 
 <?php
-if (isset($_GET['project_id'])) {
-  $_SESSION['project_id'] = $_GET['project_id'];
-  $_SESSION['project_title'] = $_GET['title'];
-}
-if (isset($_SESSION['project_id'])) {
-  $idb = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
+  // ITEMS LIST
+  if (isset($_GET['project_id'])) {
+    $_SESSION['project_id'] = $_GET['project_id'];
+    $_SESSION['project_title'] = $_GET['title'];
+  }
+  if (isset($_SESSION['project_id'])) {
+    $idb = Connection::getInstance('localhost', 'todolister', 'utf8', 'root', '');
 
-  $ireader = new ListerManager($idb);
-  $_SESSION['location'] = "Location: index.php";
-  $project_id = $_SESSION['project_id'];
-  $items = $reader->readList($project_id);
+    $ireader = new ListerManager($idb);
+    $_SESSION['location'] = "Location: index.php";
+    $project_id = $_SESSION['project_id'];
+    $items = $reader->readList($project_id);
 ?>
 
           <h1 class="header"><?php echo $_SESSION['project_title']; ?></h1>

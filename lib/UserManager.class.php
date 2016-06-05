@@ -1,7 +1,10 @@
 <?php
 session_start();
-include_once 'Connection.php';
-include_once 'lib/ListerException.php';
+include_once 'lib/Connection.class.php';
+include_once 'lib/ListerException.class.php';
+
+//include_once 'Connection.php';
+//include_once 'lib/ListerException.php';
 
 class UserManager {
 

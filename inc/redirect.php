@@ -1,6 +1,5 @@
 <?php
-
-  // login if login cookie
+  // log in user if login cookie exists and valid 
   include_once 'inc/autologin.php';
 
   // Check if active user session exists

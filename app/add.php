@@ -1,5 +1,5 @@
 <?php
-include_once '../lib/ListerManager.php';
+include_once '../lib/ListerManager.class.php';
 
 // Add Item
 if(isset($_POST['name'], $_GET['project_id'])){

@@ -1,6 +1,6 @@
 <?php
 require 'fpdf/fpdf.php';
-include_once '../lib/ListerManager.php';
+include_once '../lib/ListerManager.class.php';
 
 class PDF extends FPDF {
   var $widths;
